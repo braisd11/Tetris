@@ -12,7 +12,7 @@ package com.mycompany.xogoaforcado;
 public class XogoAforcado {
 
     public static void main(String[] args) {
-        Aforcado xogo1=new Aforcado();
-        xogo1.modoDeXogo();
+        Aforcado xogoAforcado=new Aforcado();
+        xogoAforcado.modoDeXogo();
     }
 }
