@@ -141,7 +141,7 @@ public class Aforcado {
         while (erros<=maximo && !ganar) {
             pedirLetra();
             if (!letras.contains('_')) {
-                System.out.println("Acertaches, a palabra era " + palabra);
+                System.out.println("Gañaches, a palabra era " + palabra);
                 ganar=true;
             }
             else if (erros>maximo) {
