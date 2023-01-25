@@ -43,24 +43,38 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelBotones3 = new javax.swing.JPanel();
         botonAceptar = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
-        juego = new javax.swing.JDialog();
-        panelJuego = new javax.swing.JPanel();
         panelPrincipal = new javax.swing.JPanel();
-        titulo = new javax.swing.JLabel();
         panelBotones = new javax.swing.JPanel();
         botonIniciar = new javax.swing.JButton();
         botonOpciones = new javax.swing.JButton();
         botonCerrar = new javax.swing.JButton();
+        titulo = new javax.swing.JLabel();
+        panelXogo = new javax.swing.JPanel();
+        juego = new javax.swing.JPanel();
+        tqlbtnPausa = new javax.swing.JToggleButton();
+        panelTempo = new javax.swing.JPanel();
+        tempo = new javax.swing.JLabel();
+        lblTempo = new javax.swing.JLabel();
+        panelPuntuacion = new javax.swing.JPanel();
+        puntos = new javax.swing.JLabel();
+        puntuacion = new javax.swing.JLabel();
+        panelLinas = new javax.swing.JPanel();
+        lblLblnumlinas = new javax.swing.JLabel();
+        numlinas = new javax.swing.JLabel();
 
-        ventanaOpciones.setSize(400, 400);
+        ventanaOpciones.setTitle("Opciones");
+        ventanaOpciones.setAlwaysOnTop(true);
+        ventanaOpciones.setMinimumSize(new java.awt.Dimension(635, 561));
+
+        panelOpciones.setPreferredSize(new java.awt.Dimension(600, 600));
 
         panelBotones2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        botonDificultad.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
+        botonDificultad.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
         botonDificultad.setText("Dificultad");
         botonDificultad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        botonColorFondo.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
+        botonColorFondo.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
         botonColorFondo.setText("Color de Fondo");
         botonColorFondo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonColorFondo.addActionListener(new java.awt.event.ActionListener() {
@@ -69,11 +83,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        botonColorPiezas.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
+        botonColorPiezas.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
         botonColorPiezas.setText("Color de Piezas");
         botonColorPiezas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        cerrar.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
+        cerrar.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
         cerrar.setText("Cerrar");
         cerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -117,27 +131,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelOpcionesLayout.setHorizontalGroup(
             panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelOpcionesLayout.createSequentialGroup()
-                .addContainerGap(160, Short.MAX_VALUE)
+                .addGap(190, 190, 190)
                 .addComponent(panelBotones2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(153, 153, 153))
+                .addGap(190, 190, 190))
         );
         panelOpcionesLayout.setVerticalGroup(
             panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelOpcionesLayout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(139, 139, 139)
                 .addComponent(panelBotones2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(93, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ventanaOpcionesLayout = new javax.swing.GroupLayout(ventanaOpciones.getContentPane());
         ventanaOpciones.getContentPane().setLayout(ventanaOpcionesLayout);
         ventanaOpcionesLayout.setHorizontalGroup(
             ventanaOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
         );
         ventanaOpcionesLayout.setVerticalGroup(
             ventanaOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
         );
 
         ventanaColores.setSize(700, 500);
@@ -206,40 +220,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        juego.setSize(700, 700);
-
-        javax.swing.GroupLayout panelJuegoLayout = new javax.swing.GroupLayout(panelJuego);
-        panelJuego.setLayout(panelJuegoLayout);
-        panelJuegoLayout.setHorizontalGroup(
-            panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        panelJuegoLayout.setVerticalGroup(
-            panelJuegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout juegoLayout = new javax.swing.GroupLayout(juego.getContentPane());
-        juego.getContentPane().setLayout(juegoLayout);
-        juegoLayout.setHorizontalGroup(
-            juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelJuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        juegoLayout.setVerticalGroup(
-            juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelJuego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("TETRIS 2.0");
 
         panelPrincipal.setSize(500, 500);
-
-        titulo.setFont(new java.awt.Font("Comic Sans MS", 0, 48)); // NOI18N
-        titulo.setText("TETRIS 2.0");
+        panelPrincipal.setToolTipText("");
+        panelPrincipal.setLayout(new java.awt.CardLayout());
 
         panelBotones.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        botonIniciar.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
+        botonIniciar.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
         botonIniciar.setText("Inicio");
         botonIniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonIniciar.addActionListener(new java.awt.event.ActionListener() {
@@ -248,7 +238,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        botonOpciones.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
+        botonOpciones.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
         botonOpciones.setText("Configuración");
         botonOpciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonOpciones.addActionListener(new java.awt.event.ActionListener() {
@@ -257,7 +247,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        botonCerrar.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
+        botonCerrar.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
         botonCerrar.setText("Salir");
         botonCerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -266,56 +256,209 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        titulo.setFont(new java.awt.Font("Comic Sans MS", 0, 68)); // NOI18N
+        titulo.setText("TETRIS 2.0");
+
         javax.swing.GroupLayout panelBotonesLayout = new javax.swing.GroupLayout(panelBotones);
         panelBotones.setLayout(panelBotonesLayout);
         panelBotonesLayout.setHorizontalGroup(
             panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelBotonesLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(botonOpciones)
-                        .addComponent(botonIniciar, javax.swing.GroupLayout.Alignment.TRAILING))
-                    .addComponent(botonCerrar))
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotonesLayout.createSequentialGroup()
+                .addGap(225, 225, 225)
+                .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(botonCerrar)
+                    .addComponent(botonOpciones)
+                    .addComponent(botonIniciar)
+                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(225, 225, 225))
         );
 
         panelBotonesLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {botonCerrar, botonIniciar, botonOpciones});
 
         panelBotonesLayout.setVerticalGroup(
             panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotonesLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelBotonesLayout.createSequentialGroup()
+                .addGap(137, 137, 137)
+                .addComponent(titulo)
+                .addGap(78, 78, 78)
                 .addComponent(botonIniciar)
-                .addGap(18, 18, 18)
+                .addGap(28, 28, 28)
                 .addComponent(botonOpciones)
-                .addGap(18, 18, 18)
+                .addGap(33, 33, 33)
                 .addComponent(botonCerrar)
-                .addContainerGap())
+                .addContainerGap(303, Short.MAX_VALUE))
         );
 
         panelBotonesLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {botonCerrar, botonIniciar, botonOpciones});
 
-        javax.swing.GroupLayout panelPrincipalLayout = new javax.swing.GroupLayout(panelPrincipal);
-        panelPrincipal.setLayout(panelPrincipalLayout);
-        panelPrincipalLayout.setHorizontalGroup(
-            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addGroup(panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(panelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(titulo))
-                .addGap(94, 94, 94))
+        panelPrincipal.add(panelBotones, "card3");
+
+        panelXogo.setBackground(new java.awt.Color(0, 0, 0));
+
+        juego.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout juegoLayout = new javax.swing.GroupLayout(juego);
+        juego.setLayout(juegoLayout);
+        juegoLayout.setHorizontalGroup(
+            juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 435, Short.MAX_VALUE)
         );
-        panelPrincipalLayout.setVerticalGroup(
-            panelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelPrincipalLayout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(titulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelBotones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
+        juegoLayout.setVerticalGroup(
+            juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 821, Short.MAX_VALUE)
         );
+
+        tqlbtnPausa.setBackground(new java.awt.Color(150, 150, 150));
+        tqlbtnPausa.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        tqlbtnPausa.setForeground(new java.awt.Color(255, 255, 255));
+        tqlbtnPausa.setText("PAUSA");
+        tqlbtnPausa.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102)));
+        tqlbtnPausa.setFocusable(false);
+
+        panelTempo.setBackground(new java.awt.Color(0, 0, 0));
+        panelTempo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.green, java.awt.Color.green, java.awt.Color.pink, java.awt.Color.red));
+        panelTempo.setForeground(new java.awt.Color(0, 0, 0));
+
+        tempo.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        tempo.setForeground(new java.awt.Color(255, 255, 255));
+        tempo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        lblTempo.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        lblTempo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTempo.setText("TEMPO:");
+
+        javax.swing.GroupLayout panelTempoLayout = new javax.swing.GroupLayout(panelTempo);
+        panelTempo.setLayout(panelTempoLayout);
+        panelTempoLayout.setHorizontalGroup(
+            panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTempoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTempo)
+                .addContainerGap(157, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTempoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(tempo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        panelTempoLayout.setVerticalGroup(
+            panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelTempoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblTempo)
+                .addGap(12, 12, 12)
+                .addComponent(tempo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        panelPuntuacion.setBackground(new java.awt.Color(0, 0, 0));
+        panelPuntuacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.green, java.awt.Color.green, java.awt.Color.pink, java.awt.Color.red));
+        panelPuntuacion.setForeground(new java.awt.Color(255, 255, 255));
+
+        puntos.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        puntos.setForeground(new java.awt.Color(255, 255, 255));
+        puntos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        puntuacion.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        puntuacion.setForeground(new java.awt.Color(255, 255, 255));
+        puntuacion.setText("PUNTUACIÓN:");
+
+        javax.swing.GroupLayout panelPuntuacionLayout = new javax.swing.GroupLayout(panelPuntuacion);
+        panelPuntuacion.setLayout(panelPuntuacionLayout);
+        panelPuntuacionLayout.setHorizontalGroup(
+            panelPuntuacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPuntuacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelPuntuacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(panelPuntuacionLayout.createSequentialGroup()
+                        .addComponent(puntuacion)
+                        .addGap(44, 44, 44))
+                    .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        panelPuntuacionLayout.setVerticalGroup(
+            panelPuntuacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelPuntuacionLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(puntuacion)
+                .addGap(18, 18, 18)
+                .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        panelLinas.setBackground(new java.awt.Color(0, 0, 0));
+        panelLinas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.green, java.awt.Color.green, java.awt.Color.pink, java.awt.Color.red));
+        panelLinas.setForeground(new java.awt.Color(0, 0, 0));
+
+        lblLblnumlinas.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        lblLblnumlinas.setForeground(new java.awt.Color(255, 255, 255));
+        lblLblnumlinas.setText("NUMERO DE LIÑAS:");
+
+        numlinas.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        numlinas.setForeground(new java.awt.Color(255, 255, 255));
+        numlinas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        javax.swing.GroupLayout panelLinasLayout = new javax.swing.GroupLayout(panelLinas);
+        panelLinas.setLayout(panelLinasLayout);
+        panelLinasLayout.setHorizontalGroup(
+            panelLinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLinasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(panelLinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLblnumlinas)
+                    .addComponent(numlinas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        panelLinasLayout.setVerticalGroup(
+            panelLinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLinasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblLblnumlinas)
+                .addGap(18, 18, 18)
+                .addComponent(numlinas, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout panelXogoLayout = new javax.swing.GroupLayout(panelXogo);
+        panelXogo.setLayout(panelXogoLayout);
+        panelXogoLayout.setHorizontalGroup(
+            panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelXogoLayout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addComponent(juego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelLinas, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(panelXogoLayout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(20, Short.MAX_VALUE))
+        );
+
+        panelXogoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {panelLinas, panelPuntuacion, panelTempo});
+
+        panelXogoLayout.setVerticalGroup(
+            panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelXogoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelXogoLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81)
+                .addComponent(panelLinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addComponent(panelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        panelXogoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {panelLinas, panelPuntuacion, panelTempo});
+
+        panelPrincipal.add(panelXogo, "card3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -333,7 +476,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void botonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarActionPerformed
         // TODO add your handling code here:
-        juego.setVisible(true);
+        panelBotones.setVisible(false);
+        panelXogo.setVisible(true);
     }//GEN-LAST:event_botonIniciarActionPerformed
 
     private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarActionPerformed
@@ -364,9 +508,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelBotones.setBackground(jColor.getColor());
         panelBotones2.setBackground(jColor.getColor());
         panelOpciones.setBackground(jColor.getColor());
-        panelJuego.setBackground(jColor.getColor());
         ventanaColores.setVisible(false);
         ventanaOpciones.setVisible(true);
+        panelXogo.setBackground(jColor.getColor());
     }//GEN-LAST:event_botonAceptarActionPerformed
 
     private void cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarActionPerformed
@@ -421,14 +565,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton botonOpciones;
     private javax.swing.JButton cerrar;
     private javax.swing.JColorChooser jColor;
-    private javax.swing.JDialog juego;
+    private javax.swing.JPanel juego;
+    private javax.swing.JLabel lblLblnumlinas;
+    private javax.swing.JLabel lblTempo;
+    private javax.swing.JLabel numlinas;
     private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelBotones2;
     private javax.swing.JPanel panelBotones3;
-    private javax.swing.JPanel panelJuego;
+    private javax.swing.JPanel panelLinas;
     private javax.swing.JPanel panelOpciones;
     private javax.swing.JPanel panelPrincipal;
+    private javax.swing.JPanel panelPuntuacion;
+    private javax.swing.JPanel panelTempo;
+    private javax.swing.JPanel panelXogo;
+    private javax.swing.JLabel puntos;
+    private javax.swing.JLabel puntuacion;
+    private javax.swing.JLabel tempo;
     private javax.swing.JLabel titulo;
+    private javax.swing.JToggleButton tqlbtnPausa;
     private javax.swing.JDialog ventanaColores;
     private javax.swing.JDialog ventanaOpciones;
     // End of variables declaration//GEN-END:variables
