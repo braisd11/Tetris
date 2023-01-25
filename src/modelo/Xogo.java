@@ -57,18 +57,26 @@ public class Xogo {
     
     //MÉTODOS
     
+    
+    //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverDereita() na clase Ficha.
     public void moverFichaDereita(){
         
     }
     
+    
+    //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverEsquerda() na clase Ficha.
     public void moverFichaEsquerda(){
         
     }
     
+    
+    //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverAbaixo() na clase Ficha.
     public void moverFichaAbaixo(){
         
     }
     
+    
+    //Chama a ePosicionValida() e comproba. Se pode moverse chama a rotar() na clase Ficha.
     public void rotarFicha(){
         
     }
