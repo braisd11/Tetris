@@ -6,11 +6,8 @@ package modelo;
 
 /**
  *
- * @author a22braisdr
+ * @author a22noellr
  */
-public class Xogo {
-    //atributos
-    public final int LADOCADRADO = 50;
-    public final int MAXX = 700;
-    public final int MAXY = 900;
+public class FichaT {
+    
 }
