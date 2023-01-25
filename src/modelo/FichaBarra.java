@@ -28,17 +28,24 @@ public class FichaBarra extends Ficha{
     }
     
     public boolean rotar() {
-        boolean rotar = true;
         int c1X = cadrados.get(1).getX();
         int c1Y = cadrados.get(1).getY();
         if (cadrados.get(0).getX()==cadrados.get(1).getX()) {
-            cadrados.get(0).setX(c1X-LADOCADRADO);
-            cadrados.get(0).setY(c1Y+LADOCADRADO);
-            cadrados.get(2).setX(c1X+LADOCADRADO);
-            cadrados.get(2).setY(c1Y-LADOCADRADO);
-            cadrados.get(3).setX(c1X+2*LADOCADRADO);
-            cadrados.get(3).setY(c1Y-2*LADOCADRADO);
+            cadrados.get(0).setX(c1X-xogo1.getLADOCADRADO);
+            cadrados.get(0).setY(c1Y+xogo1.getLADOCADRADO);
+            cadrados.get(2).setX(c1X+xogo1.getLADOCADRADO);
+            cadrados.get(2).setY(c1Y-xogo1.getLADOCADRADO);
+            cadrados.get(3).setX(c1X+2*xogo1.getLADOCADRADO);
+            cadrados.get(3).setY(c1Y-2*xogo1.getLADOCADRADO);
         }
-        return rotar;
+        if (cadrados.get(0).getY()==cadrados.get(1).getY()) {
+            cadrados.get(0).setX(c1X+xogo1.getLADOCADRADO);
+            cadrados.get(0).setY(c1Y-xogo1.getLADOCADRADO);
+            cadrados.get(2).setX(c1X-xogo1.getLADOCADRADO);
+            cadrados.get(2).setY(c1Y+xogo1.getLADOCADRADO);
+            cadrados.get(3).setX(c1X-2*xogo1.getLADOCADRADO);
+            cadrados.get(3).setY(c1Y+2*xogo1.getLADOCADRADO);
+        }
+        return true;
     }
 }

@@ -5,6 +5,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -12,12 +13,34 @@ import java.util.ArrayList;
  */
 public abstract class Ficha {
     //atributos
+    public Xogo xogo1;
     public ArrayList<Cadrado> cadrados = new ArrayList<>();
+    Iterator<Cadrado> iter;
     
     //constructor
 
     public Ficha() {
         crearCadrados();
+    }
+    
+    //getter y setter
+    public ArrayList<Cadrado> getCadrados() {
+        return cadrados;
+    }
+    public void setCadrados(ArrayList<Cadrado> cadrados) {
+        this.cadrados = cadrados;
+    }
+    public Xogo getXogo1() {
+        return xogo1;
+    }
+    public void setXogo1(Xogo xogo1) {
+        this.xogo1 = xogo1;
+    }
+    public Iterator<Cadrado> getIter() {
+        return iter;
+    }
+    public void setIter(Iterator<Cadrado> iter) {
+        this.iter = iter;
     }
     
     
@@ -39,39 +62,37 @@ public abstract class Ficha {
     }
     
     public boolean moverDereita() {
-        boolean mover = true;
-        for (int i = 0; i < cadrados.size(); i++) {
-            int coordXNuevo = cadrados.get(i).getX() + LADOCADRADO;
-            if (coordXNuevo>=MAXX) {
-                mover = false;
-            }
+        iter = cadrados.iterator();
+        while (iter.hasNext()) {
+            Cadrado cadrado = iter.next();
+            cadrado.setX(cadrado.getX() + xogo1.getLADOCADRADO);
         }
-        return mover;
+        return true;
+        /*
+        while (iter.hasNext()) {
+            Cadrado cadrado = fichaActual.getIter.next();
+            cadrado.setX(cadrado.getX() + xogo1.getLADOCADRADO);
+            ePosicionValida(cadrado.getX() + LADOCADRADO, cadrado.getY());
+        }
+        */
     }
     
     public boolean moverEsquerda() {
-        boolean mover = true;
-        for (int i = 0; i < cadrados.size(); i++) {
-            int coordXNuevo = cadrados.get(i).getX() - LADOCADRADO;
-            if (coordXNuevo<0) {
-                mover = false;
-            }
+        iter = cadrados.iterator();
+        while (iter.hasNext()) {
+            Cadrado cadrado = iter.next();
+            cadrado.setX(cadrado.getX() - xogo1.getLADOCADRADO);
         }
-        return mover;
+        return true;
     }
     
     public boolean moverAbaixo() {
-        boolean mover = true;
-        for (int i = 0; i < cadrados.size(); i++) {
-            int coordYNuevo = cadrados.get(i).getY() + LADOCADRADO;
-            if (coordYNuevo>=MAXY) {
-                mover = false;
-            }
+        iter = cadrados.iterator();
+        while (iter.hasNext()) {
+            Cadrado cadrado = iter.next();
+            cadrado.setY(cadrado.getY() + xogo1.getLADOCADRADO);
         }
-        return mover;
-        /*for (int i = 0; i < cadrados.size(); i++) {
-            cadrados.get(i).setY(cadrados.get(i).getY() + LADOCADRADO);
-        }*/
+        return true;
     }
     
     public abstract boolean rotar();
