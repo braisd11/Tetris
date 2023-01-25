@@ -1,6 +1,9 @@
 package iu;
 
 
+import modelo.Xogo;
+
+
 
 
 
@@ -14,7 +17,7 @@ package iu;
  * @author a22braisdr
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-
+    Xogo xogo1;
     /**
      * Creates new form Tetris
      */
@@ -296,16 +299,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelXogo.setBackground(new java.awt.Color(0, 0, 0));
 
         juego.setBackground(new java.awt.Color(255, 255, 255));
+        juego.setPreferredSize(new java.awt.Dimension(450, 800));
+        juego.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                juegoKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout juegoLayout = new javax.swing.GroupLayout(juego);
         juego.setLayout(juegoLayout);
         juegoLayout.setHorizontalGroup(
             juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 435, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
         juegoLayout.setVerticalGroup(
             juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 821, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         tqlbtnPausa.setBackground(new java.awt.Color(150, 150, 150));
@@ -319,9 +328,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelTempo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.green, java.awt.Color.green, java.awt.Color.pink, java.awt.Color.red));
         panelTempo.setForeground(new java.awt.Color(0, 0, 0));
 
-        tempo.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        tempo.setFont(new java.awt.Font("Arial Black", 0, 48)); // NOI18N
         tempo.setForeground(new java.awt.Color(255, 255, 255));
         tempo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tempo.setText("0");
 
         lblTempo.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         lblTempo.setForeground(new java.awt.Color(255, 255, 255));
@@ -354,9 +364,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelPuntuacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.green, java.awt.Color.green, java.awt.Color.pink, java.awt.Color.red));
         panelPuntuacion.setForeground(new java.awt.Color(255, 255, 255));
 
-        puntos.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        puntos.setFont(new java.awt.Font("Arial Black", 0, 48)); // NOI18N
         puntos.setForeground(new java.awt.Color(255, 255, 255));
         puntos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        puntos.setText("0");
 
         puntuacion.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         puntuacion.setForeground(new java.awt.Color(255, 255, 255));
@@ -368,12 +379,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             panelPuntuacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelPuntuacionLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panelPuntuacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(panelPuntuacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelPuntuacionLayout.createSequentialGroup()
                         .addComponent(puntuacion)
-                        .addGap(44, 44, 44))
-                    .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                        .addGap(70, 70, 70))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPuntuacionLayout.createSequentialGroup()
+                        .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
         panelPuntuacionLayout.setVerticalGroup(
             panelPuntuacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -393,9 +405,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblLblnumlinas.setForeground(new java.awt.Color(255, 255, 255));
         lblLblnumlinas.setText("NUMERO DE LIÑAS:");
 
-        numlinas.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        numlinas.setFont(new java.awt.Font("Arial Black", 0, 48)); // NOI18N
         numlinas.setForeground(new java.awt.Color(255, 255, 255));
         numlinas.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        numlinas.setText("0");
 
         javax.swing.GroupLayout panelLinasLayout = new javax.swing.GroupLayout(panelLinas);
         panelLinas.setLayout(panelLinasLayout);
@@ -405,7 +418,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelLinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblLblnumlinas)
-                    .addComponent(numlinas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLinasLayout.createSequentialGroup()
+                        .addComponent(numlinas, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)))
                 .addContainerGap())
         );
         panelLinasLayout.setVerticalGroup(
@@ -423,7 +438,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelXogoLayout.setHorizontalGroup(
             panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelXogoLayout.createSequentialGroup()
-                .addGap(156, 156, 156)
+                .addGap(146, 146, 146)
                 .addComponent(juego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -433,17 +448,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(panelXogoLayout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         panelXogoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {panelLinas, panelPuntuacion, panelTempo});
 
         panelXogoLayout.setVerticalGroup(
             panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelXogoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelXogoLayout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -453,7 +464,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(panelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(230, Short.MAX_VALUE))
+            .addGroup(panelXogoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(juego, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         panelXogoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {panelLinas, panelPuntuacion, panelTempo});
@@ -474,22 +489,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //BOTÓN QUE DA INICIO AO XOGO CHAMANDO A INICIARPARTIDA()
     private void botonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarActionPerformed
         // TODO add your handling code here:
         panelBotones.setVisible(false);
         panelXogo.setVisible(true);
+        iniciarPartida();
     }//GEN-LAST:event_botonIniciarActionPerformed
 
+    
+    //CERRA O XOGO
     private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarActionPerformed
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_botonCerrarActionPerformed
 
+    //ABRE A VENTÁ DE CONFIGURACIÓN
     private void botonOpcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonOpcionesActionPerformed
         // TODO add your handling code here:
         ventanaOpciones.setVisible(true);
     }//GEN-LAST:event_botonOpcionesActionPerformed
 
+    
+    //ABRE A PALETA DE CORES PARA ESCOLLER UN E APLICAO AO FONDO DO TETRIS
     private void botonColorFondoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonColorFondoActionPerformed
         // TODO add your handling code here:
         ventanaOpciones.setVisible(false);
@@ -502,6 +524,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         ventanaOpciones.setVisible(true);
     }//GEN-LAST:event_botonCancelarActionPerformed
 
+    //ACEPTA A COR ESCOLLIDA E APLÍCAA A TODO O XOGO
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         // TODO add your handling code here:
         panelPrincipal.setBackground(jColor.getColor());
@@ -513,12 +536,30 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelXogo.setBackground(jColor.getColor());
     }//GEN-LAST:event_botonAceptarActionPerformed
 
+    //cERRA A VENTÁ DE OPCIÓNS
     private void cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarActionPerformed
         // TODO add your handling code here:
         ventanaOpciones.setVisible(false);
     }//GEN-LAST:event_cerrarActionPerformed
 
-    /**
+    private void juegoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_juegoKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyChar()=='a' || evt.getKeyCode()==37){
+            xogo1.moverFichaEsquerda();
+        }
+        if (evt.getKeyChar()=='d' || evt.getKeyCode()==39){
+            xogo1.moverFichaDereita();
+        }
+        if (evt.getKeyChar()=='s' || evt.getKeyCode()==40){
+            xogo1.moverFichaAbaixo();
+        }
+        if (evt.getKeyChar()=='w' || evt.getKeyCode()==38){
+            xogo1.rotarFicha();
+        }
+    }//GEN-LAST:event_juegoKeyPressed
+
+    
+        /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -554,6 +595,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
     }
 
+    //MÉTODO QUE CREA UN OBXETO DA CLASE XOGO E DA INICIO O XOGO
+    private void iniciarPartida(){
+        xogo1=new Xogo();
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonCancelar;
