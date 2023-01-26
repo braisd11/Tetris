@@ -17,14 +17,14 @@ public class FichaCadrada extends Ficha{
     
     //métodos
     public void posicionInicial() {
-        cadrados.get(1).setX(0);
-        cadrados.get(1).setY(0);
-        cadrados.get(0).setX(0);
-        cadrados.get(0).setY(0);
-        cadrados.get(2).setX(0);
-        cadrados.get(2).setY(0);
-        cadrados.get(3).setX(0);
-        cadrados.get(3).setY(0);
+        c1.setX(0);
+        c1.setY(0);
+        c0.setX(0);
+        c0.setY(0);
+        c2.setX(0);
+        c2.setY(0);
+        c3.setX(0);
+        c3.setY(0);
     }
     
     public boolean rotar() {

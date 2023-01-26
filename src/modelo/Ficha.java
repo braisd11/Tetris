@@ -16,6 +16,10 @@ public abstract class Ficha {
     public Xogo xogo1;
     public ArrayList<Cadrado> cadrados = new ArrayList<>();
     Iterator<Cadrado> iter;
+    public Cadrado c0 = cadrados.get(0);
+    public Cadrado c1 = cadrados.get(1);
+    public Cadrado c2 = cadrados.get(2);
+    public Cadrado c3 = cadrados.get(3);
     
     //constructor
 
@@ -65,7 +69,7 @@ public abstract class Ficha {
         iter = cadrados.iterator();
         while (iter.hasNext()) {
             Cadrado cadrado = iter.next();
-            cadrado.setX(cadrado.getX() + xogo1.getLADOCADRADO);
+            cadrado.setX(cadrado.getX() + xogo1.getLADOCADRADO());
         }
         return true;
         /*
@@ -81,7 +85,7 @@ public abstract class Ficha {
         iter = cadrados.iterator();
         while (iter.hasNext()) {
             Cadrado cadrado = iter.next();
-            cadrado.setX(cadrado.getX() - xogo1.getLADOCADRADO);
+            cadrado.setX(cadrado.getX() - xogo1.getLADOCADRADO());
         }
         return true;
     }
@@ -90,7 +94,7 @@ public abstract class Ficha {
         iter = cadrados.iterator();
         while (iter.hasNext()) {
             Cadrado cadrado = iter.next();
-            cadrado.setY(cadrado.getY() + xogo1.getLADOCADRADO);
+            cadrado.setY(cadrado.getY() + xogo1.getLADOCADRADO());
         }
         return true;
     }
