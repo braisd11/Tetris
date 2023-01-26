@@ -1,6 +1,7 @@
 package iu;
 
 
+import javax.swing.JLabel;
 import modelo.Xogo;
 
 
@@ -64,6 +65,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelLinas = new javax.swing.JPanel();
         lblLblnumlinas = new javax.swing.JLabel();
         numlinas = new javax.swing.JLabel();
+        PROBAS = new javax.swing.JPanel();
+        lblCadrado = new javax.swing.JLabel();
 
         ventanaOpciones.setTitle("Opciones");
         ventanaOpciones.setAlwaysOnTop(true);
@@ -475,6 +478,39 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         panelPrincipal.add(panelXogo, "card3");
 
+        PROBAS.setBackground(new java.awt.Color(255, 255, 255));
+
+        lblCadrado.setBackground(new java.awt.Color(0, 0, 0));
+        lblCadrado.setForeground(new java.awt.Color(0, 0, 0));
+        lblCadrado.setMaximumSize(new java.awt.Dimension(50, 50));
+        lblCadrado.setMinimumSize(new java.awt.Dimension(50, 50));
+        lblCadrado.setOpaque(true);
+        lblCadrado.setPreferredSize(new java.awt.Dimension(50, 50));
+        lblCadrado.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblCadradoPropertyChange(evt);
+            }
+        });
+
+        javax.swing.GroupLayout PROBASLayout = new javax.swing.GroupLayout(PROBAS);
+        PROBAS.setLayout(PROBASLayout);
+        PROBASLayout.setHorizontalGroup(
+            PROBASLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PROBASLayout.createSequentialGroup()
+                .addGap(272, 272, 272)
+                .addComponent(lblCadrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(578, Short.MAX_VALUE))
+        );
+        PROBASLayout.setVerticalGroup(
+            PROBASLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(PROBASLayout.createSequentialGroup()
+                .addGap(84, 84, 84)
+                .addComponent(lblCadrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(766, Short.MAX_VALUE))
+        );
+
+        panelPrincipal.add(PROBAS, "card4");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -497,6 +533,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         iniciarPartida();
     }//GEN-LAST:event_botonIniciarActionPerformed
 
+    public void pintarCadrado(JLabel lblCadrado){
+        lblCadrado.setAlignmentX(50);
+        lblCadrado.setAlignmentY(50);
+        
+    }
     
     //CERRA O XOGO
     private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarActionPerformed
@@ -536,7 +577,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelXogo.setBackground(jColor.getColor());
     }//GEN-LAST:event_botonAceptarActionPerformed
 
-    //cERRA A VENTÁ DE OPCIÓNS
+    
+    
+    //CERRA A VENTÁ DE OPCIÓNS
     private void cerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cerrarActionPerformed
         // TODO add your handling code here:
         ventanaOpciones.setVisible(false);
@@ -557,6 +600,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             xogo1.rotarFicha();
         }
     }//GEN-LAST:event_juegoKeyPressed
+
+    private void lblCadradoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblCadradoPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lblCadradoPropertyChange
 
     
         /**
@@ -601,6 +648,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel PROBAS;
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonCerrar;
@@ -612,6 +660,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JButton cerrar;
     private javax.swing.JColorChooser jColor;
     private javax.swing.JPanel juego;
+    private javax.swing.JLabel lblCadrado;
     private javax.swing.JLabel lblLblnumlinas;
     private javax.swing.JLabel lblTempo;
     private javax.swing.JLabel numlinas;

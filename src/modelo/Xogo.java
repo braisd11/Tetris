@@ -6,12 +6,13 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JPanel;
 
 /**
  *
  * @author a22braisdr
  */
-public class Xogo {
+public class Xogo extends JPanel {
 
     private int LADOCADRADO=50;
     private final int MAXX=450;
@@ -83,4 +84,24 @@ public class Xogo {
     }
     
 
+    //Comproba que a ficha non sobrepase os límites laterais e se chega ao chan ou choca con outra ficha.
+    public void ePosicionValida(int x, int y){
+        if (x>MAXX || x<0){
+            
+        }
+        else if (y>MAXY){
+            chocaFichaCoChan();
+        }
+    }
+    
+    
+    //Comproba que a ficha choque co chan e no caso de chocar, engádea ao chan e chama a xerarNovaFicha().
+    public void chocaFichaCoChan (){
+        
+    }
+    
+    
+    public void xerarNovaFicha(){
+        
+    }
 }
