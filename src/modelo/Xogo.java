@@ -12,6 +12,7 @@ import java.util.Iterator;
  * @author a22braisdr
  */
 public class Xogo {
+
     private int LADOCADRADO=50;
     private final int MAXX=450;
     private final int MAXY=800;
@@ -81,4 +82,5 @@ public class Xogo {
         
     }
     
+
 }
