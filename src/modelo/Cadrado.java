@@ -20,6 +20,10 @@ public class Cadrado {
     
     //constructor
     
+    public Cadrado (){
+       
+    }
+    
     //getter y setter
     public int getX() {    
         return x;

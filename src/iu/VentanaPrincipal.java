@@ -533,11 +533,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         iniciarPartida();
     }//GEN-LAST:event_botonIniciarActionPerformed
 
-    public void pintarCadrado(JLabel lblCadrado){
-        lblCadrado.setAlignmentX(50);
-        lblCadrado.setAlignmentY(50);
-        
-    }
     
     //CERRA O XOGO
     private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarActionPerformed

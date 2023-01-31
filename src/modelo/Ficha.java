@@ -6,6 +6,7 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.swing.JPanel;
 
 /**
  *
@@ -48,8 +49,8 @@ public abstract class Ficha {
     }
     
     
-    //métodos
-    //crea os cadrados para montar as fichas
+    //Métodos
+    //Crea os cadrados para montar as fichas
     private void crearCadrados() {
         Cadrado c0 = new Cadrado();
         Cadrado c1 = new Cadrado();
@@ -57,7 +58,8 @@ public abstract class Ficha {
         Cadrado c3 = new Cadrado();
         montarFicha(c0, c1, c2, c3);
     }
-    //monta a ficha cos cadrados creados
+    
+    //Monta a ficha cos cadrados creados
     private void montarFicha(Cadrado c0, Cadrado c1, Cadrado c2, Cadrado c3) {
         cadrados.add(c0);
         cadrados.add(c1);
