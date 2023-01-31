@@ -14,6 +14,8 @@ import java.util.Iterator;
 public abstract class Ficha {
     //atributos
     public Xogo xogo1;
+
+    
     public ArrayList<Cadrado> cadrados = new ArrayList<>();
     Iterator<Cadrado> iter;
     public Cadrado c0 = cadrados.get(0);
@@ -22,8 +24,8 @@ public abstract class Ficha {
     public Cadrado c3 = cadrados.get(3);
     
     //constructor
-
-    public Ficha() {
+    public Ficha(Xogo xogo1) {
+        this.xogo1 = xogo1;
         crearCadrados();
     }
     
@@ -101,4 +103,5 @@ public abstract class Ficha {
     
     public abstract boolean rotar();
     public abstract void posicionInicial();
+    public abstract void cor();
 }

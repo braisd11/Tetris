@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import java.awt.Color;
+
 /**
  *
  * @author a22noellr
@@ -11,11 +13,21 @@ package modelo;
 public class FichaBarra extends Ficha{
     
     //constructor
-    public FichaBarra() {
+    public FichaBarra(Xogo xogo1) {
+        super(xogo1);
+        this.xogo1 = xogo1;
+        cor();
         posicionInicial();
     }
     
     //métodos
+    public void cor() {
+        c0.setCorRecheo(Color.YELLOW);
+        c1.setCorRecheo(Color.YELLOW);
+        c2.setCorRecheo(Color.YELLOW);
+        c3.setCorRecheo(Color.YELLOW);
+    }
+    
     public void posicionInicial() {
         c1.setX(0);
         c1.setY(0);

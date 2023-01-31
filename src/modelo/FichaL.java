@@ -4,6 +4,8 @@
  */
 package modelo;
 
+import java.awt.Color;
+
 /**
  *
  * @author a22noellr
@@ -11,11 +13,21 @@ package modelo;
 public class FichaL extends Ficha{
     
     //constructor
-    public FichaL() {
+    public FichaL(Xogo xogo1) {
+        super(xogo1);
+        this.xogo1 = xogo1;
+        cor();
         posicionInicial();
     }
     
     //métodos
+    public void cor() {
+        c0.setCorRecheo(Color.GREEN);
+        c1.setCorRecheo(Color.GREEN);
+        c2.setCorRecheo(Color.GREEN);
+        c3.setCorRecheo(Color.GREEN);
+    }
+    
     public void posicionInicial() {
         c1.setX(0);
         c1.setY(0);
