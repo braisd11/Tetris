@@ -1,11 +1,12 @@
+//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
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo;
 
+import iu.VentanaPrincipal;
 import java.util.ArrayList;
-import java.util.Iterator;
 import javax.swing.JPanel;
 
 /**
@@ -19,6 +20,7 @@ public class Xogo extends JPanel {
     private final int MAXY=800;
     private boolean pausa=false;
     private int numeroLinas=16;
+    private VentanaPrincipal ventanaPrincipal;
     ArrayList <Cadrado> cadradosChan=new ArrayList<>();
 
     public Xogo() {
@@ -102,6 +104,18 @@ public class Xogo extends JPanel {
     
     
     public void xerarNovaFicha(){
-        
+        int figura=(int) Math.floor(Math.random() * (4 - 1 + 1) + 1);
+        if (figura==1){
+            FichaT fichaActual=new FichaT();
+        }
+        if (figura==2){
+            FichaCadrada fichaActual=new FichaCadrada();
+        }
+        if (figura==3){
+            FichaL fichaActual=new FichaL();
+        }
+        if (figura==4){
+            FichaBarra fichaActual=new FichaBarra();
+        }
     }
 }

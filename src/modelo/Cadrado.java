@@ -20,10 +20,11 @@ public class Cadrado {
     private javax.swing.JLabel cadrado;
     
     //constructor
+
     public Cadrado() {
         cadrado = new javax.swing.JLabel();
     }
-
+    
     //getter y setter
     public int getX() {    
         return x;
