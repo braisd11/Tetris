@@ -645,8 +645,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public void pintarCadrado(JLabel lblCadrado){
         juego.add(lblCadrado);
-        lblCadrado.setVisible(true);
-        lblCadrado.setFocusable(true);
+        juego.updateUI();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
