@@ -111,6 +111,7 @@ public class Xogo {
     public void xerarNovaFicha(){
         int figura=(int) Math.floor(Math.random() * (4 - 1 + 1) + 1);
         if (figura==1){
+
             fichaActual=new FichaT(this);
         }
         if (figura==2){
