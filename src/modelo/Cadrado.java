@@ -17,12 +17,11 @@ public class Cadrado {
     public int y;
     public Color corRecheo;
     public JLabel lblCadrado;
-    private javax.swing.JLabel cadrado;
     
     //constructor
 
     public Cadrado() {
-        cadrado = new javax.swing.JLabel();
+        lblCadrado = new javax.swing.JLabel();
     }
     
     //getter y setter
@@ -43,7 +42,7 @@ public class Cadrado {
     }
     public void setCorRecheo(Color corRecheo) {
         this.corRecheo = corRecheo;
-        cadrado.setBackground(corRecheo);
+        lblCadrado.setBackground(corRecheo);
     }
     public JLabel getLblCadrado() {
         return lblCadrado;

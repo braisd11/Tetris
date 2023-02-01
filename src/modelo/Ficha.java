@@ -4,6 +4,7 @@
  */
 package modelo;
 
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JPanel;
@@ -19,10 +20,10 @@ public abstract class Ficha {
     
     public ArrayList<Cadrado> cadrados = new ArrayList<>();
     Iterator<Cadrado> iter;
-    public Cadrado c0 = cadrados.get(0);
-    public Cadrado c1 = cadrados.get(1);
-    public Cadrado c2 = cadrados.get(2);
-    public Cadrado c3 = cadrados.get(3);
+    public Cadrado c0;
+    public Cadrado c1;
+    public Cadrado c2;
+    public Cadrado c3;
     
     //constructor
     public Ficha(Xogo xogo1) {
@@ -54,10 +55,14 @@ public abstract class Ficha {
     //Métodos
     //Crea os cadrados para montar as fichas
     private void crearCadrados() {
-        Cadrado c0 = new Cadrado();
-        Cadrado c1 = new Cadrado();
-        Cadrado c2 = new Cadrado();
-        Cadrado c3 = new Cadrado();
+        c0 = new Cadrado();
+        c0.getLblCadrado().setSize(xogo1.getLADOCADRADO(), xogo1.getLADOCADRADO());
+        c1 = new Cadrado();
+        c1.getLblCadrado().setSize(xogo1.getLADOCADRADO(), xogo1.getLADOCADRADO());
+        c2 = new Cadrado();
+        c2.getLblCadrado().setSize(xogo1.getLADOCADRADO(), xogo1.getLADOCADRADO());
+        c3 = new Cadrado();
+        c3.getLblCadrado().setSize(xogo1.getLADOCADRADO(), xogo1.getLADOCADRADO());
         montarFicha(c0, c1, c2, c3);
     }
     
