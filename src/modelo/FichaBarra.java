@@ -15,7 +15,6 @@ public class FichaBarra extends Ficha{
     //constructor
     public FichaBarra(Xogo xogo1) {
         super(xogo1);
-        this.xogo1 = xogo1;
         cor();
         posicionInicial();
     }

@@ -15,7 +15,6 @@ public class FichaL extends Ficha{
     //constructor
     public FichaL(Xogo xogo1) {
         super(xogo1);
-        this.xogo1 = xogo1;
         cor();
         posicionInicial();
     }

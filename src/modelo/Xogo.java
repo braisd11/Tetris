@@ -7,8 +7,6 @@ package modelo;
 
 import iu.VentanaPrincipal;
 import java.util.ArrayList;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 
 /**
@@ -29,7 +27,9 @@ public class Xogo {
     public Xogo(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal=ventanaPrincipal;
         xerarNovaFicha();
-        ventanaPrincipal.pintarCadrado(fichaActual.cadrados.get(0).getLblCadrado());
+        for (int i = 0; i < fichaActual.cadrados.size(); i++) {
+            ventanaPrincipal.pintarCadrado(fichaActual.cadrados.get(i).getLblCadrado());
+        }
     }
 
     public int getLADOCADRADO() {
