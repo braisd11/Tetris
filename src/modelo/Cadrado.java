@@ -30,12 +30,14 @@ public class Cadrado {
     }
     public void setX(int x) {
         this.x = x;
+        lblCadrado.setLocation(x, y);
     }
     public int getY() {
         return y;
     }
     public void setY(int y) {
         this.y = y;
+        lblCadrado.setLocation(x, y);
     }
     public Color getCorRecheo() {
         return corRecheo;
@@ -43,6 +45,7 @@ public class Cadrado {
     public void setCorRecheo(Color corRecheo) {
         this.corRecheo = corRecheo;
         lblCadrado.setBackground(corRecheo);
+        lblCadrado.setOpaque(true);
     }
     public JLabel getLblCadrado() {
         return lblCadrado;

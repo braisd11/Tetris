@@ -29,14 +29,14 @@ public class FichaCadrada extends Ficha{
     }
     
     public void posicionInicial() {
-        c1.setX(0);
-        c1.setY(0);
-        c0.setX(0);
-        c0.setY(0);
-        c2.setX(0);
-        c2.setY(0);
-        c3.setX(0);
-        c3.setY(0);
+        c1.setX(4*xogo1.getLADOCADRADO());
+        c1.setY(xogo1.getLADOCADRADO());
+        c0.setX(c1.getX());
+        c0.setY(c1.getY()-xogo1.getLADOCADRADO());
+        c2.setX(c1.getX()+xogo1.getLADOCADRADO());
+        c2.setY(c1.getY());
+        c3.setX(c1.getX()+xogo1.getLADOCADRADO());
+        c3.setY(c1.getY()-xogo1.getLADOCADRADO());
     }
     
     public boolean rotar() {
