@@ -7,24 +7,29 @@ package modelo;
 
 import iu.VentanaPrincipal;
 import java.util.ArrayList;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+
 
 /**
  *
  * @author a22braisdr
  */
-public class Xogo extends JPanel {
+public class Xogo {
 
     private int LADOCADRADO=50;
     private final int MAXX=450;
     private final int MAXY=800;
     private boolean pausa=false;
     private int numeroLinas=16;
-    private VentanaPrincipal ventanaPrincipal;
+    public VentanaPrincipal ventanaPrincipal;
+    public Ficha fichaActual;
     ArrayList <Cadrado> cadradosChan=new ArrayList<>();
 
-    public Xogo() {
-        
+    public Xogo(VentanaPrincipal ventanaPrincipal) {
+        this.ventanaPrincipal=ventanaPrincipal;
+        xerarNovaFicha();
+        ventanaPrincipal.pintarCadrado(fichaActual.cadrados.get(0).getLblCadrado());
     }
 
     public int getLADOCADRADO() {
@@ -106,16 +111,16 @@ public class Xogo extends JPanel {
     public void xerarNovaFicha(){
         int figura=(int) Math.floor(Math.random() * (4 - 1 + 1) + 1);
         if (figura==1){
-            FichaT fichaActual=new FichaT();
+            fichaActual=new FichaT(this);
         }
         if (figura==2){
-            FichaCadrada fichaActual=new FichaCadrada();
+            fichaActual=new FichaCadrada(this);
         }
         if (figura==3){
-            FichaL fichaActual=new FichaL();
+            fichaActual=new FichaL(this);
         }
         if (figura==4){
-            FichaBarra fichaActual=new FichaBarra();
+            fichaActual=new FichaBarra(this);
         }
     }
 }

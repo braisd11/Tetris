@@ -639,9 +639,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     //MÉTODO QUE CREA UN OBXETO DA CLASE XOGO E DA INICIO O XOGO
     private void iniciarPartida(){
-        xogo1=new Xogo();
+        xogo1=new Xogo(this);
         
     }
+    
+    public void pintarCadrado(JLabel lblCadrado){
+        juego.add(lblCadrado);
+        lblCadrado.setVisible(true);
+        lblCadrado.setFocusable(true);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PROBAS;
     private javax.swing.JButton botonAceptar;
