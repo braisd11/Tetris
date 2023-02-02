@@ -90,7 +90,6 @@ public class Xogo {
             mover=ePosicionValida(cadrado.getX() + LADOCADRADO, cadrado.getY());
         }
         if (mover) {
-            borrarCadrados();
             fichaActual.moverDereita();
             debuxarCadrados();
         }
@@ -106,7 +105,6 @@ public class Xogo {
             mover=ePosicionValida(cadrado.getX() - LADOCADRADO, cadrado.getY());
         }
         if (mover) {
-            borrarCadrados();
             fichaActual.moverEsquerda();
             debuxarCadrados();
         }
@@ -122,7 +120,6 @@ public class Xogo {
             mover=ePosicionValida(cadrado.getX(), cadrado.getY() + LADOCADRADO);
         }
         if (mover) {
-            borrarCadrados();
             fichaActual.moverAbaixo();
             debuxarCadrados();
         }
