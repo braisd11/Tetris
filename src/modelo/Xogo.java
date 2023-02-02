@@ -7,6 +7,7 @@ package modelo;
 
 import iu.VentanaPrincipal;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 /**
@@ -23,6 +24,7 @@ public class Xogo {
     public VentanaPrincipal ventanaPrincipal;
     public Ficha fichaActual;
     ArrayList <Cadrado> cadradosChan=new ArrayList<>();
+    Iterator<Cadrado> iter;
 
     public Xogo(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal=ventanaPrincipal;
@@ -90,7 +92,6 @@ public class Xogo {
             mover=ePosicionValida(cadrado.getX() + LADOCADRADO, cadrado.getY());
         }
         if (mover) {
-            borrarCadrados();
             fichaActual.moverDereita();
             debuxarCadrados();
         }
@@ -106,7 +107,6 @@ public class Xogo {
             mover=ePosicionValida(cadrado.getX() - LADOCADRADO, cadrado.getY());
         }
         if (mover) {
-            borrarCadrados();
             fichaActual.moverEsquerda();
             debuxarCadrados();
         }
@@ -115,14 +115,13 @@ public class Xogo {
     
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverAbaixo() na clase Ficha.
     public void moverFichaAbaixo(){
-        boolean mover=true;
+        boolean baixar=true;
         fichaActual.iter = fichaActual.getCadrados().iterator();
-        while (fichaActual.getIter().hasNext() && mover) {
+        while (fichaActual.getIter().hasNext() && baixar) {
             Cadrado cadrado = fichaActual.getIter().next();
-            mover=ePosicionValida(cadrado.getX(), cadrado.getY() + LADOCADRADO);
+            baixar=ePosicionValida(cadrado.getX(), cadrado.getY() + LADOCADRADO);
         }
-        if (mover) {
-            borrarCadrados();
+        if (baixar) {
             fichaActual.moverAbaixo();
             debuxarCadrados();
         }
@@ -131,25 +130,41 @@ public class Xogo {
     
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a rotar() na clase Ficha.
     public void rotarFicha(){
-        
+        boolean rotar=true;
+        if (rotar) {
+            fichaActual.rotar();
+            debuxarCadrados();
+        }
     }
     
 
     //Comproba que a ficha non sobrepase os límites laterais e se chega ao chan ou choca con outra ficha.
     public boolean ePosicionValida(int x, int y){
         boolean posicionValida=true;
-        if (x>MAXX || x<0){
-            
+        if (x>=MAXX || x<0){
+            posicionValida=false;
         }
-        else if (y>MAXY){
-            chocaFichaCoChan();
+        else if(y>=MAXY){
+            posicionValida=false;
+        }
+        else if (chocaFichaCoChan()){
+            posicionValida=false;
+            
         }
         return posicionValida;
     }
     
     
     //Comproba que a ficha choque co chan e no caso de chocar, engádea ao chan e chama a xerarNovaFicha().
-    public void chocaFichaCoChan (){
+    public boolean chocaFichaCoChan (){
+        boolean chocar=false;
+        /*if(y>=MAXY){
+            chocar=true;
+        }*/
+        return chocar;
+    }
+    
+    public void engadirFichaAoChan(){
         
     }
     

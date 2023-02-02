@@ -442,7 +442,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelXogoLayout.createSequentialGroup()
                 .addGap(146, 146, 146)
-                .addComponent(juego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -583,16 +583,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void juegoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_juegoKeyPressed
         // TODO add your handling code here:
-        if (evt.getKeyChar()=='a' || evt.getKeyCode()==37){
+        if (evt.getKeyChar()=='a' || evt.getKeyChar()=='A' || evt.getKeyCode()==37){
             xogo1.moverFichaEsquerda();
         }
-        if (evt.getKeyChar()=='d' || evt.getKeyCode()==39){
+        if (evt.getKeyChar()=='d' || evt.getKeyChar()=='D' || evt.getKeyCode()==39){
             xogo1.moverFichaDereita();
         }
-        if (evt.getKeyChar()=='s' || evt.getKeyCode()==40){
+        if (evt.getKeyChar()=='s' || evt.getKeyChar()=='S' || evt.getKeyCode()==40){
             xogo1.moverFichaAbaixo();
         }
-        if (evt.getKeyChar()=='w' || evt.getKeyCode()==38){
+        if (evt.getKeyChar()=='w' || evt.getKeyChar()=='W' || evt.getKeyCode()==38){
             xogo1.rotarFicha();
         }
     }//GEN-LAST:event_juegoKeyPressed

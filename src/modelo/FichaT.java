@@ -51,7 +51,7 @@ public class FichaT extends Ficha{
             c3.setY(c1Y+xogo1.getLADOCADRADO());
         }
         //cambiar a posición 2
-        if (c3.getX()==c1X && c3.getY()==c1Y+xogo1.getLADOCADRADO()) {
+        else if (c3.getX()==c1X && c3.getY()==c1Y+xogo1.getLADOCADRADO()) {
             c0.setX(c1X);
             c0.setY(c1Y-xogo1.getLADOCADRADO());
             c2.setX(c1X);
@@ -60,7 +60,7 @@ public class FichaT extends Ficha{
             c3.setY(c1Y);
         }
         //cambiar a posición 3
-        if (c3.getX()==c1X-xogo1.getLADOCADRADO() && c3.getY()==c1Y) {
+        else if (c3.getX()==c1X-xogo1.getLADOCADRADO() && c3.getY()==c1Y) {
             c0.setX(c1X-xogo1.getLADOCADRADO());
             c0.setY(c1Y);
             c2.setX(c1X+xogo1.getLADOCADRADO());
@@ -69,7 +69,7 @@ public class FichaT extends Ficha{
             c3.setY(c1Y-xogo1.getLADOCADRADO());
         }
         //cambiar a posición 0
-        if (c3.getX()==c1X && c3.getY()==c1Y-xogo1.getLADOCADRADO()) {
+        else if (c3.getX()==c1X && c3.getY()==c1Y-xogo1.getLADOCADRADO()) {
             c0.setX(c1X);
             c0.setY(c1Y-xogo1.getLADOCADRADO());
             c2.setX(c1X);

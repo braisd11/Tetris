@@ -51,7 +51,7 @@ public class FichaBarra extends Ficha{
             c3.setY(c1Y-2);
         }
         //cambiar a posición 0
-        if (c0.getY()==c1Y) {
+        else if (c0.getY()==c1Y) {
             c0.setX(c1X);
             c0.setY(c1Y-xogo1.getLADOCADRADO());
             c2.setX(c1X);
