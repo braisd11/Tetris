@@ -116,10 +116,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         panelPrincipal.add(panelBotones, "card3");
 
-        panelXogo.setBackground(new java.awt.Color(0, 0, 0));
-        panelXogo.setPreferredSize(new java.awt.Dimension(920, 900));
+        panelXogo.setBackground(new java.awt.Color(100, 200, 100));
+        panelXogo.setMaximumSize(new java.awt.Dimension(900, 850));
+        panelXogo.setPreferredSize(new java.awt.Dimension(900, 850));
 
+        juego.setSize(450, 800);
         juego.setBackground(new java.awt.Color(255, 255, 255));
+        juego.setMaximumSize(new java.awt.Dimension(450, 800));
+        juego.setMinimumSize(new java.awt.Dimension(450, 800));
         juego.setPreferredSize(new java.awt.Dimension(450, 800));
         juego.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -135,7 +139,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         juegoLayout.setVerticalGroup(
             juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
 
         tqlbtnPausa.setBackground(new java.awt.Color(150, 150, 150));
@@ -259,8 +263,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelXogoLayout.setHorizontalGroup(
             panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelXogoLayout.createSequentialGroup()
-                .addGap(146, 146, 146)
-                .addComponent(juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(131, 131, 131)
+                .addComponent(juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -269,7 +273,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(panelXogoLayout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         panelXogoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {panelLinas, panelPuntuacion, panelTempo});
@@ -285,10 +289,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(panelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(panelXogoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(juego, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
+                .addComponent(juego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
