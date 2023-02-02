@@ -80,13 +80,6 @@ public abstract class Ficha {
             cadrado.setX(cadrado.getX() + xogo1.getLADOCADRADO());
         }
         return true;
-        /*
-        while (iter.hasNext()) {
-            Cadrado cadrado = fichaActual.getIter.next();
-            cadrado.setX(cadrado.getX() + xogo1.getLADOCADRADO);
-            ePosicionValida(cadrado.getX() + LADOCADRADO, cadrado.getY());
-        }
-        */
     }
     
     public boolean moverEsquerda() {
