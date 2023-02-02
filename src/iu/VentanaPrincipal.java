@@ -530,6 +530,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         panelBotones.setVisible(false);
         panelXogo.setVisible(true);
+        juego.setFocusable(true);
         iniciarPartida();
     }//GEN-LAST:event_botonIniciarActionPerformed
 
@@ -645,6 +646,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public void pintarCadrado(JLabel lblCadrado){
         juego.add(lblCadrado);
+        juego.updateUI();
+    }
+    
+    public void borrarCadrado(JLabel lblCadrado){
+        juego.remove(lblCadrado);
         juego.updateUI();
     }
     
