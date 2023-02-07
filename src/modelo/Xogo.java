@@ -115,15 +115,12 @@ public class Xogo {
     
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverAbaixo() na clase Ficha.
     public void moverFichaAbaixo(){
-        boolean baixar=true;
-        fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
-        while (fichaActual.getIterCadrados().hasNext() && baixar) {
-            Cadrado cadrado = fichaActual.getIterCadrados().next();
-            baixar=ePosicionValida(cadrado.getX(), cadrado.getY() + LADOCADRADO);
-        }
-        if (baixar) {
-            fichaActual.moverAbaixo();
-            debuxarCadrados();
+        boolean chocar=false;{
+        fichaActual.moverAbaixo();
+        debuxarCadrados();
+        chocar=chocaFichaCoChan();
+        if (chocar) 
+            engadirFichaAoChan();
         }
     }
     

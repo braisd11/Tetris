@@ -116,11 +116,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         panelPrincipal.add(panelBotones, "card3");
 
-        panelXogo.setBackground(new java.awt.Color(0, 0, 0));
+        panelXogo.setBackground(new java.awt.Color(100, 200, 100));
         panelXogo.setPreferredSize(new java.awt.Dimension(920, 900));
 
-        juego.setBackground(new java.awt.Color(255, 255, 255));
-        juego.setPreferredSize(new java.awt.Dimension(450, 800));
+        juego.setBackground(new java.awt.Color(0, 0, 0));
+        juego.setMaximumSize(new java.awt.Dimension(450, 900));
+        juego.setMinimumSize(new java.awt.Dimension(450, 900));
+        juego.setPreferredSize(new java.awt.Dimension(450, 900));
         juego.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 juegoKeyPressed(evt);
@@ -260,7 +262,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelXogoLayout.createSequentialGroup()
                 .addGap(146, 146, 146)
-                .addComponent(juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -288,7 +290,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(230, Short.MAX_VALUE))
             .addGroup(panelXogoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(juego, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE)
+                .addComponent(juego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
