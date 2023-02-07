@@ -147,9 +147,6 @@ public class Xogo {
         else if(y>=MAXY){
             posicionValida=false;
         }
-        else if (chocaFichaCoChan()){
-            engadirFichaAoChan();
-        }
         return posicionValida;
     }
     
