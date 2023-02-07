@@ -18,7 +18,7 @@ public class Xogo {
 
     private int LADOCADRADO=50;
     private final int MAXX=450;
-    private final int MAXY=900;
+    private final int MAXY=800;
     private boolean pausa=false;
     private int numeroLinas=16;
     public VentanaPrincipal ventanaPrincipal;
@@ -146,9 +146,6 @@ public class Xogo {
         }
         else if(y>=MAXY){
             posicionValida=false;
-        }
-        else if (chocaFichaCoChan()){
-            engadirFichaAoChan();
         }
         return posicionValida;
     }
