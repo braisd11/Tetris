@@ -18,7 +18,7 @@ public abstract class Ficha {
 
     
     public ArrayList<Cadrado> cadrados = new ArrayList<>();
-    Iterator<Cadrado> iterCadrados;
+    Iterator<Cadrado> iter;
     public Cadrado c0;
     public Cadrado c1;
     public Cadrado c2;
@@ -43,11 +43,11 @@ public abstract class Ficha {
     public void setXogo1(Xogo xogo1) {
         this.xogo1 = xogo1;
     }
-    public Iterator<Cadrado> getIterCadrados() {
-        return iterCadrados;
+    public Iterator<Cadrado> getIter() {
+        return iter;
     }
-    public void setIterCadrados(Iterator<Cadrado> iter) {
-        this.iterCadrados = iter;
+    public void setIter(Iterator<Cadrado> iter) {
+        this.iter = iter;
     }
     
     
@@ -74,27 +74,27 @@ public abstract class Ficha {
     }
     
     public boolean moverDereita() {
-        iterCadrados = cadrados.iterator();
-        while (iterCadrados.hasNext()) {
-            Cadrado cadrado = iterCadrados.next();
+        iter = cadrados.iterator();
+        while (iter.hasNext()) {
+            Cadrado cadrado = iter.next();
             cadrado.setX(cadrado.getX() + xogo1.getLADOCADRADO());
         }
         return true;
     }
     
     public boolean moverEsquerda() {
-        iterCadrados = cadrados.iterator();
-        while (iterCadrados.hasNext()) {
-            Cadrado cadrado = iterCadrados.next();
+        iter = cadrados.iterator();
+        while (iter.hasNext()) {
+            Cadrado cadrado = iter.next();
             cadrado.setX(cadrado.getX() - xogo1.getLADOCADRADO());
         }
         return true;
     }
     
     public boolean moverAbaixo() {
-        iterCadrados = cadrados.iterator();
-        while (iterCadrados.hasNext()) {
-            Cadrado cadrado = iterCadrados.next();
+        iter = cadrados.iterator();
+        while (iter.hasNext()) {
+            Cadrado cadrado = iter.next();
             cadrado.setY(cadrado.getY() + xogo1.getLADOCADRADO());
         }
         return true;
