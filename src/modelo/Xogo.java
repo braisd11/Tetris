@@ -170,7 +170,11 @@ public class Xogo {
     }
     
     public void engadirFichaAoChan(){
-        
+        fichaActual.iterCadrados=fichaActual.getCadrados().iterator();
+        while (fichaActual.getIterCadrados().hasNext()){
+            cadradosChan.add(fichaActual.iterCadrados.next());
+        }
+        xerarNovaFicha();
     }
     
     
