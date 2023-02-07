@@ -111,7 +111,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(botonIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(67, 67, 67)
                 .addComponent(botonCerrar)
-                .addContainerGap(355, Short.MAX_VALUE))
+                .addContainerGap(367, Short.MAX_VALUE))
         );
 
         panelPrincipal.add(panelBotones, "card3");
@@ -122,9 +122,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         juego.setSize(450, 800);
         juego.setBackground(new java.awt.Color(0, 0, 0));
-        juego.setMaximumSize(new java.awt.Dimension(450, 800));
-        juego.setMinimumSize(new java.awt.Dimension(450, 800));
-        juego.setPreferredSize(new java.awt.Dimension(450, 800));
+        juego.setMaximumSize(new java.awt.Dimension(450, 900));
+        juego.setMinimumSize(new java.awt.Dimension(450, 900));
+        juego.setPreferredSize(new java.awt.Dimension(450, 900));
         juego.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 juegoKeyPressed(evt);
@@ -139,7 +139,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         juegoLayout.setVerticalGroup(
             juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 900, Short.MAX_VALUE)
         );
 
         tqlbtnPausa.setBackground(new java.awt.Color(150, 150, 150));
@@ -316,7 +316,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelXogo, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
+                    .addComponent(panelXogo, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 

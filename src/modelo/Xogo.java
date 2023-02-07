@@ -18,7 +18,7 @@ public class Xogo {
 
     private int LADOCADRADO=50;
     private final int MAXX=450;
-    private final int MAXY=800;
+    private final int MAXY=900;
     private boolean pausa=false;
     private int numeroLinas=16;
     public VentanaPrincipal ventanaPrincipal;
@@ -173,7 +173,11 @@ public class Xogo {
     }
     
     public void engadirFichaAoChan(){
-        
+        fichaActual.iterCadrados=fichaActual.getCadrados().iterator();
+        while (fichaActual.getIterCadrados().hasNext()){
+            cadradosChan.add(fichaActual.iterCadrados.next());
+        }
+        xerarNovaFicha();
     }
     
     
