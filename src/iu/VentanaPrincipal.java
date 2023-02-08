@@ -181,7 +181,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap(157, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTempoLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tempo, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tempo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelTempoLayout.setVerticalGroup(
@@ -189,8 +189,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(panelTempoLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTempo)
-                .addGap(12, 12, 12)
-                .addComponent(tempo, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tempo)
                 .addContainerGap())
         );
 

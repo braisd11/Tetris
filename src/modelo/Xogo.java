@@ -95,6 +95,9 @@ public class Xogo {
             fichaActual.moverDereita();
             debuxarCadrados();
         }
+        if (chocaFichaCoChan()) {
+            engadirFichaAoChan();
+        }
     }
     
     
@@ -109,6 +112,9 @@ public class Xogo {
         if (mover) {
             fichaActual.moverEsquerda();
             debuxarCadrados();
+        }
+        if (chocaFichaCoChan()) {
+            engadirFichaAoChan();
         }
     }
     
@@ -147,9 +153,6 @@ public class Xogo {
                     posicionValida=false;
                 }
             }
-        }
-        if (chocaFichaCoChan()) {
-            engadirFichaAoChan();
         }
         return posicionValida;
     }
