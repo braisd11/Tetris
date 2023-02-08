@@ -159,12 +159,6 @@ public class Xogo {
                 cadradoBaixo=cadradoFicha;
             }
             iterChan=cadradosChan.iterator();
-            while (iterChan.hasNext() && !chocar) {
-                Cadrado cadradoChan = fichaActual.getIterCadrados().next();
-                if (cadradoBaixo.getY()==cadradoChan.getY()-LADOCADRADO){
-                    chocar=true;
-                }
-            }
         }
         return chocar;
     }
@@ -192,5 +186,18 @@ public class Xogo {
         if (figura==4){
             fichaActual=new FichaBarra(this);
         }
+    }
+    
+    public boolean chocaConCadradosChan (Cadrado cadradoBaixo){
+        fichaActual.iterCadrados=fichaActual.getCadrados().iterator();
+        cadradoBaixo=fichaActual.cadrados.get(0);
+        boolean chocar=false;
+        while (iterChan.hasNext() && !chocar) {
+            Cadrado cadradoChan = fichaActual.getIterCadrados().next();
+            if (cadradoBaixo.getY()==cadradoChan.getY()-LADOCADRADO){
+                chocar=true;
+            }
+        }
+        return chocar;
     }
 }
