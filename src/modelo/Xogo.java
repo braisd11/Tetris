@@ -69,8 +69,8 @@ public class Xogo {
     public void debuxarCadrados(){
         fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
         while (fichaActual.getIterCadrados().hasNext()) {
-            Cadrado cadrado = fichaActual.getIterCadrados().next();
-            ventanaPrincipal.pintarCadrado(cadrado.getLblCadrado());
+            Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
+            ventanaPrincipal.pintarCadrado(cadradoFicha.getLblCadrado());
         }
     }
     
@@ -78,8 +78,8 @@ public class Xogo {
     public void borrarCadrados(){
         fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
         while (fichaActual.getIterCadrados().hasNext()) {
-            Cadrado cadrado = fichaActual.getIterCadrados().next();
-            ventanaPrincipal.borrarCadrado(cadrado.getLblCadrado());
+            Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
+            ventanaPrincipal.borrarCadrado(cadradoFicha.getLblCadrado());
         }
     }
     
@@ -88,8 +88,8 @@ public class Xogo {
         boolean mover=true;
         fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
         while (fichaActual.getIterCadrados().hasNext() && mover) {
-            Cadrado cadrado = fichaActual.getIterCadrados().next();
-            mover=ePosicionValida(cadrado.getX() + LADOCADRADO, cadrado.getY());
+            Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
+            mover=ePosicionValida(cadradoFicha.getX() + LADOCADRADO, cadradoFicha.getY());
         }
         if (mover) {
             fichaActual.moverDereita();
@@ -106,8 +106,8 @@ public class Xogo {
         boolean mover=true;
         fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
         while (fichaActual.getIterCadrados().hasNext() && mover) {
-            Cadrado cadrado = fichaActual.getIterCadrados().next();
-            mover=ePosicionValida(cadrado.getX() - LADOCADRADO, cadrado.getY());
+            Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
+            mover=ePosicionValida(cadradoFicha.getX() - LADOCADRADO, cadradoFicha.getY());
         }
         if (mover) {
             fichaActual.moverEsquerda();
@@ -131,10 +131,23 @@ public class Xogo {
     
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a rotar() na clase Ficha.
     public void rotarFicha(){
+        fichaActual.rotar();
         boolean rotar=true;
+        fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
+        while (fichaActual.getIterCadrados().hasNext() && rotar) {
+            Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
+            rotar=ePosicionValida(cadradoFicha.getX(), cadradoFicha.getY());
+        }
         if (rotar) {
-            fichaActual.rotar();
             debuxarCadrados();
+        }
+        else {
+            fichaActual.rotar();
+            fichaActual.rotar();
+            fichaActual.rotar();
+        }
+        if (chocaFichaCoChan()) {
+            engadirFichaAoChan();
         }
     }
     
