@@ -21,8 +21,7 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
-    int b;
-    
+
     Timer timer;
     /**
      * Creates new form Tetris
