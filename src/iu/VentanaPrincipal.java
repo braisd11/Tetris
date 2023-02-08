@@ -152,6 +152,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tqlbtnPausa.setForeground(new java.awt.Color(255, 255, 255));
         tqlbtnPausa.setText("PAUSA");
         tqlbtnPausa.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102)));
+        tqlbtnPausa.setFocusPainted(false);
         tqlbtnPausa.setFocusable(false);
         tqlbtnPausa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -273,6 +274,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tqlbtnPlay.setForeground(new java.awt.Color(255, 255, 255));
         tqlbtnPlay.setText("PLAY");
         tqlbtnPlay.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102)));
+        tqlbtnPlay.setFocusPainted(false);
         tqlbtnPlay.setFocusable(false);
         tqlbtnPlay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -372,28 +374,36 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     private void juegoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_juegoKeyPressed
         // TODO add your handling code here:
-        if (evt.getKeyChar()=='a' || evt.getKeyChar()=='A' || evt.getKeyCode()==37){
-            xogo1.moverFichaEsquerda();
+        if (xogo1.isPausa()){
+            
         }
-        if (evt.getKeyChar()=='d' || evt.getKeyChar()=='D' || evt.getKeyCode()==39){
-            xogo1.moverFichaDereita();
+        else {
+            if (evt.getKeyChar()=='a' || evt.getKeyChar()=='A' || evt.getKeyCode()==37){
+                xogo1.moverFichaEsquerda();
+            }
+            if (evt.getKeyChar()=='d' || evt.getKeyChar()=='D' || evt.getKeyCode()==39){
+                xogo1.moverFichaDereita();
+            }
+            if (evt.getKeyChar()=='s' || evt.getKeyChar()=='S' || evt.getKeyCode()==40){
+               xogo1.moverFichaAbaixo();
+            }
+            if (evt.getKeyChar()=='w' || evt.getKeyChar()=='W' || evt.getKeyCode()==38){
+                xogo1.rotarFicha();
+            }
         }
-        if (evt.getKeyChar()=='s' || evt.getKeyChar()=='S' || evt.getKeyCode()==40){
-            xogo1.moverFichaAbaixo();
-        }
-        if (evt.getKeyChar()=='w' || evt.getKeyChar()=='W' || evt.getKeyCode()==38){
-            xogo1.rotarFicha();
-        }
+        
     }//GEN-LAST:event_juegoKeyPressed
 
     private void tqlbtnPausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tqlbtnPausaActionPerformed
         // TODO add your handling code here:
         timer.stop();
+        xogo1.setPausa(true);
     }//GEN-LAST:event_tqlbtnPausaActionPerformed
 
     private void tqlbtnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tqlbtnPlayActionPerformed
         // TODO add your handling code here:
         timer.restart();
+        xogo1.setPausa(false);
     }//GEN-LAST:event_tqlbtnPlayActionPerformed
 
     

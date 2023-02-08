@@ -191,6 +191,7 @@ public class Xogo {
         while (fichaActual.getIterCadrados().hasNext()){
             cadradosChan.add(fichaActual.iterCadrados.next());
         }
+        borrarLina();
         xerarNovaFicha();
     }
     
@@ -208,6 +209,17 @@ public class Xogo {
         }
         if (figura==4){
             fichaActual=new FichaBarra(this);
+        }
+    }
+    
+    public void borrarLinasCompletas(){
+        
+    }
+    
+    public void borrarLina(){
+        iterChan=cadradosChan.iterator();
+        while (iterChan.hasNext()){
+            
         }
     }
 }
