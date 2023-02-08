@@ -115,11 +115,9 @@ public class Xogo {
     
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverAbaixo() na clase Ficha.
     public void moverFichaAbaixo(){
-        boolean chocar=false;{
         fichaActual.moverAbaixo();
         debuxarCadrados();
-        chocar=chocaFichaCoChan();
-        if (chocar) 
+        if (chocaFichaCoChan()) { 
             engadirFichaAoChan();
         }
     }
@@ -141,40 +139,44 @@ public class Xogo {
         if (x>=MAXX || x<0){
             posicionValida=false;
         }
-        else if(y>=MAXY){
-            posicionValida=false;
+        else {
+            iterChan=cadradosChan.iterator();
+            while (iterChan.hasNext() && posicionValida) {
+                Cadrado cadradoChan = iterChan.next();
+                if (x==cadradoChan.getX() && y==cadradoChan.getY()){
+                    posicionValida=false;
+                }
+            }
+        }
+        if (chocaFichaCoChan()) {
+            engadirFichaAoChan();
         }
         return posicionValida;
     }
     
     
     //Comproba que a ficha choque co chan e no caso de chocar, engádea ao chan e chama a xerarNovaFicha().
-    public boolean chocaFichaCoChan (){
+    public boolean chocaFichaCoChan() {
         boolean chocar=false;
         fichaActual.iterCadrados= fichaActual.getCadrados().iterator();
-        Cadrado cadradoBaixo=fichaActual.cadrados.get(0);
         while (fichaActual.getIterCadrados().hasNext() && !chocar) {
             Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
-            if (cadradoFicha.getY()>cadradoBaixo.getY()) {
-                cadradoBaixo=cadradoFicha;
+            if (cadradoFicha.getY()==MAXY-LADOCADRADO) {
+                chocar=true;
             }
-        }
-        if (cadradoBaixo.getY()==MAXY-LADOCADRADO) {
-            chocar=true;
-        }
-        else {
-            chocaFichaConCadradosChan(cadradoBaixo);
+            else {
+                chocar=chocaFichaConCadradosChan(cadradoFicha);
+            }
         }
         return chocar;
     }
     
-    public boolean chocaFichaConCadradosChan(Cadrado cadradoBaixo) {
+    public boolean chocaFichaConCadradosChan(Cadrado cadradoFicha) {
         boolean chocar=false;
         iterChan=cadradosChan.iterator();
-        fichaActual.iterCadrados= fichaActual.getCadrados().iterator();
         while (iterChan.hasNext() && !chocar) {
             Cadrado cadradoChan = iterChan.next();
-            if (cadradoBaixo.getY()==cadradoChan.getY()-LADOCADRADO){
+            if (cadradoFicha.getY()==cadradoChan.getY()-LADOCADRADO && cadradoFicha.getX()==cadradoChan.getX()){
                 chocar=true;
             }
         }
@@ -204,18 +206,5 @@ public class Xogo {
         if (figura==4){
             fichaActual=new FichaBarra(this);
         }
-    }
-    
-    public boolean chocaConCadradosChan (Cadrado cadradoBaixo){
-        fichaActual.iterCadrados=fichaActual.getCadrados().iterator();
-        cadradoBaixo=fichaActual.cadrados.get(0);
-        boolean chocar=false;
-        while (iterChan.hasNext() && !chocar) {
-            Cadrado cadradoChan = fichaActual.getIterCadrados().next();
-            if (cadradoBaixo.getY()==cadradoChan.getY()-LADOCADRADO){
-                chocar=true;
-            }
-        }
-        return chocar;
     }
 }
