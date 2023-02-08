@@ -158,12 +158,24 @@ public class Xogo {
             if (cadradoFicha.getY()>cadradoBaixo.getY()) {
                 cadradoBaixo=cadradoFicha;
             }
-            iterChan=cadradosChan.iterator();
-            while (iterChan.hasNext() && !chocar) {
-                Cadrado cadradoChan = fichaActual.getIterCadrados().next();
-                if (cadradoBaixo.getY()==cadradoChan.getY()-LADOCADRADO){
-                    chocar=true;
-                }
+        }
+        if (cadradoBaixo.getY()==MAXY-LADOCADRADO) {
+            chocar=true;
+        }
+        else {
+            chocaFichaConCadradosChan(cadradoBaixo);
+        }
+        return chocar;
+    }
+    
+    public boolean chocaFichaConCadradosChan(Cadrado cadradoBaixo) {
+        boolean chocar=false;
+        iterChan=cadradosChan.iterator();
+        fichaActual.iterCadrados= fichaActual.getCadrados().iterator();
+        while (iterChan.hasNext() && !chocar) {
+            Cadrado cadradoChan = iterChan.next();
+            if (cadradoBaixo.getY()==cadradoChan.getY()-LADOCADRADO){
+                chocar=true;
             }
         }
         return chocar;
