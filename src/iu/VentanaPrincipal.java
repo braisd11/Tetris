@@ -19,6 +19,7 @@ import modelo.Xogo;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
+    int a;
     /**
      * Creates new form Tetris
      */
