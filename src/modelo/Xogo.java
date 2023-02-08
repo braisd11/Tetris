@@ -205,4 +205,17 @@ public class Xogo {
             fichaActual=new FichaBarra(this);
         }
     }
+    
+    public boolean chocaConCadradosChan (Cadrado cadradoBaixo){
+        fichaActual.iterCadrados=fichaActual.getCadrados().iterator();
+        cadradoBaixo=fichaActual.cadrados.get(0);
+        boolean chocar=false;
+        while (iterChan.hasNext() && !chocar) {
+            Cadrado cadradoChan = fichaActual.getIterCadrados().next();
+            if (cadradoBaixo.getY()==cadradoChan.getY()-LADOCADRADO){
+                chocar=true;
+            }
+        }
+        return chocar;
+    }
 }
