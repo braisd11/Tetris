@@ -203,6 +203,7 @@ public class Xogo {
         while (fichaActual.getIterCadrados().hasNext()){
             cadradosChan.add(fichaActual.iterCadrados.next());
         }
+
         //borrarLinasCompletas();
         xerarNovaFicha();
     }
