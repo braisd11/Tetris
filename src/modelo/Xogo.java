@@ -29,7 +29,6 @@ public class Xogo {
     public Xogo(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal=ventanaPrincipal;
         xerarNovaFicha();
-        debuxarCadrados();
     }
 
     public int getLADOCADRADO() {
@@ -204,7 +203,7 @@ public class Xogo {
         while (fichaActual.getIterCadrados().hasNext()){
             cadradosChan.add(fichaActual.iterCadrados.next());
         }
-        borrarLina();
+        //borrarLinasCompletas();
         xerarNovaFicha();
     }
     
@@ -223,16 +222,25 @@ public class Xogo {
         if (figura==4){
             fichaActual=new FichaBarra(this);
         }
+        debuxarCadrados();
     }
     
-    public void borrarLinasCompletas(){
-        
+    /*public void borrarLinasCompletas(){
+        iterChan=cadradosChan.iterator();
+        int fila=0;
+        int sumCadradosFila=0;
+        while (iterChan.hasNext()){
+            if (cadradosChan.contains(iterChan.next().getY()==fila)){
+                sumCadradosFila++;
+            }
+            if (sumCadradosFila==9){
+                borrarLina();
+            }
+            fila=fila+50;
+        }
     }
     
     public void borrarLina(){
-        iterChan=cadradosChan.iterator();
-        while (iterChan.hasNext()){
-            
-        }
-    }
+        System.out.println("Borrando");
+    }*/
 }
