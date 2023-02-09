@@ -29,7 +29,6 @@ public class Xogo {
     public Xogo(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal=ventanaPrincipal;
         xerarNovaFicha();
-        debuxarCadrados();
     }
 
     public int getLADOCADRADO() {
@@ -204,7 +203,7 @@ public class Xogo {
         while (fichaActual.getIterCadrados().hasNext()){
             cadradosChan.add(fichaActual.iterCadrados.next());
         }
-        borrarLina();
+        //borrarLina();
         xerarNovaFicha();
     }
     
@@ -223,6 +222,7 @@ public class Xogo {
         if (figura==4){
             fichaActual=new FichaBarra(this);
         }
+        debuxarCadrados();
     }
     
     public void borrarLinasCompletas(){
