@@ -1,10 +1,12 @@
 package iu;
 
 
+import java.awt.Image;
 import javax.swing.JLabel;
 import modelo.Xogo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 
@@ -21,7 +23,6 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
-
     Timer timer;
     /**
      * Creates new form Tetris
@@ -47,7 +48,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonCerrar = new javax.swing.JButton();
         panelXogo = new javax.swing.JPanel();
         juego = new javax.swing.JPanel();
-        tqlbtnPausa = new javax.swing.JToggleButton();
         panelTempo = new javax.swing.JPanel();
         tempo = new javax.swing.JLabel();
         lblTempo = new javax.swing.JLabel();
@@ -57,6 +57,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelLinas = new javax.swing.JPanel();
         lblLblnumlinas = new javax.swing.JLabel();
         numlinas = new javax.swing.JLabel();
+        tqlbtnPausa = new javax.swing.JToggleButton();
         tqlbtnPlay = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -146,19 +147,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 900, Short.MAX_VALUE)
         );
-
-        tqlbtnPausa.setBackground(new java.awt.Color(150, 150, 150));
-        tqlbtnPausa.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        tqlbtnPausa.setForeground(new java.awt.Color(255, 255, 255));
-        tqlbtnPausa.setText("PAUSA");
-        tqlbtnPausa.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102)));
-        tqlbtnPausa.setFocusPainted(false);
-        tqlbtnPausa.setFocusable(false);
-        tqlbtnPausa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tqlbtnPausaActionPerformed(evt);
-            }
-        });
 
         panelTempo.setBackground(new java.awt.Color(0, 0, 0));
         panelTempo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.green, java.awt.Color.green, java.awt.Color.pink, java.awt.Color.red));
@@ -269,6 +257,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        tqlbtnPausa.setBackground(new java.awt.Color(150, 150, 150));
+        tqlbtnPausa.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
+        tqlbtnPausa.setForeground(new java.awt.Color(255, 255, 255));
+        tqlbtnPausa.setText("PAUSA");
+        tqlbtnPausa.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102)));
+        tqlbtnPausa.setFocusPainted(false);
+        tqlbtnPausa.setFocusable(false);
+        tqlbtnPausa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tqlbtnPausaActionPerformed(evt);
+            }
+        });
+
         tqlbtnPlay.setBackground(new java.awt.Color(150, 150, 150));
         tqlbtnPlay.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         tqlbtnPlay.setForeground(new java.awt.Color(255, 255, 255));
@@ -301,7 +302,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tqlbtnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         panelXogoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {panelLinas, panelPuntuacion, panelTempo});
@@ -333,11 +334,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelXogo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(panelXogo, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -472,6 +473,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
     }
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonIniciar;
