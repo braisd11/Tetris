@@ -457,6 +457,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
     public void borrarCadrado(JLabel lblCadrado){
+        juego.remove(lblCadrado);
         juego.updateUI();
     }
     
