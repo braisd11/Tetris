@@ -24,6 +24,7 @@ public class Xogo {
     public VentanaPrincipal ventanaPrincipal;
     public Ficha fichaActual;
     ArrayList <Cadrado> cadradosChan=new ArrayList<>();
+    ArrayList <Cadrado> cadradosABorrar=new ArrayList<>();
     Iterator<Cadrado> iterChan;
 
     public Xogo(VentanaPrincipal ventanaPrincipal) {
@@ -232,15 +233,16 @@ public class Xogo {
             }
             altitud+=50;
         }
+        cadradosChan.removeAll(cadradosABorrar);
     }
     
     public void borrarLina(int altitud){
         //System.out.println("Borrando");
-        ArrayList <Cadrado> cadradosABorrar=new ArrayList<>();
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext()){
             Cadrado cadradoChan = iterChan.next();
             if (cadradoChan.getY()==altitud){
+                ventanaPrincipal.borrarCadrado(cadradoChan.getLblCadrado());
                 cadradosABorrar.add(cadradoChan);
             }
             else if (cadradoChan.getY()<altitud){
@@ -252,6 +254,5 @@ public class Xogo {
             Cadrado cadradoABorrar=iterBorrar.next();
             ventanaPrincipal.borrarCadrado(cadradoABorrar.getLblCadrado());
         }
-        cadradosABorrar.removeAll(cadradosChan);
     }
 }
