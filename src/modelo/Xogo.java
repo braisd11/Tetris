@@ -203,7 +203,6 @@ public class Xogo {
         while (fichaActual.getIterCadrados().hasNext()){
             cadradosChan.add(fichaActual.iterCadrados.next());
         }
-
         //borrarLinasCompletas();
         xerarNovaFicha();
     }
@@ -226,7 +225,7 @@ public class Xogo {
         debuxarCadrados();
     }
     
-    /*public void borrarLinasCompletas(){
+    public void borrarLinasCompletas(){
         iterChan=cadradosChan.iterator();
         int fila=0;
         int sumCadradosFila=0;
@@ -234,14 +233,14 @@ public class Xogo {
             if (cadradosChan.contains(iterChan.next().getY()==fila)){
                 sumCadradosFila++;
             }
-            if (sumCadradosFila==9){
+            if (sumCadradosFila==8){
                 borrarLina();
             }
-            fila=fila+50;
         }
+        fila=fila+50;
     }
     
     public void borrarLina(){
         System.out.println("Borrando");
-    }*/
+    }
 }
