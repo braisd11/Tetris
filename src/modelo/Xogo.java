@@ -241,6 +241,7 @@ public class Xogo {
             }
             altitud+=50;
         }
+        fila=fila+50;
     }
     
     public void borrarLina(){
