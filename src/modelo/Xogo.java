@@ -235,15 +235,23 @@ public class Xogo {
     }
     
     public void borrarLina(int altitud){
+        //System.out.println("Borrando");
+        ArrayList <Cadrado> cadradosABorrar=new ArrayList<>();
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext()){
             Cadrado cadradoChan = iterChan.next();
-            if (cadradoChan.getY()==altitud) {
-                ventanaPrincipal.borrarCadrado(cadradoChan.getLblCadrado());
+            if (cadradoChan.getY()==altitud){
+                cadradosABorrar.add(cadradoChan);
             }
-            else if (cadradoChan.getY()<altitud) {
+            else if (cadradoChan.getY()<altitud){
                 cadradoChan.setY(cadradoChan.getY()+LADOCADRADO);
             }
         }
+        Iterator<Cadrado> iterBorrar=cadradosABorrar.iterator();
+        while (iterBorrar.hasNext()){
+            Cadrado cadradoABorrar=iterBorrar.next();
+            ventanaPrincipal.borrarCadrado(cadradoABorrar.getLblCadrado());
+        }
+        cadradosABorrar.removeAll(cadradosChan);
     }
 }
