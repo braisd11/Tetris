@@ -73,15 +73,6 @@ public class Xogo {
         }
     }
     
-    //Chama a borrarCadrado
-    public void borrarCadrados(){
-        fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
-        while (fichaActual.getIterCadrados().hasNext()) {
-            Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
-            ventanaPrincipal.borrarCadrado(cadradoFicha.getLblCadrado());
-        }
-    }
-    
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverDereita() na clase Ficha.
     public void moverFichaDereita(){
         boolean mover=true;
@@ -236,20 +227,31 @@ public class Xogo {
                     sumCadradosFila++;
                 }
                 if (sumCadradosFila==9){
-                    borrarLina();
+                    borrarLina(altitud);
                 }
             }
             altitud+=50;
         }
-        fila=fila+50;
     }
     
-    public void borrarLina(){
-        System.out.println("Borrando");
-        /**/
+    public void borrarLina(int altitud){
+        //System.out.println("Borrando");
+        ArrayList <Cadrado> cadradosABorrar=new ArrayList<>();
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext()){
             Cadrado cadradoChan = iterChan.next();
+            if (cadradoChan.getY()==altitud){
+                cadradosABorrar.add(cadradoChan);
+            }
+            else if (cadradoChan.getY()<altitud){
+                cadradoChan.setY(cadradoChan.getY()+LADOCADRADO);
+            }
         }
+        Iterator<Cadrado> iterBorrar=cadradosABorrar.iterator();
+        while (iterBorrar.hasNext()){
+            Cadrado cadradoABorrar=iterBorrar.next();
+            ventanaPrincipal.borrarCadrado(cadradoABorrar.getLblCadrado());
+        }
+        cadradosABorrar.removeAll(cadradosChan);
     }
 }
