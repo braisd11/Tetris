@@ -24,6 +24,7 @@ import javax.swing.Timer;
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
     public Timer timer;
+    public Timer tiempo;
     /**
      * Creates new form Tetris
      */
@@ -424,12 +425,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void tqlbtnPausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tqlbtnPausaActionPerformed
         // TODO add your handling code here:
         timer.stop();
+        tiempo.stop();
         xogo1.setPausa(true);
     }//GEN-LAST:event_tqlbtnPausaActionPerformed
 
     private void tqlbtnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tqlbtnPlayActionPerformed
         // TODO add your handling code here:
         timer.restart();
+        tiempo.restart();
         xogo1.setPausa(false);
     }//GEN-LAST:event_tqlbtnPlayActionPerformed
 
@@ -473,8 +476,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //MÉTODO QUE CREA UN OBXETO DA CLASE XOGO E DA INICIO O XOGO
     private void iniciarPartida(){
         xogo1=new Xogo(this);
-        crearTimer();
+        crearTimerXogo();
+        crearTimerTempo();
         timer.start();
+        tiempo.start();
     }
     
     public void pintarCadrado(JLabel lblCadrado){
@@ -488,21 +493,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
     
-    public void crearTimer (){
+    public void crearTimerXogo (){
         timer=new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String a=tempo.getText();
-                int b=(int) Double.parseDouble(a);
-                b++;
-                tempo.setText(b+"");
                 xogo1.moverFichaAbaixo();
             }
         });
     }
     
+    public void crearTimerTempo(){
+        tiempo=new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String a=tempo.getText();
+                int b=(int) Double.parseDouble(a);
+                b++;
+                tempo.setText(b+"");            
+            }
+        });
+    }
     public void mostrarFinDoXogo(){
         timer.stop();
+        tiempo.stop();
         xogo1.setPausa(true);
         gameOver.setVisible(true);
         looser.setVisible(true);
