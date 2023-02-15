@@ -195,10 +195,26 @@ public class Xogo {
         while (fichaActual.getIterCadrados().hasNext()){
             cadradosChan.add(fichaActual.iterCadrados.next());
         }
-        xerarNovaFicha();
         borrarLinasCompletas();
+        if(comprobarPerder()){
+            //ventanaPrincipal.perder();
+        }
+        else {
+            xerarNovaFicha();
+        }
     }
     
+    public boolean comprobarPerder(){
+        boolean perder=false;
+        iterChan=cadradosChan.iterator();
+        while (iterChan.hasNext() && !perder){
+            Cadrado cadradoChan = iterChan.next();
+            if (cadradoChan.getY()<=50){
+                perder=true;
+            }
+        }
+        return perder;
+    }
     
     public void xerarNovaFicha(){
         int figura=(int) Math.floor(Math.random() * (4 - 1 + 1) + 1);
@@ -215,6 +231,9 @@ public class Xogo {
             fichaActual=new FichaBarra(this);
         }
         debuxarCadrados();
+        if (chocaFichaCoChan()) {
+            engadirFichaAoChan();
+        }
     }
     
     public void borrarLinasCompletas(){
@@ -237,7 +256,6 @@ public class Xogo {
     }
     
     public void borrarLina(int altitud){
-        //System.out.println("Borrando");
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext()){
             Cadrado cadradoChan = iterChan.next();
