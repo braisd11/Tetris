@@ -421,7 +421,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             xogo1.setPausa(false);
         }
     }//GEN-LAST:event_tqlbtnPausaActionPerformed
-
     
         /**
      * @param args the command line arguments
