@@ -22,6 +22,7 @@ import javax.swing.Timer;
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
     public Timer timer;
+    public Timer tiempo;
     /**
      * Creates new form Tetris
      */
@@ -46,6 +47,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonCerrar = new javax.swing.JButton();
         panelXogo = new javax.swing.JPanel();
         juego = new javax.swing.JPanel();
+        gameOver = new javax.swing.JLabel();
+        looser = new javax.swing.JLabel();
         panelTempo = new javax.swing.JPanel();
         tempo = new javax.swing.JLabel();
         lblTempo = new javax.swing.JLabel();
@@ -134,15 +137,39 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        gameOver.setVisible(false);
+        gameOver.setFont(new java.awt.Font("MS UI Gothic", 1, 75)); // NOI18N
+        gameOver.setForeground(new java.awt.Color(255, 255, 255));
+        gameOver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        gameOver.setText("GAME OVER!");
+        gameOver.setBorder(new javax.swing.border.MatteBorder(null));
+
+        looser.setVisible(false);
+        looser.setFont(new java.awt.Font("MS UI Gothic", 1, 75)); // NOI18N
+        looser.setForeground(new java.awt.Color(255, 255, 255));
+        looser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        looser.setText("LOOSER!");
+        looser.setBorder(new javax.swing.border.MatteBorder(null));
+
         javax.swing.GroupLayout juegoLayout = new javax.swing.GroupLayout(juego);
         juego.setLayout(juegoLayout);
         juegoLayout.setHorizontalGroup(
             juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, juegoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(looser)
+                    .addComponent(gameOver))
+                .addContainerGap())
         );
         juegoLayout.setVerticalGroup(
             juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, juegoLayout.createSequentialGroup()
+                .addContainerGap(370, Short.MAX_VALUE)
+                .addComponent(gameOver)
+                .addGap(18, 18, 18)
+                .addComponent(looser)
+                .addGap(356, 356, 356))
         );
 
         panelTempo.setBackground(new java.awt.Color(0, 0, 0));
@@ -381,15 +408,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (tqlbtnPausa.isSelected()){
             tqlbtnPausa.setText("START");
             timer.stop();
+            tiempo.stop();
             xogo1.setPausa(true);
+            
         }
         else{
             tqlbtnPausa.setText("PAUSE");
             timer.restart();
+            tiempo.restart();
             xogo1.setPausa(false);
         }
     }//GEN-LAST:event_tqlbtnPausaActionPerformed
-
     
         /**
      * @param args the command line arguments
@@ -430,8 +459,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //MÉTODO QUE CREA UN OBXETO DA CLASE XOGO E DA INICIO O XOGO
     private void iniciarPartida(){
         xogo1=new Xogo(this);
-        crearTimer();
+        crearTimerXogo();
+        crearTimerTempo();
         timer.start();
+        tiempo.start();
     }
     
     public void pintarCadrado(JLabel lblCadrado){
@@ -445,26 +476,64 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
     
-    public void crearTimer (){
+    public void crearTimerXogo (){
         timer=new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                xogo1.moverFichaAbaixo();
+            }
+        });
+    }
+    
+    public void crearTimerTempo(){
+        tiempo=new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String a=tempo.getText();
                 int b=(int) Double.parseDouble(a);
                 b++;
-                tempo.setText(b+"");
-                xogo1.moverFichaAbaixo();
+                tempo.setText(b+"");            
             }
         });
+    }
+    public void mostrarFinDoXogo(){
+        timer.stop();
+        tiempo.stop();
+        xogo1.setPausa(true);
+        gameOver.setVisible(true);
+        looser.setVisible(true);
+    }
+    
+    public void sumarPuntosFicha(){
+        String puntuacionFicha=puntos.getText();
+        int puntosFicha=(int) Double.parseDouble(puntuacionFicha);
+        puntosFicha+=1;
+        puntos.setText(""+puntosFicha);
+    }
+    
+    public void sumarPuntosLina(){
+        String puntuacionLina=puntos.getText();
+        int puntosLina=(int) Double.parseDouble(puntuacionLina);
+        puntosLina+=12;
+        puntos.setText(""+puntosLina);
+    }
+    
+    public void sumarLina(){
+        String numerolinas=numlinas.getText();
+        int linas=(int) Double.parseDouble(numerolinas);
+        linas++;
+        numlinas.setText(""+linas);
     }
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCerrar;
     private javax.swing.JButton botonIniciar;
+    private javax.swing.JLabel gameOver;
     private javax.swing.JPanel juego;
     private javax.swing.JLabel lblLblnumlinas;
     private javax.swing.JLabel lblTempo;
+    private javax.swing.JLabel looser;
     private javax.swing.JLabel numlinas;
     private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelLinas;
