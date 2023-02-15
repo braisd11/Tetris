@@ -196,8 +196,9 @@ public class Xogo {
             cadradosChan.add(fichaActual.iterCadrados.next());
         }
         borrarLinasCompletas();
+        ventanaPrincipal.sumarPuntosFicha();
         if(comprobarPerder()){
-            //ventanaPrincipal.perder();
+            ventanaPrincipal.mostrarFinDoXogo();
         }
         else {
             xerarNovaFicha();
@@ -248,6 +249,8 @@ public class Xogo {
                 }
                 if (sumCadradosFila==9){
                     borrarLina(altitud);
+                    ventanaPrincipal.sumarPuntosLina();
+                    ventanaPrincipal.sumarLina();
                 }
             }
             altitud+=50;

@@ -142,14 +142,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         gameOver.setVisible(false);
         gameOver.setFont(new java.awt.Font("MS UI Gothic", 1, 75)); // NOI18N
         gameOver.setForeground(new java.awt.Color(255, 255, 255));
+        gameOver.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         gameOver.setText("GAME OVER!");
-        gameOver.setOpaque(true);
+        gameOver.setBorder(new javax.swing.border.MatteBorder(null));
 
         looser.setVisible(false);
         looser.setFont(new java.awt.Font("MS UI Gothic", 1, 75)); // NOI18N
         looser.setForeground(new java.awt.Color(255, 255, 255));
+        looser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         looser.setText("LOOSER!");
-        looser.setOpaque(true);
+        looser.setBorder(new javax.swing.border.MatteBorder(null));
 
         javax.swing.GroupLayout juegoLayout = new javax.swing.GroupLayout(juego);
         juego.setLayout(juegoLayout);
@@ -164,12 +166,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
         juegoLayout.setVerticalGroup(
             juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(juegoLayout.createSequentialGroup()
-                .addGap(304, 304, 304)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, juegoLayout.createSequentialGroup()
+                .addContainerGap(370, Short.MAX_VALUE)
                 .addComponent(gameOver)
                 .addGap(18, 18, 18)
                 .addComponent(looser)
-                .addContainerGap(426, Short.MAX_VALUE))
+                .addGap(356, 356, 356))
         );
 
         panelTempo.setBackground(new java.awt.Color(0, 0, 0));
@@ -501,6 +503,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     public void mostrarFinDoXogo(){
         timer.stop();
+        xogo1.setPausa(true);
         gameOver.setVisible(true);
         looser.setVisible(true);
     }
