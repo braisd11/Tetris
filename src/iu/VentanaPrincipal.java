@@ -59,7 +59,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblLblnumlinas = new javax.swing.JLabel();
         numlinas = new javax.swing.JLabel();
         tqlbtnPausa = new javax.swing.JToggleButton();
-        tqlbtnPlay = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TETRIS 2.0");
@@ -192,11 +191,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTempoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTempo)
-                .addContainerGap(157, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTempoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tempo, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelTempoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelTempoLayout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(tempo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelTempoLayout.createSequentialGroup()
+                        .addComponent(lblTempo)
+                        .addGap(0, 151, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         panelTempoLayout.setVerticalGroup(
@@ -205,7 +206,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblTempo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tempo)
+                .addComponent(tempo, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -233,7 +234,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(puntuacion)
                         .addGap(70, 70, 70))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelPuntuacionLayout.createSequentialGroup()
-                        .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(puntos, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
         );
         panelPuntuacionLayout.setVerticalGroup(
@@ -266,11 +267,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(panelLinasLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelLinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLblnumlinas)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLinasLayout.createSequentialGroup()
-                        .addComponent(numlinas, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(10, 10, 10)))
-                .addContainerGap())
+                    .addGroup(panelLinasLayout.createSequentialGroup()
+                        .addComponent(lblLblnumlinas)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(panelLinasLayout.createSequentialGroup()
+                        .addComponent(numlinas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(16, 16, 16))))
         );
         panelLinasLayout.setVerticalGroup(
             panelLinasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -285,26 +287,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tqlbtnPausa.setBackground(new java.awt.Color(150, 150, 150));
         tqlbtnPausa.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         tqlbtnPausa.setForeground(new java.awt.Color(255, 255, 255));
-        tqlbtnPausa.setText("PAUSA");
+        tqlbtnPausa.setText("PAUSE");
         tqlbtnPausa.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102)));
         tqlbtnPausa.setFocusPainted(false);
         tqlbtnPausa.setFocusable(false);
         tqlbtnPausa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tqlbtnPausaActionPerformed(evt);
-            }
-        });
-
-        tqlbtnPlay.setBackground(new java.awt.Color(150, 150, 150));
-        tqlbtnPlay.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
-        tqlbtnPlay.setForeground(new java.awt.Color(255, 255, 255));
-        tqlbtnPlay.setText("PLAY");
-        tqlbtnPlay.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102), new java.awt.Color(255, 102, 102)));
-        tqlbtnPlay.setFocusPainted(false);
-        tqlbtnPlay.setFocusable(false);
-        tqlbtnPlay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tqlbtnPlayActionPerformed(evt);
             }
         });
 
@@ -323,11 +312,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                             .addComponent(panelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(panelLinas, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(panelXogoLayout.createSequentialGroup()
-                        .addGap(76, 76, 76)
-                        .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(tqlbtnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(42, Short.MAX_VALUE))
+                        .addGap(81, 81, 81)
+                        .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         panelXogoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {panelLinas, panelPuntuacion, panelTempo});
@@ -337,11 +324,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(panelXogoLayout.createSequentialGroup()
                 .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelXogoLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(tqlbtnPlay, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(65, 65, 65)
                         .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
+                        .addGap(61, 61, 61)
                         .addComponent(panelLinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(panelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -423,24 +408,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void tqlbtnPausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tqlbtnPausaActionPerformed
         // TODO add your handling code here:
         if (tqlbtnPausa.isSelected()){
+            tqlbtnPausa.setText("START");
             timer.stop();
             tiempo.stop();
             xogo1.setPausa(true);
             
         }
         else{
+            tqlbtnPausa.setText("PAUSE");
             timer.restart();
             tiempo.restart();
             xogo1.setPausa(false);
         }
     }//GEN-LAST:event_tqlbtnPausaActionPerformed
-
-    private void tqlbtnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tqlbtnPlayActionPerformed
-        // TODO add your handling code here:
-        timer.restart();
-        tiempo.restart();
-        xogo1.setPausa(false);
-    }//GEN-LAST:event_tqlbtnPlayActionPerformed
 
     
         /**
@@ -548,6 +528,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         numlinas.setText(""+linas);
     }
     
+    public void subirDificultade(){
+        int velocidade=100;
+        int delay=timer.getDelay()- velocidade;
+        if(delay<100){
+            delay=100;
+        }
+        timer.setDelay(delay);
+    }
+    
+    public void comprobarLinas(){
+        String numerolinas=numlinas.getText();
+        int linas=(int) Double.parseDouble(numerolinas);
+        if(linas%5==0){
+            subirDificultade();
+        }
+    }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonCerrar;
@@ -569,6 +565,5 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel tempo;
     private javax.swing.JLabel titulo;
     private javax.swing.JToggleButton tqlbtnPausa;
-    private javax.swing.JToggleButton tqlbtnPlay;
     // End of variables declaration//GEN-END:variables
 }
