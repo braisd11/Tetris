@@ -251,6 +251,7 @@ public class Xogo {
                     borrarLina(altitud);
                     ventanaPrincipal.sumarPuntosLina();
                     ventanaPrincipal.sumarLina();
+                    ventanaPrincipal.comprobarLinas();
                 }
             }
             altitud+=50;
