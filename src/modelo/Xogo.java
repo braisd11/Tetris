@@ -197,7 +197,7 @@ public class Xogo {
         }
         borrarLinasCompletas();
         if(comprobarPerder()){
-            ventanaPrincipal.perder();
+            //ventanaPrincipal.perder();
         }
         else {
             xerarNovaFicha();
