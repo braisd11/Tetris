@@ -1,12 +1,10 @@
 package iu;
 
 
-import java.awt.Image;
 import javax.swing.JLabel;
 import modelo.Xogo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ImageIcon;
 import javax.swing.Timer;
 
 
@@ -424,9 +422,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void tqlbtnPausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tqlbtnPausaActionPerformed
         // TODO add your handling code here:
-        timer.stop();
-        tiempo.stop();
-        xogo1.setPausa(true);
+        if (tqlbtnPausa.isSelected()){
+            timer.stop();
+            tiempo.stop();
+            xogo1.setPausa(true);
+            
+        }
+        else{
+            timer.restart();
+            tiempo.restart();
+            xogo1.setPausa(false);
+        }
     }//GEN-LAST:event_tqlbtnPausaActionPerformed
 
     private void tqlbtnPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tqlbtnPlayActionPerformed
