@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import modelo.Xogo;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import javax.swing.Timer;
 
 
@@ -386,7 +387,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void juegoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_juegoKeyPressed
         // TODO add your handling code here:
         if (xogo1.isPausa()){
-            
+            if (evt.getKeyChar()==' '){
+                tqlbtnPausa.setText("PAUSE");
+                timer.restart();
+                tiempo.restart();
+                xogo1.setPausa(false);
+                tqlbtnPausa.setSelected(false);
+            }
         }
         else {
             if (evt.getKeyChar()=='a' || evt.getKeyChar()=='A' || evt.getKeyCode()==37){
@@ -401,8 +408,18 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             if (evt.getKeyChar()=='w' || evt.getKeyChar()=='W' || evt.getKeyCode()==38){
                 xogo1.rotarFicha();
             }
+            
+            if (evt.getKeyChar()==' '){
+                tqlbtnPausa.setText("START");
+                timer.stop();
+                tiempo.stop();
+                xogo1.setPausa(true);
+                tqlbtnPausa.setSelected(true);
+            }
+            if (evt.getKeyCode()==KeyEvent.VK_ENTER){
+                xogo1.soltarFicha();
+            }
         }
-        
     }//GEN-LAST:event_juegoKeyPressed
 
     private void tqlbtnPausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tqlbtnPausaActionPerformed

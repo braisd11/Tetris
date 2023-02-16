@@ -142,6 +142,17 @@ public class Xogo {
         }
     }
     
+    public void soltarFicha(){
+        while (!chocaFichaCoChan()){
+            fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
+            while (fichaActual.getIterCadrados().hasNext()) {
+                Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
+                cadradoFicha.setY(cadradoFicha.getY()+LADOCADRADO);
+            }
+        }
+        engadirFichaAoChan();
+    }
+    
 
     //Comproba que a ficha non sobrepase os límites laterais e se chega ao chan ou choca con outra ficha.
     public boolean ePosicionValida(int x, int y){
