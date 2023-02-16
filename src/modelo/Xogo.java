@@ -189,6 +189,8 @@ public class Xogo {
         return chocar;
     }
     
+    
+    //Comproba se a ficha que está en movemento choca con outra ficha que xa esté no chan
     public boolean chocaFichaConCadradosChan(Cadrado cadradoFicha) {
         boolean chocar=false;
         iterChan=cadradosChan.iterator();
@@ -201,6 +203,8 @@ public class Xogo {
         return chocar;
     }
     
+    
+    //Engade a ficha ao array de cadradosChan
     public void engadirFichaAoChan(){
         fichaActual.iterCadrados=fichaActual.getCadrados().iterator();
         while (fichaActual.getIterCadrados().hasNext()){
@@ -216,6 +220,8 @@ public class Xogo {
         }
     }
     
+    
+    //Chamado dende engadirFichaAoChan() e recorre con un iterator e se ao xerarse a nova ficha choca con outra inmediatamente perdese.
     public boolean comprobarPerder(){
         boolean perder=false;
         iterChan=cadradosChan.iterator();
@@ -228,6 +234,9 @@ public class Xogo {
         return perder;
     }
     
+    
+    //Xera unha nova ficha aleatoria e debuxaa. 
+    //Cada vez que unha ficha choca co chan xera automáticamente outra.
     public void xerarNovaFicha(){
         int figura=(int) Math.floor(Math.random() * (4 - 1 + 1) + 1);
         if (figura==1){
@@ -248,6 +257,9 @@ public class Xogo {
         }
     }
     
+    
+    //Comproba cada vez que se engade unha ficha ao chan se hai algunha liña completa.
+    //No caso de haber algunha liña completa, chama a borrarLinas().
     public void borrarLinasCompletas(){
         int altitud=0;
         while (altitud<numeroLinas*LADOCADRADO) {
@@ -270,6 +282,8 @@ public class Xogo {
         cadradosChan.removeAll(cadradosABorrar);
     }
     
+    
+    //Borra as liñas que están completas.
     public void borrarLina(int altitud){
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext()){

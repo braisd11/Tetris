@@ -366,25 +366,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     //BOTÓN QUE DA INICIO AO XOGO CHAMANDO A INICIARPARTIDA()
-    private void botonIniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonIniciarActionPerformed
+    private void botonIniciarActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
         panelBotones.setVisible(false);
         panelPrincipal.setVisible(false);
         panelXogo.setVisible(true);
         iniciarPartida();
-    }//GEN-LAST:event_botonIniciarActionPerformed
+    }                                            
 
     
     //CERRA O XOGO
-    private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCerrarActionPerformed
+    private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_botonCerrarActionPerformed
+    }                                           
 
     
     
-    
-    private void juegoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_juegoKeyPressed
+    //Listener do teclado para os movementos
+    private void juegoKeyPressed(java.awt.event.KeyEvent evt) {                                 
         // TODO add your handling code here:
         if (xogo1.isPausa()){
             if (evt.getKeyChar()==' '){
@@ -420,9 +420,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 xogo1.soltarFicha();
             }
         }
-    }//GEN-LAST:event_juegoKeyPressed
+    }                                
 
-    private void tqlbtnPausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tqlbtnPausaActionPerformed
+
+    
+    //Pausa e reanuda o xogo
+    private void tqlbtnPausaActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         if (tqlbtnPausa.isSelected()){
             tqlbtnPausa.setText("START");
@@ -437,7 +440,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             tiempo.restart();
             xogo1.setPausa(false);
         }
-    }//GEN-LAST:event_tqlbtnPausaActionPerformed
+    }                                           
+
     
         /**
      * @param args the command line arguments
@@ -484,17 +488,20 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tiempo.start();
     }
     
+    
+    //Pinta o cadrado no UI
     public void pintarCadrado(JLabel lblCadrado){
         juego.add(lblCadrado);
         juego.updateUI();
     }
     
+    //Borra os cadrados se se completa a liña no UI
     public void borrarCadrado(JLabel lblCadrado){
         juego.remove(lblCadrado);
         juego.updateUI();
     }
     
-    
+    //Crea o timer das fichas
     public void crearTimerXogo (){
         timer=new Timer(1000, new ActionListener() {
             @Override
@@ -504,6 +511,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
     }
     
+    
+    //Crea o timer do contador do tempo
     public void crearTimerTempo(){
         tiempo=new Timer(1000, new ActionListener() {
             @Override
@@ -515,6 +524,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
     }
+    
+    
+    //No caso de perder mostra a mensaxe de que se perdeu.
     public void mostrarFinDoXogo(){
         timer.stop();
         tiempo.stop();
@@ -523,6 +535,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         looser.setVisible(true);
     }
     
+    
+    //Suma 1 punto por cada ficha colocada
     public void sumarPuntosFicha(){
         String puntuacionFicha=puntos.getText();
         int puntosFicha=(int) Double.parseDouble(puntuacionFicha);
@@ -530,6 +544,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         puntos.setText(""+puntosFicha);
     }
     
+    
+    //Suma 12 puntos adicionais cada vez que se fai unha liña
     public void sumarPuntosLina(){
         String puntuacionLina=puntos.getText();
         int puntosLina=(int) Double.parseDouble(puntuacionLina);
@@ -537,6 +553,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         puntos.setText(""+puntosLina);
     }
     
+    
+    //Suma un ao contador de liñas
     public void sumarLina(){
         String numerolinas=numlinas.getText();
         int linas=(int) Double.parseDouble(numerolinas);
@@ -544,15 +562,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         numlinas.setText(""+linas);
     }
     
+    
+    //Aumenta a velocidade cada vez que o chaman dende xogo.borrarLinasCompletas()
     public void subirDificultade(){
         int velocidade=100;
         int delay=timer.getDelay()- velocidade;
-        if(delay<100){
-            delay=100;
+        if(delay<200){
+            delay=200;
         }
         timer.setDelay(delay);
     }
     
+    //Comproba cantas liñas se completaron para saber se hai que aumentar a dificultade ou non
+    //Cada vez que completa 5 liñas, chama a VentanaPrincipal.aumentarDificultade().
     public void comprobarLinas(){
         String numerolinas=numlinas.getText();
         int linas=(int) Double.parseDouble(numerolinas);
