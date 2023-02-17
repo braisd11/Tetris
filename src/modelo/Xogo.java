@@ -25,7 +25,9 @@ public class Xogo {
     public Ficha fichaActual;
     ArrayList <Cadrado> cadradosChan=new ArrayList<>();
     ArrayList <Cadrado> cadradosABorrar=new ArrayList<>();
+    ArrayList <Cadrado> visualizacionChan=new ArrayList<>();
     Iterator<Cadrado> iterChan;
+    Iterator<Cadrado> iterVisualizacion;
 
     public Xogo(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal=ventanaPrincipal;
@@ -73,7 +75,27 @@ public class Xogo {
             ventanaPrincipal.pintarCadrado(cadradoFicha.getLblCadrado());
         }
     }
+    /*
+    public void visualizarNoChan(){
+        crearVisualizacion();
+        iterVisualizacion = visualizacionChan.iterator();
+        while (iterVisualizacion.hasNext()) {
+            Cadrado cadradoVisualizado = iterVisualizacion.next();
+            ventanaPrincipal.pintarCadrado(cadradoVisualizado.getLblCadrado());
+        }
+    }
     
+    public void crearVisualizacion(){
+        Cadrado c0 = new Cadrado();
+        visualizacionChan.add(c0);
+        Cadrado c1 = new Cadrado();
+        visualizacionChan.add(c1);
+        Cadrado c2 = new Cadrado();
+        visualizacionChan.add(c2);
+        Cadrado c3 = new Cadrado();
+        visualizacionChan.add(c3);
+    }
+    */
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverDereita() na clase Ficha.
     public void moverFichaDereita(){
         boolean mover=true;
