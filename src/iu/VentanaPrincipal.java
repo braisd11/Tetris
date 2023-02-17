@@ -156,21 +156,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         juego.setLayout(juegoLayout);
         juegoLayout.setHorizontalGroup(
             juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, juegoLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(juegoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
                     .addComponent(looser)
                     .addComponent(gameOver))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         juegoLayout.setVerticalGroup(
             juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, juegoLayout.createSequentialGroup()
-                .addContainerGap(370, Short.MAX_VALUE)
+            .addGroup(juegoLayout.createSequentialGroup()
+                .addGap(362, 362, 362)
                 .addComponent(gameOver)
                 .addGap(18, 18, 18)
                 .addComponent(looser)
-                .addGap(356, 356, 356))
+                .addContainerGap(364, Short.MAX_VALUE))
         );
 
         panelTempo.setBackground(new java.awt.Color(0, 0, 0));
@@ -315,7 +315,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(panelXogoLayout.createSequentialGroup()
                         .addGap(81, 81, 81)
                         .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(30, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         panelXogoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {panelLinas, panelPuntuacion, panelTempo});
@@ -349,7 +349,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelXogo, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE)
+                    .addComponent(panelXogo, javax.swing.GroupLayout.PREFERRED_SIZE, 912, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -358,7 +358,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(panelXogo, javax.swing.GroupLayout.DEFAULT_SIZE, 912, Short.MAX_VALUE)
+                    .addComponent(panelXogo, javax.swing.GroupLayout.PREFERRED_SIZE, 912, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
