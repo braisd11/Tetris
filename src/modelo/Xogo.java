@@ -249,7 +249,7 @@ public class Xogo {
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext() && !perder){
             Cadrado cadradoChan = iterChan.next();
-            if (cadradoChan.getY()<=50){
+            if (cadradoChan.getY()<=49){
                 perder=true;
             }
         }
@@ -317,6 +317,22 @@ public class Xogo {
             else if (cadradoChan.getY()<altitud){
                 cadradoChan.setY(cadradoChan.getY()+LADOCADRADO);
             }
+        }
+        Iterator<Cadrado> iterBorrar=cadradosABorrar.iterator();
+        while (iterBorrar.hasNext()){
+            Cadrado cadradoABorrar=iterBorrar.next();
+            ventanaPrincipal.borrarCadrado(cadradoABorrar.getLblCadrado());
+        }
+    }
+    
+    
+    //Borra todas as fichas ao reiniciar a partida
+    public void eliminarTodo(){
+        iterChan=cadradosChan.iterator();
+        while (iterChan.hasNext()){
+            Cadrado cadradoChan = iterChan.next();
+            ventanaPrincipal.borrarCadrado(cadradoChan.getLblCadrado());
+            cadradosABorrar.add(cadradoChan);
         }
         Iterator<Cadrado> iterBorrar=cadradosABorrar.iterator();
         while (iterBorrar.hasNext()){

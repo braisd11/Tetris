@@ -381,22 +381,26 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }                                           
 
-    
+    private void reiniciar (){
+        panelBotones.setVisible(true);
+        panelPrincipal.setVisible(true);
+        panelXogo.setVisible(false);
+        timer.stop();
+        timer.setDelay(1000);
+        tiempo.stop();
+        tempo.setText("0");
+        puntos.setText("0");
+        numlinas.setText("0");
+        gameOver.setVisible(false);
+        looser.setVisible(false);
+        xogo1.eliminarTodo();
+    }
     
     //Listener do teclado para os movementos
     private void juegoKeyPressed(java.awt.event.KeyEvent evt) {                                 
         // TODO add your handling code here:
         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
-            panelBotones.setVisible(true);
-            panelPrincipal.setVisible(true);
-            panelXogo.setVisible(false);
-            timer.stop();
-            timer.setDelay(1000);
-            tiempo.stop();
-            tempo.setText("0"); 
-            puntos.setText("0");
-            numlinas.setText("0");
-            juego.removeAll();
+            reiniciar();
         }
         if (xogo1.isPausa()){
             if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
