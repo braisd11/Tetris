@@ -447,7 +447,7 @@ public class Xogo {
         cadradoDificultade.setY(MAXY-LADOCADRADO);
         cadradoDificultade.setX(200);
         cadradoDificultade.getLblCadrado().setSize(LADOCADRADO,LADOCADRADO);
-        cadradoDificultade.setCorRecheo(Color.ORANGE);
+        cadradoDificultade.setCorRecheo(Color.PINK);
         ventanaPrincipal.pintarCadrado(cadradoDificultade.getLblCadrado());
         cadradosChan.add(cadradoDificultade);
     }
