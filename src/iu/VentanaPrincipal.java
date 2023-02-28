@@ -537,7 +537,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 String a=tempo.getText();
                 int b=(int) Double.parseDouble(a);
                 b++;
-                tempo.setText(b+"");            
+                tempo.setText(b+"");
+                if (b%30==0){
+                    aumentarLinas();
+                }
             }
         });
     }
@@ -598,6 +601,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if(linas%5==0){
             subirDificultade();
         }
+    }
+    
+    public void aumentarLinas(){
+        xogo1.subirChan();
+        xogo1.engadirCadradoDificultade();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
