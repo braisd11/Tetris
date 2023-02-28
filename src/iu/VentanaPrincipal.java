@@ -22,6 +22,7 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
+    grhiger
     public Timer timer;
     public Timer tiempo;
     /**
@@ -600,7 +601,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         int linas=(int) Double.parseDouble(numerolinas);
         if(linas%5==0){
             subirDificultade();
-        
+        }
     }
     
     public void aumentarLinas(){
