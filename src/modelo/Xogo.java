@@ -321,7 +321,7 @@ public class Xogo {
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext() && !perder){
             Cadrado cadradoChan = iterChan.next();
-            if (cadradoChan.getY()<=50){
+            if (cadradoChan.getY()<=49){
                 perder=true;
             }
         }
@@ -354,7 +354,7 @@ public class Xogo {
     
     
     //Comproba cada vez que se engade unha ficha ao chan se hai algunha liña completa.
-    //No caso de haber algunha liña completa, chama a borrarLinas().
+    //No caso de ter algunha liña completa, chama a borrarLinas().
     public void borrarLinasCompletas(){
         int altitud=0;
         while (altitud<numeroLinas*LADOCADRADO) {
@@ -396,5 +396,43 @@ public class Xogo {
             Cadrado cadradoABorrar=iterBorrar.next();
             ventanaPrincipal.borrarCadrado(cadradoABorrar.getLblCadrado());
         }
+    }
+    
+    
+    //Borra todas as fichas ao reiniciar a partida
+    public void eliminarTodo(){
+        iterChan=cadradosChan.iterator();
+        while (iterChan.hasNext()){
+            Cadrado cadradoChan = iterChan.next();
+            ventanaPrincipal.borrarCadrado(cadradoChan.getLblCadrado());
+            cadradosABorrar.add(cadradoChan);
+        }
+        Iterator<Cadrado> iterBorrar=cadradosABorrar.iterator();
+        while (iterBorrar.hasNext()){
+            Cadrado cadradoABorrar=iterBorrar.next();
+            ventanaPrincipal.borrarCadrado(cadradoABorrar.getLblCadrado());
+        }
+    }
+    
+    
+    //Este método chámase dende VentanaPirncipal e sube todo o chan para aumentar a dificultade
+    public void subirChan(){
+        iterChan=cadradosChan.iterator();
+        while(iterChan.hasNext()){
+            Cadrado cadradoChan=iterChan.next();
+            cadradoChan.setY(cadradoChan.getY()-LADOCADRADO);
+        }
+    }
+    
+    
+    //Método que engade un cadrado abaixo de todo para aumentar a dificultade
+    public void engadirCadradoDificultade(){
+        Cadrado cadradoDificultade=new Cadrado();
+        cadradoDificultade.setY(MAXY-LADOCADRADO);
+        cadradoDificultade.setX(200);
+        cadradoDificultade.getLblCadrado().setSize(LADOCADRADO,LADOCADRADO);
+        cadradoDificultade.setCorRecheo(Color.PINK);
+        ventanaPrincipal.pintarCadrado(cadradoDificultade.getLblCadrado());
+        cadradosChan.add(cadradoDificultade);
     }
 }
