@@ -421,11 +421,10 @@ public class Xogo {
             ventanaPrincipal.borrarCadrado(cadradoChan.getLblCadrado());
             cadradosABorrar.add(cadradoChan);
         }
-        Iterator<Cadrado> iterBorrar=cadradosABorrar.iterator();
-        while (iterBorrar.hasNext()){
-            Cadrado cadradoABorrar=iterBorrar.next();
-            ventanaPrincipal.borrarCadrado(cadradoABorrar.getLblCadrado());
-        }
+        
+        cadradosChan.clear();
+        borrarVisualizacion();
+        
     }
     
     
