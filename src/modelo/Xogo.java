@@ -401,19 +401,27 @@ public class Xogo {
     
     //Borra todas as fichas ao reiniciar a partida
     public void eliminarTodo(){
+        borrarChan();
+        borrarFichaActual();
+        borrarVisualizacion();
+    }
+    
+    public void borrarChan(){
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext()){
             Cadrado cadradoChan = iterChan.next();
             ventanaPrincipal.borrarCadrado(cadradoChan.getLblCadrado());
-            cadradosABorrar.add(cadradoChan);
         }
-        Iterator<Cadrado> iterBorrar=cadradosABorrar.iterator();
-        while (iterBorrar.hasNext()){
-            Cadrado cadradoABorrar=iterBorrar.next();
-            ventanaPrincipal.borrarCadrado(cadradoABorrar.getLblCadrado());
-        }
+        cadradosChan.clear();
     }
     
+    public void borrarFichaActual(){
+        fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
+        while (fichaActual.getIterCadrados().hasNext()) {
+            Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
+            ventanaPrincipal.borrarCadrado(cadradoFicha.getLblCadrado());
+        }
+    }
     
     //Este método chámase dende VentanaPirncipal e sube todo o chan para aumentar a dificultade
     public void subirChan(){
