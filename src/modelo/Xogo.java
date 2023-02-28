@@ -77,7 +77,7 @@ public class Xogo {
         }
     }
     
-    ///////////////////////////////////////////////////////////////////////////////////////////////
+    //Chama a crearVisualizacion() e mostra a visualización de onde vai a caer a ficha
     public void visualizarNoChan(){
         crearVisualizacion();
         iterVisualizacion = visualizacionChan.iterator();
@@ -87,6 +87,8 @@ public class Xogo {
         }
     }
     
+    
+    //Crea a visualización da ficha actual
     public void crearVisualizacion(){
         Cadrado c0 = new Cadrado();
         c0.setCorRecheo(Color.LIGHT_GRAY);
@@ -115,6 +117,8 @@ public class Xogo {
         visualizacionBaja();
     }
     
+    
+    //Comrpoba onde chocaría a ficha abaixo e sitúase a visualización nesa posición
     public void visualizacionBaja() {
         while (!visualizacionChocaCoChan()){
             iterVisualizacion = visualizacionChan.iterator();
@@ -124,6 +128,9 @@ public class Xogo {
             }
         }
     }
+    
+    
+    //Comproba que a visualización choca co chan
     public boolean visualizacionChocaCoChan() {
         boolean chocar=false;
         iterVisualizacion= visualizacionChan.iterator();
@@ -139,6 +146,8 @@ public class Xogo {
         return chocar;
     }
     
+    
+    //Elimina a visualización
     public void borrarVisualizacion(){
         iterVisualizacion = visualizacionChan.iterator();
         while (iterVisualizacion.hasNext()) {
@@ -147,7 +156,9 @@ public class Xogo {
         }
         visualizacionChan.clear();
     }
-    //////////////////////////////////////////////////////////////////////////////////////
+  
+    
+    
     
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverDereita() na clase Ficha.
     public void moverFichaDereita(){
@@ -234,6 +245,9 @@ public class Xogo {
         }
     }
     
+    
+    
+    //Baixa a ficha de golpe ata chocar co chan
     public void soltarFicha(){
         while (!chocaFichaCoChan()){
             fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
@@ -365,7 +379,7 @@ public class Xogo {
                 if (cadradoChan.getY()==altitud){
                     sumCadradosFila++;
                 }
-                if (sumCadradosFila==9){
+                if (sumCadradosFila==(MAXX/LADOCADRADO)){
                     borrarLina(altitud);
                     ventanaPrincipal.sumarPuntosLina();
                     ventanaPrincipal.sumarLina();
@@ -422,6 +436,8 @@ public class Xogo {
             Cadrado cadradoChan=iterChan.next();
             cadradoChan.setY(cadradoChan.getY()-LADOCADRADO);
         }
+        borrarVisualizacion();
+        visualizarNoChan();
     }
     
     
@@ -431,7 +447,7 @@ public class Xogo {
         cadradoDificultade.setY(MAXY-LADOCADRADO);
         cadradoDificultade.setX(200);
         cadradoDificultade.getLblCadrado().setSize(LADOCADRADO,LADOCADRADO);
-        cadradoDificultade.setCorRecheo(Color.PINK);
+        cadradoDificultade.setCorRecheo(Color.ORANGE);
         ventanaPrincipal.pintarCadrado(cadradoDificultade.getLblCadrado());
         cadradosChan.add(cadradoDificultade);
     }
