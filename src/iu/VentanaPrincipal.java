@@ -22,7 +22,6 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
-    SFVCAV
     public Timer timer;
     public Timer tiempo;
     /**
