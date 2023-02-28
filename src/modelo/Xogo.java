@@ -213,7 +213,7 @@ public class Xogo {
             iterVisualizacion = visualizacionChan.iterator();
             while (iterVisualizacion.hasNext()) {
                 Cadrado cadradoVisualizado = iterVisualizacion.next();
-                if (cadradoFicha.getLblCadrado().getY()==cadradoVisualizado.getLblCadrado().getY()){
+                if (cadradoFicha.getLblCadrado().getY()==cadradoVisualizado.getLblCadrado().getY() && cadradoFicha.getLblCadrado().getX()==cadradoVisualizado.getLblCadrado().getX()){
                     cadradoVisualizado.getLblCadrado().setVisible(false);
                 }
             }
@@ -230,8 +230,8 @@ public class Xogo {
             Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
             rotar=ePosicionValida(cadradoFicha.getX(), cadradoFicha.getY());
         }
-        borrarVisualizacion();
         if (rotar) {
+            borrarVisualizacion();
             visualizarNoChan();
             debuxarCadrados();
         }
