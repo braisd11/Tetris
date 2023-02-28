@@ -6,6 +6,7 @@
 package modelo;
 
 import iu.VentanaPrincipal;
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -75,7 +76,8 @@ public class Xogo {
             ventanaPrincipal.pintarCadrado(cadradoFicha.getLblCadrado());
         }
     }
-    /*
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////
     public void visualizarNoChan(){
         crearVisualizacion();
         iterVisualizacion = visualizacionChan.iterator();
@@ -87,15 +89,66 @@ public class Xogo {
     
     public void crearVisualizacion(){
         Cadrado c0 = new Cadrado();
+        c0.setCorRecheo(Color.LIGHT_GRAY);
+        c0.getLblCadrado().setSize(LADOCADRADO, LADOCADRADO);
+        c0.setX(fichaActual.c0.getX());
+        c0.setY(fichaActual.c0.getY());
         visualizacionChan.add(c0);
         Cadrado c1 = new Cadrado();
+        c1.getLblCadrado().setSize(LADOCADRADO, LADOCADRADO);
+        c1.setCorRecheo(Color.LIGHT_GRAY);
+        c1.setX(fichaActual.c1.getX());
+        c1.setY(fichaActual.c1.getY());
         visualizacionChan.add(c1);
         Cadrado c2 = new Cadrado();
+        c2.getLblCadrado().setSize(LADOCADRADO, LADOCADRADO);
+        c2.setCorRecheo(Color.LIGHT_GRAY);
+        c2.setX(fichaActual.c2.getX());
+        c2.setY(fichaActual.c2.getY());
         visualizacionChan.add(c2);
         Cadrado c3 = new Cadrado();
+        c3.getLblCadrado().setSize(LADOCADRADO, LADOCADRADO);
+        c3.setCorRecheo(Color.LIGHT_GRAY);
+        c3.setX(fichaActual.c3.getX());
+        c3.setY(fichaActual.c3.getY());
         visualizacionChan.add(c3);
+        visualizacionBaja();
     }
-    */
+    
+    public void visualizacionBaja() {
+        while (!visualizacionChocaCoChan()){
+            iterVisualizacion = visualizacionChan.iterator();
+            while (iterVisualizacion.hasNext()) {
+                Cadrado cadradoVisualizado = iterVisualizacion.next();
+                cadradoVisualizado.setY(cadradoVisualizado.getY()+LADOCADRADO);
+            }
+        }
+    }
+    public boolean visualizacionChocaCoChan() {
+        boolean chocar=false;
+        iterVisualizacion= visualizacionChan.iterator();
+        while (iterVisualizacion.hasNext() && !chocar) {
+            Cadrado cadradoVisualizado = iterVisualizacion.next();
+            if (cadradoVisualizado.getY()==MAXY-LADOCADRADO) {
+                chocar=true;
+            }
+            else {
+                chocar=chocaFichaConCadradosChan(cadradoVisualizado);
+            }
+        }
+        return chocar;
+    }
+    
+    public void borrarVisualizacion(){
+        iterVisualizacion = visualizacionChan.iterator();
+        while (iterVisualizacion.hasNext()) {
+            Cadrado cadradoVisualizado = iterVisualizacion.next();
+            ventanaPrincipal.borrarCadrado(cadradoVisualizado.getLblCadrado());
+        }
+        visualizacionChan.clear();
+    }
+    //////////////////////////////////////////////////////////////////////////////////////
+    
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverDereita() na clase Ficha.
     public void moverFichaDereita(){
         boolean mover=true;
@@ -105,7 +158,9 @@ public class Xogo {
             mover=ePosicionValida(cadradoFicha.getX() + LADOCADRADO, cadradoFicha.getY());
         }
         if (mover) {
+            borrarVisualizacion();
             fichaActual.moverDereita();
+            visualizarNoChan();
             debuxarCadrados();
         }
         if (chocaFichaCoChan()) {
@@ -123,7 +178,9 @@ public class Xogo {
             mover=ePosicionValida(cadradoFicha.getX() - LADOCADRADO, cadradoFicha.getY());
         }
         if (mover) {
+            borrarVisualizacion();
             fichaActual.moverEsquerda();
+            visualizarNoChan();
             debuxarCadrados();
         }
         if (chocaFichaCoChan()) {
@@ -139,6 +196,17 @@ public class Xogo {
         if (chocaFichaCoChan()) { 
             engadirFichaAoChan();
         }
+        fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
+        while (fichaActual.getIterCadrados().hasNext()) {
+            Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
+            iterVisualizacion = visualizacionChan.iterator();
+            while (iterVisualizacion.hasNext()) {
+                Cadrado cadradoVisualizado = iterVisualizacion.next();
+                if (cadradoFicha.getLblCadrado().getY()==cadradoVisualizado.getLblCadrado().getY()){
+                    cadradoVisualizado.getLblCadrado().setVisible(false);
+                }
+            }
+        }
     }
     
     
@@ -151,7 +219,9 @@ public class Xogo {
             Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
             rotar=ePosicionValida(cadradoFicha.getX(), cadradoFicha.getY());
         }
+        borrarVisualizacion();
         if (rotar) {
+            visualizarNoChan();
             debuxarCadrados();
         }
         else {
@@ -172,6 +242,7 @@ public class Xogo {
                 cadradoFicha.setY(cadradoFicha.getY()+LADOCADRADO);
             }
         }
+        borrarVisualizacion();
         engadirFichaAoChan();
     }
     
@@ -232,6 +303,7 @@ public class Xogo {
         while (fichaActual.getIterCadrados().hasNext()){
             cadradosChan.add(fichaActual.iterCadrados.next());
         }
+        borrarVisualizacion();
         borrarLinasCompletas();
         ventanaPrincipal.sumarPuntosFicha();
         if(comprobarPerder()){
@@ -273,6 +345,7 @@ public class Xogo {
         if (figura==4){
             fichaActual=new FichaBarra(this);
         }
+        visualizarNoChan();
         debuxarCadrados();
         if (chocaFichaCoChan()) {
             engadirFichaAoChan();
