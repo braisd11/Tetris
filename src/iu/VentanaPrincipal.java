@@ -593,7 +593,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         int linas=(int) Double.parseDouble(numerolinas);
         if(linas%5==0){
             subirDificultade();
-        }
+        
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
