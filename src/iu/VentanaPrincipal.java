@@ -24,8 +24,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
     public Timer timer;
     public Timer tiempo;
-    public int delay;
-    public int delayMax;
+    safadsgfa
+    int delay=1000;
+    public int delayMax=300;
 
     /**
      * Creates new form Tetris
@@ -977,6 +978,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void borrarCadrado(JLabel lblCadrado){
         juego.remove(lblCadrado);
         juego.updateUI();
+    }
+    
+    //Pinta o cadrado da Ficha Seguinte
+    public void pintarCadradoSeguinte (JLabel lblCadrado){
+        /*panelFichaSeguinte.add(lblCadrado);
+        panelFichaSeguinte.updateUI();*/
+    }
+    
+    //Borra os cadrados da Ficha Seguinte
+    public void borrarFichaSeguinte (){
+        //panelFichaSeguinte.removeAll();
     }
     
     //Crea o timer das fichas
