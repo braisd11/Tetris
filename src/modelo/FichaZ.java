@@ -16,7 +16,6 @@ public class FichaZ extends Ficha{
     public FichaZ(Xogo xogo1) {
         super(xogo1);
         cor();
-        posicionInicial();
     }
     
     //métodos
@@ -30,6 +29,17 @@ public class FichaZ extends Ficha{
     public void posicionInicial() {
         c1.setX(4*xogo1.getLADOCADRADO());
         c1.setY(-xogo1.getLADOCADRADO());
+        c0.setX(c1.getX()-xogo1.getLADOCADRADO());
+        c0.setY(c1.getY());
+        c2.setX(c1.getX());
+        c2.setY(c1.getY()+xogo1.getLADOCADRADO());
+        c3.setX(c1.getX()+xogo1.getLADOCADRADO());
+        c3.setY(c1.getY()+xogo1.getLADOCADRADO());
+    }
+    
+     public void posicionFichaSeguinte() {
+        c1.setX(2*xogo1.getLADOCADRADO());
+        c1.setY(xogo1.getLADOCADRADO());
         c0.setX(c1.getX()-xogo1.getLADOCADRADO());
         c0.setY(c1.getY());
         c2.setX(c1.getX());
