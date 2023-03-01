@@ -346,7 +346,7 @@ public class Xogo {
     //Xera unha nova ficha aleatoria e debuxaa. 
     //Cada vez que unha ficha choca co chan xera automáticamente outra.
     public void xerarNovaFicha(){
-        int figura=(int) Math.floor(Math.random() * (4 - 1 + 1) + 1);
+        int figura=(int) Math.floor(Math.random() * (7 - 1 + 1) + 1);
         if (figura==1){
             fichaActual=new FichaT(this);
         }
@@ -358,6 +358,15 @@ public class Xogo {
         }
         if (figura==4){
             fichaActual=new FichaBarra(this);
+        }
+        if (figura==5){
+            fichaActual=new FichaLEspejo(this);
+        }
+        if (figura==6){
+            fichaActual=new FichaZ(this);
+        }
+        if (figura==7){
+            fichaActual=new FichaZEspejo(this);
         }
         visualizarNoChan();
         debuxarCadrados();
@@ -448,8 +457,6 @@ public class Xogo {
             Cadrado cadradoChan=iterChan.next();
             cadradoChan.setY(cadradoChan.getY()-LADOCADRADO);
         }
-        borrarVisualizacion();
-        visualizarNoChan();
     }
     
     
@@ -462,5 +469,7 @@ public class Xogo {
         cadradoDificultade.setCorRecheo(Color.PINK);
         ventanaPrincipal.pintarCadrado(cadradoDificultade.getLblCadrado());
         cadradosChan.add(cadradoDificultade);
+        borrarVisualizacion();
+        visualizarNoChan();
     }
 }

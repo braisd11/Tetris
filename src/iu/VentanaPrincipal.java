@@ -26,6 +26,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public Timer tiempo;
     public int delay;
     public int delayMax;
+
     /**
      * Creates new form Tetris
      */
