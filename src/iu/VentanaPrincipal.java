@@ -24,8 +24,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
     public Timer timer;
     public Timer tiempo;
-    public int delay;
-    public int delayMax;
+    public int delay=1000;
+    public int delayMax=300;
 
     /**
      * Creates new form Tetris
@@ -91,9 +91,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblLblnumlinas = new javax.swing.JLabel();
         numlinas = new javax.swing.JLabel();
         tqlbtnPausa = new javax.swing.JToggleButton();
+        panelFichaSeguinte = new javax.swing.JPanel();
 
         dialogOpciones.setVisible(false);
-        dialogOpciones.setPreferredSize(new java.awt.Dimension(900, 623));
         dialogOpciones.setResizable(false);
 
         panelOpciones.setBackground(new java.awt.Color(100, 200, 100));
@@ -170,7 +170,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
 
         dialogControles.setVisible(false);
-        dialogControles.setPreferredSize(new java.awt.Dimension(767, 675));
         dialogControles.setResizable(false);
 
         backgroundControles.setBackground(new java.awt.Color(100, 200, 100));
@@ -710,6 +709,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        panelFichaSeguinte.setBackground(new java.awt.Color(0, 0, 0));
+        panelFichaSeguinte.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.green, java.awt.Color.green, java.awt.Color.pink, java.awt.Color.red));
+        panelFichaSeguinte.setForeground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout panelFichaSeguinteLayout = new javax.swing.GroupLayout(panelFichaSeguinte);
+        panelFichaSeguinte.setLayout(panelFichaSeguinteLayout);
+        panelFichaSeguinteLayout.setHorizontalGroup(
+            panelFichaSeguinteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 265, Short.MAX_VALUE)
+        );
+        panelFichaSeguinteLayout.setVerticalGroup(
+            panelFichaSeguinteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 168, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout panelXogoLayout = new javax.swing.GroupLayout(panelXogo);
         panelXogo.setLayout(panelXogoLayout);
         panelXogoLayout.setHorizontalGroup(
@@ -719,14 +733,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelXogoLayout.createSequentialGroup()
+                        .addGap(81, 81, 81)
+                        .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelXogoLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelFichaSeguinte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(panelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelLinas, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panelXogoLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(panelLinas, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
 
@@ -744,7 +759,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addGap(35, 35, 35)
                         .addComponent(panelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
-                        .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(47, 47, 47)
+                        .addComponent(panelFichaSeguinte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelXogoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(juego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -999,7 +1016,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 int b=(int) Double.parseDouble(a);
                 b++;
                 tempo.setText(b+"");
-                if (b%30==0){
+                if (b%30==0 && delayMax!=500){
                     aumentarLinas();
                 }
             }
@@ -1106,6 +1123,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel numlinas;
     private javax.swing.JButton opciones;
     private javax.swing.JPanel panelBotones;
+    private javax.swing.JPanel panelFichaSeguinte;
     private javax.swing.JPanel panelLinas;
     private javax.swing.JPanel panelOpciones;
     private javax.swing.JPanel panelPrincipal;

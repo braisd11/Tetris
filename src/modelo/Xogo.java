@@ -24,6 +24,7 @@ public class Xogo {
     private int numeroLinas=18;
     public VentanaPrincipal ventanaPrincipal;
     public Ficha fichaActual;
+    public Ficha fichaSeguinte;
     ArrayList <Cadrado> cadradosChan=new ArrayList<>();
     ArrayList <Cadrado> cadradosABorrar=new ArrayList<>();
     ArrayList <Cadrado> visualizacionChan=new ArrayList<>();
@@ -201,7 +202,7 @@ public class Xogo {
     
     
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverAbaixo() na clase Ficha.
-    public void moverFichaAbaixo(){
+    public void moverFichaAbaixo() {
         fichaActual.moverAbaixo();
         debuxarCadrados();
         if (chocaFichaCoChan()) { 
@@ -374,6 +375,9 @@ public class Xogo {
             engadirFichaAoChan();
         }
     }
+    
+    
+    
     
     
     //Comproba cada vez que se engade unha ficha ao chan se hai algunha liña completa.

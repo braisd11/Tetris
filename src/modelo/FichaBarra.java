@@ -29,7 +29,7 @@ public class FichaBarra extends Ficha{
     
     public void posicionInicial() {
         c1.setX(4*xogo1.getLADOCADRADO());
-        c1.setY(xogo1.getLADOCADRADO());
+        c1.setY(-xogo1.getLADOCADRADO()*3);
         c0.setX(c1.getX());
         c0.setY(c1.getY()-xogo1.getLADOCADRADO());
         c2.setX(c1.getX());

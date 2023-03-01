@@ -29,7 +29,7 @@ public class FichaZEspejo extends Ficha{
     
     public void posicionInicial() {
         c1.setX(4*xogo1.getLADOCADRADO());
-        c1.setY(0);
+        c1.setY(-xogo1.getLADOCADRADO());
         c0.setX(c1.getX()+xogo1.getLADOCADRADO());
         c0.setY(c1.getY());
         c2.setX(c1.getX());
