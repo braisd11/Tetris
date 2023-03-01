@@ -24,6 +24,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
     public Timer timer;
     public Timer tiempo;
+    public int delay;
+    public int delayMax;
     /**
      * Creates new form Tetris
      */
@@ -41,11 +43,39 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        dialogOpciones = new javax.swing.JDialog();
+        panelOpciones = new javax.swing.JPanel();
+        dificultad = new javax.swing.JButton();
+        controles = new javax.swing.JButton();
+        botonVolverAtras = new javax.swing.JButton();
+        dialogControles = new javax.swing.JDialog();
+        backgroundControles = new javax.swing.JPanel();
+        labelTecla1 = new javax.swing.JLabel();
+        labelTecla2 = new javax.swing.JLabel();
+        labelTecla3 = new javax.swing.JLabel();
+        labelTecla4 = new javax.swing.JLabel();
+        labelTecla5 = new javax.swing.JLabel();
+        labelTecla6 = new javax.swing.JLabel();
+        labelTecla7 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        dialogDificultad = new javax.swing.JDialog();
+        backgroundDificultad = new javax.swing.JPanel();
+        botonFacil = new javax.swing.JButton();
+        botonMedia = new javax.swing.JButton();
+        botonDificil = new javax.swing.JButton();
         panelPrincipal = new javax.swing.JPanel();
         panelBotones = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         botonIniciar = new javax.swing.JButton();
         botonCerrar = new javax.swing.JButton();
+        opciones = new javax.swing.JButton();
         panelXogo = new javax.swing.JPanel();
         juego = new javax.swing.JPanel();
         gameOver = new javax.swing.JLabel();
@@ -60,6 +90,370 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         lblLblnumlinas = new javax.swing.JLabel();
         numlinas = new javax.swing.JLabel();
         tqlbtnPausa = new javax.swing.JToggleButton();
+
+        dialogOpciones.setVisible(false);
+        dialogOpciones.setPreferredSize(new java.awt.Dimension(900, 623));
+        dialogOpciones.setResizable(false);
+
+        panelOpciones.setBackground(new java.awt.Color(100, 200, 100));
+
+        dificultad.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
+        dificultad.setForeground(new java.awt.Color(0, 0, 0));
+        dificultad.setText("Dificultad");
+        dificultad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dificultadActionPerformed(evt);
+            }
+        });
+
+        controles.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
+        controles.setForeground(new java.awt.Color(0, 0, 0));
+        controles.setText("Controles");
+        controles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                controlesActionPerformed(evt);
+            }
+        });
+
+        botonVolverAtras.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
+        botonVolverAtras.setForeground(new java.awt.Color(0, 0, 0));
+        botonVolverAtras.setText("Volver atrás");
+        botonVolverAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonVolverAtrasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelOpcionesLayout = new javax.swing.GroupLayout(panelOpciones);
+        panelOpciones.setLayout(panelOpcionesLayout);
+        panelOpcionesLayout.setHorizontalGroup(
+            panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelOpcionesLayout.createSequentialGroup()
+                .addGap(279, 279, 279)
+                .addGroup(panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(controles)
+                    .addComponent(dificultad)
+                    .addComponent(botonVolverAtras, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap(683, Short.MAX_VALUE))
+        );
+
+        panelOpcionesLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {botonVolverAtras, controles, dificultad});
+
+        panelOpcionesLayout.setVerticalGroup(
+            panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelOpcionesLayout.createSequentialGroup()
+                .addGap(175, 175, 175)
+                .addComponent(dificultad)
+                .addGap(29, 29, 29)
+                .addComponent(controles)
+                .addGap(27, 27, 27)
+                .addComponent(botonVolverAtras)
+                .addContainerGap(233, Short.MAX_VALUE))
+        );
+
+        panelOpcionesLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {botonVolverAtras, controles, dificultad});
+
+        javax.swing.GroupLayout dialogOpcionesLayout = new javax.swing.GroupLayout(dialogOpciones.getContentPane());
+        dialogOpciones.getContentPane().setLayout(dialogOpcionesLayout);
+        dialogOpcionesLayout.setHorizontalGroup(
+            dialogOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogOpcionesLayout.createSequentialGroup()
+                .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        dialogOpcionesLayout.setVerticalGroup(
+            dialogOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogOpcionesLayout.createSequentialGroup()
+                .addComponent(panelOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        dialogControles.setVisible(false);
+        dialogControles.setPreferredSize(new java.awt.Dimension(767, 675));
+        dialogControles.setResizable(false);
+
+        backgroundControles.setBackground(new java.awt.Color(100, 200, 100));
+
+        labelTecla1.setBackground(new java.awt.Color(150, 150, 150));
+        labelTecla1.setForeground(new java.awt.Color(0, 0, 0));
+        labelTecla1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTecla1.setText("Flecha Arriba o 'W':");
+        labelTecla1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.darkGray, java.awt.Color.darkGray, java.awt.Color.darkGray));
+        labelTecla1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelTecla1.setOpaque(true);
+
+        labelTecla2.setBackground(new java.awt.Color(150, 150, 150));
+        labelTecla2.setForeground(new java.awt.Color(0, 0, 0));
+        labelTecla2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTecla2.setText("Flecha Abajo o 'S':");
+        labelTecla2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.darkGray, java.awt.Color.darkGray, java.awt.Color.darkGray));
+        labelTecla2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelTecla2.setOpaque(true);
+
+        labelTecla3.setBackground(new java.awt.Color(150, 150, 150));
+        labelTecla3.setForeground(new java.awt.Color(0, 0, 0));
+        labelTecla3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTecla3.setText("Flecha Derecha o 'D':");
+        labelTecla3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.darkGray, java.awt.Color.darkGray, java.awt.Color.darkGray));
+        labelTecla3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelTecla3.setOpaque(true);
+
+        labelTecla4.setBackground(new java.awt.Color(150, 150, 150));
+        labelTecla4.setForeground(new java.awt.Color(0, 0, 0));
+        labelTecla4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTecla4.setText("Flecha Izquierda o 'A':");
+        labelTecla4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.darkGray, java.awt.Color.darkGray, java.awt.Color.darkGray, java.awt.Color.darkGray));
+        labelTecla4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelTecla4.setOpaque(true);
+
+        labelTecla5.setBackground(new java.awt.Color(150, 150, 150));
+        labelTecla5.setForeground(new java.awt.Color(0, 0, 0));
+        labelTecla5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTecla5.setText("Tecla ENTER:");
+        labelTecla5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray));
+        labelTecla5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelTecla5.setOpaque(true);
+
+        labelTecla6.setBackground(new java.awt.Color(150, 150, 150));
+        labelTecla6.setForeground(new java.awt.Color(0, 0, 0));
+        labelTecla6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTecla6.setText("Barra Espaciadora:");
+        labelTecla6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray));
+        labelTecla6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelTecla6.setOpaque(true);
+
+        labelTecla7.setBackground(new java.awt.Color(150, 150, 150));
+        labelTecla7.setForeground(new java.awt.Color(0, 0, 0));
+        labelTecla7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelTecla7.setText("Tecla ESC:");
+        labelTecla7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray, java.awt.Color.gray));
+        labelTecla7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        labelTecla7.setOpaque(true);
+
+        jButton1.setFont(new java.awt.Font("Sitka Heading", 0, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jButton1.setText("VOLVER ATRÁS");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("ROTAR");
+        jLabel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        jLabel1.setOpaque(true);
+
+        jLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel2.setText("MOVER DERECHA");
+        jLabel2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        jLabel2.setOpaque(true);
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("MOVER IZQUIERDA");
+        jLabel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        jLabel3.setOpaque(true);
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("BAJAR");
+        jLabel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        jLabel4.setOpaque(true);
+
+        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setText("DEJAR CAER");
+        jLabel5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        jLabel5.setOpaque(true);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("PLAY/PAUSA");
+        jLabel6.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        jLabel6.setOpaque(true);
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("REINICIAR");
+        jLabel7.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white, java.awt.Color.white));
+        jLabel7.setOpaque(true);
+
+        javax.swing.GroupLayout backgroundControlesLayout = new javax.swing.GroupLayout(backgroundControles);
+        backgroundControles.setLayout(backgroundControlesLayout);
+        backgroundControlesLayout.setHorizontalGroup(
+            backgroundControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundControlesLayout.createSequentialGroup()
+                .addGap(85, 85, 85)
+                .addGroup(backgroundControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(backgroundControlesLayout.createSequentialGroup()
+                        .addComponent(labelTecla1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1))
+                    .addGroup(backgroundControlesLayout.createSequentialGroup()
+                        .addComponent(labelTecla2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4))
+                    .addGroup(backgroundControlesLayout.createSequentialGroup()
+                        .addComponent(labelTecla5, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7))
+                    .addGroup(backgroundControlesLayout.createSequentialGroup()
+                        .addComponent(labelTecla7, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6))
+                    .addGroup(backgroundControlesLayout.createSequentialGroup()
+                        .addComponent(labelTecla6, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel5)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(backgroundControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelTecla4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTecla3, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(backgroundControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addGap(68, 68, 68))
+            .addGroup(backgroundControlesLayout.createSequentialGroup()
+                .addGap(297, 297, 297)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        backgroundControlesLayout.setVerticalGroup(
+            backgroundControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundControlesLayout.createSequentialGroup()
+                .addGap(73, 73, 73)
+                .addGroup(backgroundControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(backgroundControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelTecla4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3))
+                    .addGroup(backgroundControlesLayout.createSequentialGroup()
+                        .addGroup(backgroundControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelTecla1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(labelTecla3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(47, 47, 47)
+                        .addGroup(backgroundControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(labelTecla2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))))
+                .addGap(60, 60, 60)
+                .addGroup(backgroundControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTecla6, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(38, 38, 38)
+                .addGroup(backgroundControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTecla7, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(34, 34, 34)
+                .addGroup(backgroundControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTecla5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addGap(37, 37, 37)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        backgroundControlesLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {labelTecla6, labelTecla7});
+
+        javax.swing.GroupLayout dialogControlesLayout = new javax.swing.GroupLayout(dialogControles.getContentPane());
+        dialogControles.getContentPane().setLayout(dialogControlesLayout);
+        dialogControlesLayout.setHorizontalGroup(
+            dialogControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogControlesLayout.createSequentialGroup()
+                .addComponent(backgroundControles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        dialogControlesLayout.setVerticalGroup(
+            dialogControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogControlesLayout.createSequentialGroup()
+                .addComponent(backgroundControles, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        dialogDificultad.setResizable(false);
+
+        backgroundDificultad.setBackground(new java.awt.Color(100, 200, 100));
+        backgroundDificultad.setPreferredSize(new java.awt.Dimension(500, 500));
+
+        botonFacil.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
+        botonFacil.setForeground(new java.awt.Color(0, 0, 0));
+        botonFacil.setText("Dificultad Fácil");
+        botonFacil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonFacilActionPerformed(evt);
+            }
+        });
+
+        botonMedia.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
+        botonMedia.setForeground(new java.awt.Color(0, 0, 0));
+        botonMedia.setText("Dificultad Media");
+        botonMedia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonMediaActionPerformed(evt);
+            }
+        });
+
+        botonDificil.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
+        botonDificil.setForeground(new java.awt.Color(0, 0, 0));
+        botonDificil.setText("Dificultad Difícil");
+        botonDificil.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDificilActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout backgroundDificultadLayout = new javax.swing.GroupLayout(backgroundDificultad);
+        backgroundDificultad.setLayout(backgroundDificultadLayout);
+        backgroundDificultadLayout.setHorizontalGroup(
+            backgroundDificultadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundDificultadLayout.createSequentialGroup()
+                .addGap(172, 172, 172)
+                .addGroup(backgroundDificultadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonDificil)
+                    .addComponent(botonMedia)
+                    .addComponent(botonFacil))
+                .addContainerGap(172, Short.MAX_VALUE))
+        );
+
+        backgroundDificultadLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {botonDificil, botonFacil, botonMedia});
+
+        backgroundDificultadLayout.setVerticalGroup(
+            backgroundDificultadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundDificultadLayout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addComponent(botonFacil, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(44, 44, 44)
+                .addComponent(botonMedia, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(botonDificil, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout dialogDificultadLayout = new javax.swing.GroupLayout(dialogDificultad.getContentPane());
+        dialogDificultad.getContentPane().setLayout(dialogDificultadLayout);
+        dialogDificultadLayout.setHorizontalGroup(
+            dialogDificultadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogDificultadLayout.createSequentialGroup()
+                .addComponent(backgroundDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        dialogDificultadLayout.setVerticalGroup(
+            dialogDificultadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogDificultadLayout.createSequentialGroup()
+                .addComponent(backgroundDificultad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TETRIS 2.0");
@@ -97,6 +491,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        opciones.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
+        opciones.setForeground(new java.awt.Color(0, 0, 0));
+        opciones.setText("Opciones");
+        opciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcionesActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelBotonesLayout = new javax.swing.GroupLayout(panelBotones);
         panelBotones.setLayout(panelBotonesLayout);
         panelBotonesLayout.setHorizontalGroup(
@@ -104,11 +507,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelBotonesLayout.createSequentialGroup()
                 .addGap(225, 225, 225)
                 .addGroup(panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(botonCerrar)
                     .addComponent(botonIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(opciones)
+                    .addComponent(botonCerrar))
                 .addGap(225, 225, 225))
         );
+
+        panelBotonesLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {botonCerrar, opciones});
+
         panelBotonesLayout.setVerticalGroup(
             panelBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelBotonesLayout.createSequentialGroup()
@@ -116,10 +523,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addComponent(titulo)
                 .addGap(78, 78, 78)
                 .addComponent(botonIniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(67, 67, 67)
+                .addGap(58, 58, 58)
+                .addComponent(opciones)
+                .addGap(65, 65, 65)
                 .addComponent(botonCerrar)
-                .addContainerGap(367, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
+
+        panelBotonesLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {botonCerrar, opciones});
 
         panelPrincipal.add(panelBotones, "card3");
 
@@ -365,6 +776,55 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void opcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionesActionPerformed
+        // TODO add your handling code here:
+        dialogOpciones.setVisible(true);
+        dialogOpciones.setSize(800, 623);
+    }//GEN-LAST:event_opcionesActionPerformed
+
+    private void dificultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dificultadActionPerformed
+        // TODO add your handling code here:
+        dialogDificultad.setVisible(true);
+        dialogDificultad.setSize(500, 500);
+    }//GEN-LAST:event_dificultadActionPerformed
+
+    private void controlesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_controlesActionPerformed
+        // TODO add your handling code here:
+        dialogControles.setVisible(true);
+        dialogControles.setSize(755, 675);
+    }//GEN-LAST:event_controlesActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        dialogControles.setVisible(false);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void botonVolverAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonVolverAtrasActionPerformed
+        // TODO add your handling code here:
+        dialogOpciones.setVisible(false);
+    }//GEN-LAST:event_botonVolverAtrasActionPerformed
+
+    private void botonFacilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacilActionPerformed
+        // TODO add your handling code here:
+        delay=1200;
+        delayMax=500;
+        dialogDificultad.setVisible(false);
+    }//GEN-LAST:event_botonFacilActionPerformed
+
+    private void botonMediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMediaActionPerformed
+        // TODO add your handling code here:
+        delay=1000;
+        delayMax=400;
+        dialogDificultad.setVisible(false);
+    }//GEN-LAST:event_botonMediaActionPerformed
+
+    private void botonDificilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDificilActionPerformed
+        // TODO add your handling code here:
+        delay=400;
+        delayMax=200;
+        dialogDificultad.setVisible(false);
+    }//GEN-LAST:event_botonDificilActionPerformed
+
     //BOTÓN QUE DA INICIO AO XOGO CHAMANDO A INICIARPARTIDA()
     private void botonIniciarActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
@@ -499,7 +959,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void iniciarPartida(){
         xogo1=new Xogo(this);
         juego.requestFocus();
-        crearTimerXogo();
+        crearTimerXogo(delay);
         crearTimerTempo();
         timer.start();
         tiempo.start();
@@ -519,8 +979,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
     //Crea o timer das fichas
-    public void crearTimerXogo (){
-        timer=new Timer(1000, new ActionListener() {
+    public void crearTimerXogo (int delay){
+        timer=new Timer(delay, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 xogo1.moverFichaAbaixo();
@@ -586,9 +1046,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Aumenta a velocidade cada vez que o chaman dende xogo.borrarLinasCompletas()
     public void subirDificultade(){
         int velocidade=100;
-        int delay=timer.getDelay()- velocidade;
-        if(delay<200){
-            delay=200;
+        delay=timer.getDelay()- velocidade;
+        if(delay<delayMax){
+            delay=delayMax;
         }
         timer.setDelay(delay);
     }
@@ -609,16 +1069,44 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel backgroundControles;
+    private javax.swing.JPanel backgroundDificultad;
     private javax.swing.JButton botonCerrar;
+    private javax.swing.JButton botonDificil;
+    private javax.swing.JButton botonFacil;
     private javax.swing.JButton botonIniciar;
+    private javax.swing.JButton botonMedia;
+    private javax.swing.JButton botonVolverAtras;
+    private javax.swing.JButton controles;
+    private javax.swing.JDialog dialogControles;
+    private javax.swing.JDialog dialogDificultad;
+    private javax.swing.JDialog dialogOpciones;
+    private javax.swing.JButton dificultad;
     private javax.swing.JLabel gameOver;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel juego;
+    private javax.swing.JLabel labelTecla1;
+    private javax.swing.JLabel labelTecla2;
+    private javax.swing.JLabel labelTecla3;
+    private javax.swing.JLabel labelTecla4;
+    private javax.swing.JLabel labelTecla5;
+    private javax.swing.JLabel labelTecla6;
+    private javax.swing.JLabel labelTecla7;
     private javax.swing.JLabel lblLblnumlinas;
     private javax.swing.JLabel lblTempo;
     private javax.swing.JLabel looser;
     private javax.swing.JLabel numlinas;
+    private javax.swing.JButton opciones;
     private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelLinas;
+    private javax.swing.JPanel panelOpciones;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JPanel panelPuntuacion;
     private javax.swing.JPanel panelTempo;
