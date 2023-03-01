@@ -453,8 +453,6 @@ public class Xogo {
             Cadrado cadradoChan=iterChan.next();
             cadradoChan.setY(cadradoChan.getY()-LADOCADRADO);
         }
-        borrarVisualizacion();
-        visualizarNoChan();
     }
     
     
@@ -467,5 +465,7 @@ public class Xogo {
         cadradoDificultade.setCorRecheo(Color.PINK);
         ventanaPrincipal.pintarCadrado(cadradoDificultade.getLblCadrado());
         cadradosChan.add(cadradoDificultade);
+        borrarVisualizacion();
+        visualizarNoChan();
     }
 }
