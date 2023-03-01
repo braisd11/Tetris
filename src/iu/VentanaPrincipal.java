@@ -996,6 +996,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         juego.updateUI();
     }
     
+    //Pinta o cadrado da Ficha Seguinte
+    public void pintarCadradoSeguinte (JLabel lblCadrado){
+        /*panelFichaSeguinte.add(lblCadrado);
+        panelFichaSeguinte.updateUI();*/
+    }
+    
+    //Borra os cadrados da Ficha Seguinte
+    public void borrarFichaSeguinte (){
+        //panelFichaSeguinte.removeAll();
+    }
+    
     //Crea o timer das fichas
     public void crearTimerXogo (int delay){
         timer=new Timer(delay, new ActionListener() {

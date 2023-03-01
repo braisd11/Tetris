@@ -33,7 +33,9 @@ public class Xogo {
 
     public Xogo(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal=ventanaPrincipal;
-        xerarNovaFicha();
+        fichaActual=xerarNovaFicha();
+        fichaActual.posicionInicial();
+        fichaSeguinte=xerarNovaFicha();
     }
 
     public int getLADOCADRADO() {
@@ -75,6 +77,16 @@ public class Xogo {
         while (fichaActual.getIterCadrados().hasNext()) {
             Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
             ventanaPrincipal.pintarCadrado(cadradoFicha.getLblCadrado());
+        }
+    }
+    
+    //Chama a pintarCadradoSeguinte
+    public void debuxarFichaSeguinte(){
+        ventanaPrincipal.borrarFichaSeguinte();
+        fichaSeguinte.iterCadrados = fichaSeguinte.getCadrados().iterator();
+        while (fichaSeguinte.getIterCadrados().hasNext()) {
+            Cadrado cadradoFichaseguinte = fichaSeguinte.getIterCadrados().next();
+            ventanaPrincipal.pintarCadradoSeguinte(cadradoFichaseguinte.getLblCadrado());
         }
     }
     
@@ -325,10 +337,17 @@ public class Xogo {
             ventanaPrincipal.mostrarFinDoXogo();
         }
         else {
-            xerarNovaFicha();
+            fichaActual=fichaSeguinte;
+            fichaActual.posicionInicial();
+            fichaSeguinte=xerarNovaFicha();
+            debuxarFichaSeguinte();
+            visualizarNoChan();
+            debuxarCadrados();
+            if (chocaFichaCoChan()) {
+                engadirFichaAoChan();
+            }
         }
     }
-    
     
     //Chamado dende engadirFichaAoChan() e recorre con un iterator e se ao xerarse a nova ficha choca con outra inmediatamente perdese.
     public boolean comprobarPerder(){
@@ -346,34 +365,31 @@ public class Xogo {
     
     //Xera unha nova ficha aleatoria e debuxaa. 
     //Cada vez que unha ficha choca co chan xera automáticamente outra.
-    public void xerarNovaFicha(){
+    public Ficha xerarNovaFicha(){
+        Ficha ficha=null;
         int figura=(int) Math.floor(Math.random() * (7 - 1 + 1) + 1);
         if (figura==1){
-            fichaActual=new FichaT(this);
+            ficha=new FichaT(this);
         }
         if (figura==2){
-            fichaActual=new FichaCadrada(this);
+            ficha=new FichaCadrada(this);
         }
         if (figura==3){
-            fichaActual=new FichaL(this);
+            ficha=new FichaL(this);
         }
         if (figura==4){
-            fichaActual=new FichaBarra(this);
+            ficha=new FichaBarra(this);
         }
         if (figura==5){
-            fichaActual=new FichaLEspejo(this);
+            ficha=new FichaLEspejo(this);
         }
         if (figura==6){
-            fichaActual=new FichaZ(this);
+            ficha=new FichaZ(this);
         }
         if (figura==7){
-            fichaActual=new FichaZEspejo(this);
+            ficha=new FichaZEspejo(this);
         }
-        visualizarNoChan();
-        debuxarCadrados();
-        if (chocaFichaCoChan()) {
-            engadirFichaAoChan();
-        }
+        return ficha;
     }
     
     
