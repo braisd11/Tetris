@@ -102,5 +102,6 @@ public abstract class Ficha {
     
     public abstract boolean rotar();
     public abstract void posicionInicial();
+    public abstract void posicionFichaSeguinte();
     public abstract void cor();
 }

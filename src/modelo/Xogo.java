@@ -36,6 +36,10 @@ public class Xogo {
         fichaActual=xerarNovaFicha();
         fichaActual.posicionInicial();
         fichaSeguinte=xerarNovaFicha();
+        fichaSeguinte.posicionFichaSeguinte();
+        debuxarFichaSeguinte();
+        visualizarNoChan();
+        debuxarCadrados();
     }
 
     public int getLADOCADRADO() {
@@ -340,6 +344,7 @@ public class Xogo {
             fichaActual=fichaSeguinte;
             fichaActual.posicionInicial();
             fichaSeguinte=xerarNovaFicha();
+            fichaSeguinte.posicionFichaSeguinte();
             debuxarFichaSeguinte();
             visualizarNoChan();
             debuxarCadrados();

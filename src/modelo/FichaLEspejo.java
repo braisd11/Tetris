@@ -37,7 +37,7 @@ public class FichaLEspejo extends Ficha{
         c3.setY(c1.getY()+xogo1.getLADOCADRADO());
     }
     
-    
+
     public void posicionFichaSeguinte() {
         c1.setX(2*xogo1.getLADOCADRADO());
         c1.setY(xogo1.getLADOCADRADO()*2);
@@ -49,7 +49,7 @@ public class FichaLEspejo extends Ficha{
         c3.setY(c1.getY()+xogo1.getLADOCADRADO());
     }
     
-    
+
     public boolean rotar() {
         int c1X = c1.getX();
         int c1Y = c1.getY();
