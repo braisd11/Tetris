@@ -214,7 +214,7 @@ public class Xogo {
     
     
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverAbaixo() na clase Ficha.
-    public void moverFichaAbaixo(){
+    public void moverFichaAbaixo() {
         fichaActual.moverAbaixo();
         debuxarCadrados();
         if (chocaFichaCoChan()) { 
@@ -391,6 +391,9 @@ public class Xogo {
         }
         return ficha;
     }
+    
+    
+    
     
     
     //Comproba cada vez que se engade unha ficha ao chan se hai algunha liña completa.

@@ -4,9 +4,6 @@
   <NonVisualComponents>
     <Container class="javax.swing.JDialog" name="dialogOpciones">
       <Properties>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[900, 623]"/>
-        </Property>
         <Property name="resizable" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
@@ -116,9 +113,6 @@
     </Container>
     <Container class="javax.swing.JDialog" name="dialogControles">
       <Properties>
-        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[767, 675]"/>
-        </Property>
         <Property name="resizable" type="boolean" value="false"/>
       </Properties>
       <AuxValues>
@@ -912,17 +906,18 @@
                   <EmptySpace min="-2" pref="131" max="-2" attributes="0"/>
                   <Component id="juego" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                          <Component id="tqlbtnPausa" min="-2" pref="139" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="panelFichaSeguinte" min="-2" max="-2" attributes="0"/>
                               <Component id="panelTempo" linkSize="10" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="panelPuntuacion" linkSize="10" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="panelLinas" linkSize="10" min="-2" pref="271" max="-2" attributes="0"/>
                           </Group>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
-                          <Component id="tqlbtnPausa" min="-2" pref="139" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="42" max="32767" attributes="0"/>
@@ -942,6 +937,8 @@
                           <Component id="panelPuntuacion" linkSize="9" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                           <Component id="panelTempo" linkSize="9" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                          <Component id="panelFichaSeguinte" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -1303,6 +1300,39 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tqlbtnPausaActionPerformed"/>
           </Events>
         </Component>
+        <Container class="javax.swing.JPanel" name="panelFichaSeguinte">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+              <Border info="org.netbeans.modules.form.compat2.border.SoftBevelBorderInfo">
+                <BevelBorder>
+                  <Color PropertyName="highlightOuter" blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
+                  <Color PropertyName="highlightInner" blue="0" green="ff" id="green" palette="1" red="0" type="palette"/>
+                  <Color PropertyName="shadowOuter" blue="af" green="af" id="pink" palette="1" red="ff" type="palette"/>
+                  <Color PropertyName="shadowInner" blue="0" green="0" id="red" palette="1" red="ff" type="palette"/>
+                </BevelBorder>
+              </Border>
+            </Property>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="0" green="0" red="0" type="rgb"/>
+            </Property>
+          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="265" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <EmptySpace min="0" pref="168" max="32767" attributes="0"/>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>
