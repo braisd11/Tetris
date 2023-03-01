@@ -101,6 +101,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         dificultad.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
         dificultad.setForeground(new java.awt.Color(0, 0, 0));
         dificultad.setText("Dificultad");
+        dificultad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         dificultad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 dificultadActionPerformed(evt);
@@ -110,6 +111,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         controles.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
         controles.setForeground(new java.awt.Color(0, 0, 0));
         controles.setText("Controles");
+        controles.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         controles.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 controlesActionPerformed(evt);
@@ -119,6 +121,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonVolverAtras.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
         botonVolverAtras.setForeground(new java.awt.Color(0, 0, 0));
         botonVolverAtras.setText("Volver atrás");
+        botonVolverAtras.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonVolverAtras.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonVolverAtrasActionPerformed(evt);
@@ -233,6 +236,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Sitka Heading", 0, 24)); // NOI18N
         jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("VOLVER ATRÁS");
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -389,6 +393,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonFacil.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
         botonFacil.setForeground(new java.awt.Color(0, 0, 0));
         botonFacil.setText("Dificultad Fácil");
+        botonFacil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonFacil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonFacilActionPerformed(evt);
@@ -398,6 +403,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonMedia.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
         botonMedia.setForeground(new java.awt.Color(0, 0, 0));
         botonMedia.setText("Dificultad Media");
+        botonMedia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonMedia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonMediaActionPerformed(evt);
@@ -407,6 +413,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonDificil.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
         botonDificil.setForeground(new java.awt.Color(0, 0, 0));
         botonDificil.setText("Dificultad Difícil");
+        botonDificil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonDificil.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonDificilActionPerformed(evt);
@@ -494,6 +501,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         opciones.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
         opciones.setForeground(new java.awt.Color(0, 0, 0));
         opciones.setText("Opciones");
+        opciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         opciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcionesActionPerformed(evt);
