@@ -422,13 +422,15 @@ public class Xogo {
     }
     
     
-    //Borra todas as fichas ao reiniciar a partida
+    //Borra todas as fichas ao reiniciar a partida.
     public void eliminarTodo(){
         borrarChan();
         borrarFichaActual();
         borrarVisualizacion();
     }
     
+    
+    //Borra todos os cadrados do chan cando reiniciamos o xogo.
     public void borrarChan(){
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext()){
@@ -438,6 +440,8 @@ public class Xogo {
         cadradosChan.clear();
     }
     
+    
+    //Elimina a fichaActual cando reiniciamos o xogo.
     public void borrarFichaActual(){
         fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
         while (fichaActual.getIterCadrados().hasNext()) {
