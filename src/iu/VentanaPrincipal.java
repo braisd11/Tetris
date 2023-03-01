@@ -998,13 +998,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     //Pinta o cadrado da Ficha Seguinte
     public void pintarCadradoSeguinte (JLabel lblCadrado){
-        /*panelFichaSeguinte.add(lblCadrado);
-        panelFichaSeguinte.updateUI();*/
+        panelFichaSeguinte.add(lblCadrado);
+        panelFichaSeguinte.updateUI();
     }
     
     //Borra os cadrados da Ficha Seguinte
     public void borrarFichaSeguinte (){
-        //panelFichaSeguinte.removeAll();
+        panelFichaSeguinte.removeAll();
     }
     
     //Crea o timer das fichas
