@@ -240,22 +240,11 @@ public class Xogo {
     
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a rotar() na clase Ficha.
     public void rotarFicha(){
-        fichaActual.rotar();
-        boolean rotar=true;
-        fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
-        while (fichaActual.getIterCadrados().hasNext() && rotar) {
-            Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
-            rotar=ePosicionValida(cadradoFicha.getX(), cadradoFicha.getY());
-        }
-        if (rotar) {
+        if (fichaActual.comprobarRotar()) {
             borrarVisualizacion();
+            fichaActual.rotar();
             visualizarNoChan();
             debuxarCadrados();
-        }
-        else {
-            fichaActual.rotar();
-            fichaActual.rotar();
-            fichaActual.rotar();
         }
         if (chocaFichaCoChan()) {
             engadirFichaAoChan();
@@ -282,6 +271,9 @@ public class Xogo {
     public boolean ePosicionValida(int x, int y){
         boolean posicionValida=true;
         if (x>=MAXX || x<0){
+            posicionValida=false;
+        }
+        else if (y>=MAXY){
             posicionValida=false;
         }
         else {
