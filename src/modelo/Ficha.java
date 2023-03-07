@@ -100,6 +100,7 @@ public abstract class Ficha {
         return true;
     }
     
+    public abstract boolean comprobarRotar();
     public abstract boolean rotar();
     public abstract void posicionInicial();
     public abstract void posicionFichaSeguinte();
