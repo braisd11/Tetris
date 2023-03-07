@@ -17,11 +17,11 @@ import java.util.Iterator;
  */
 public class Xogo {
 
-    private int LADOCADRADO=50;
+    private int LADOCADRADO=45;
     private final int MAXX=450;
     private final int MAXY=900;
     private boolean pausa=false;
-    private int numeroLinas=18;
+    private int numeroLinas=MAXY/LADOCADRADO;
     public VentanaPrincipal ventanaPrincipal;
     public Ficha fichaActual;
     public Ficha fichaSeguinte;
@@ -360,7 +360,7 @@ public class Xogo {
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext() && !perder){
             Cadrado cadradoChan = iterChan.next();
-            if (cadradoChan.getY()<=49){
+            if (cadradoChan.getY()<=(LADOCADRADO-1)){
                 perder=true;
             }
         }
@@ -420,7 +420,7 @@ public class Xogo {
                     ventanaPrincipal.comprobarLinas();
                 }
             }
-            altitud+=50;
+            altitud+=LADOCADRADO;
         }
         cadradosChan.removeAll(cadradosABorrar);
     }
@@ -488,8 +488,9 @@ public class Xogo {
     //Método que engade un cadrado abaixo de todo para aumentar a dificultade
     public void engadirCadradoDificultade(){
         Cadrado cadradoDificultade=new Cadrado();
+        int azar= (int) Math.floor(Math.random() * ((MAXX/LADOCADRADO-1) - 0 + 1) + 0);
         cadradoDificultade.setY(MAXY-LADOCADRADO);
-        cadradoDificultade.setX(200);
+        cadradoDificultade.setX(azar*LADOCADRADO);
         cadradoDificultade.getLblCadrado().setSize(LADOCADRADO,LADOCADRADO);
         cadradoDificultade.setCorRecheo(Color.PINK);
         ventanaPrincipal.pintarCadrado(cadradoDificultade.getLblCadrado());
