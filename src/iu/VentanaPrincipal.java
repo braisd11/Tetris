@@ -29,6 +29,7 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
+    dscb<fvbciu
     public Timer timer;
     public Timer tiempo;
     public int delay=1000;
