@@ -48,6 +48,7 @@ public class FichaT extends Ficha{
         c3.setY(c1.getY());
     }
     
+    //comproba se pode rotar chamando a ePosicionValida
     public boolean comprobarRotar() {
         boolean rotar=true;
         int c1X = c1.getX();

@@ -47,7 +47,8 @@ public class FichaZEspejo extends Ficha{
         c3.setX(c1.getX()-xogo1.getLADOCADRADO());
         c3.setY(c1.getY()+xogo1.getLADOCADRADO());
     }
-     
+    
+    //comproba se pode rotar chamando a ePosicionValida
     public boolean comprobarRotar() {
         boolean rotar=true;
         int c1X = c1.getX();

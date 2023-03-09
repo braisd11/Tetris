@@ -29,14 +29,12 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
-    dfgsstr
     public Timer timer;
     public Timer tiempo;
     public int delay=1000;
     public int delayMax=300;
     public Clip sonido;
 
-    /**
      * Creates new form Tetris
      */
     public VentanaPrincipal() {
@@ -1195,6 +1193,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         String numerolinas=numlinas.getText();
         int numeroLinas=(int) Double.parseDouble(numerolinas);
         numeroLinas++;
+        xogo1.setNumeroLinas(numeroLinas);
         mostrarNumeroLinas(numeroLinas);
     }
     
