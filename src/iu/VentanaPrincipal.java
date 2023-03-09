@@ -29,7 +29,12 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
-    public Tgjhxdfgdxxhgvxvhxfh
+    public Timer timer;
+    public Timer tiempo;
+    public int delay=1000;
+    public int delayMax=300;
+    public Clip sonido;
+
      * Creates new form Tetris
      */
     public VentanaPrincipal() {
@@ -875,17 +880,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-     public void reproducirSonido(String sonidoTetris){
-       try {
-        
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetris));
-        sonido = AudioSystem.getClip();
-        sonido.open(audioInputStream);
-        sonido.loop(ABORT);
-       } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
-         System.out.println("Error al reproducir el sonido.");
-       }
-     }
+    public void reproducirSonido(String sonidoTetris){
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetris));
+            sonido = AudioSystem.getClip();
+            sonido.open(audioInputStream);
+            sonido.loop(ABORT);
+        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+            System.out.println("Error al reproducir el sonido.");
+        }
+    }
      
     private void opcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionesActionPerformed
         // TODO add your handling code here:
@@ -947,6 +951,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         irMenuPrincipal();
         reiniciar();
         panelGameOver.setVisible(false);
+        sonido.stop();
     }//GEN-LAST:event_botonSalirActionPerformed
 
     
@@ -979,8 +984,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tempo.setText("0");
         puntos.setText("0");
         numlinas.setText("0");
-        gameOver.setVisible(false);
-        looser.setVisible(false);
+        panelGameOver.setVisible(false);
         xogo1.eliminarTodo();
     }
     
@@ -998,6 +1002,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 tiempo.restart();
                 xogo1.setPausa(false);
                 tqlbtnPausa.setSelected(false);
+                sonido.stop();
             }
         }
         else {
@@ -1092,6 +1097,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         crearTimerTempo();
         timer.start();
         tiempo.start();
+        
         String sonidoTetris="C:\\Users\\a22braisdr\\Documents\\NetBeansProjects\\Tetris\\src\\sound\\sonidoTetris.wav";
         reproducirSonido(sonidoTetris);
     }

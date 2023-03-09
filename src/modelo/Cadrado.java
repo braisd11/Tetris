@@ -43,15 +43,18 @@ public class Cadrado {
     public Color getCorRecheo() {
         return corRecheo;
     }
+    
     public void setCorRecheo(Color corRecheo) {
         this.corRecheo = corRecheo;
         lblCadrado.setBackground(corRecheo);
         lblCadrado.setBorder(BorderFactory.createLineBorder(Color.WHITE));
         lblCadrado.setOpaque(true);
     }
+    
     public JLabel getLblCadrado() {
         return lblCadrado;
     }
+    
     public void setLblCadrado(JLabel lblCadrado) {    
         this.lblCadrado = lblCadrado;
     }
