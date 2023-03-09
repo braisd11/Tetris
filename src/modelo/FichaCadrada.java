@@ -47,9 +47,11 @@ public class FichaCadrada extends Ficha{
         c3.setX(c1.getX()+xogo1.getLADOCADRADO());
         c3.setY(c1.getY()-xogo1.getLADOCADRADO());
     }
+    
     public boolean comprobarRotar() {
         return true;
     }
+    
     public boolean rotar() {
         return true;
     }

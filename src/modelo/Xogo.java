@@ -21,7 +21,7 @@ public class Xogo {
     private final int MAXX=450;
     private final int MAXY=900;
     private boolean pausa=false;
-    private int numeroLinas=MAXY/LADOCADRADO;
+    private int numeroLinas;
     public VentanaPrincipal ventanaPrincipal;
     public Ficha fichaActual;
     public Ficha fichaSeguinte;
@@ -238,7 +238,7 @@ public class Xogo {
     }
     
     
-    //Chama a ePosicionValida() e comproba. Se pode moverse chama a rotar() na clase Ficha.
+    //Chama a comprobarRotar() e comproba. Se pode rotar chama a rotar() na clase Ficha.
     public void rotarFicha(){
         if (fichaActual.comprobarRotar()) {
             borrarVisualizacion();
@@ -320,7 +320,9 @@ public class Xogo {
     }
     
     
-    //Engade a ficha ao array de cadradosChan
+    //Engade a ficha ao array de cadradosChan e chama a comprobar perder.
+    //Se se perde chama a mostrarFinDoXogo().
+    //Se non se perde A fichaSeguinte transformase na actual e xerase unha nova fichaSeguinte.
     public void engadirFichaAoChan(){
         fichaActual.iterCadrados=fichaActual.getCadrados().iterator();
         while (fichaActual.getIterCadrados().hasNext()){
@@ -352,7 +354,7 @@ public class Xogo {
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext() && !perder){
             Cadrado cadradoChan = iterChan.next();
-            if (cadradoChan.getY()<=(LADOCADRADO-1)){
+            if (cadradoChan.getY()<LADOCADRADO){
                 perder=true;
             }
         }
@@ -360,8 +362,7 @@ public class Xogo {
     }
     
     
-    //Xera unha nova ficha aleatoria e debuxaa. 
-    //Cada vez que unha ficha choca co chan xera automáticamente outra.
+    //Xera unha nova ficha aleatoria.
     public Ficha xerarNovaFicha(){
         Ficha ficha=null;
         int figura=(int) Math.floor(Math.random() * (7 - 1 + 1) + 1);
@@ -397,7 +398,7 @@ public class Xogo {
     //No caso de ter algunha liña completa, chama a borrarLinas().
     public void borrarLinasCompletas(){
         int altitud=0;
-        while (altitud<numeroLinas*LADOCADRADO) {
+        while (altitud<MAXY) {
             int sumCadradosFila=0;
             iterChan=cadradosChan.iterator();
             while (iterChan.hasNext()){

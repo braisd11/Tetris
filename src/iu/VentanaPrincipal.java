@@ -29,13 +29,7 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
-    public Timer timer;
-    public Timer tiempo;
-    public int delay=1000;
-    public int delayMax=300;
-    public Clip sonido;
-
-    /**
+    public Tgjhxdfgdxxhgvxvhxfh
      * Creates new form Tetris
      */
     public VentanaPrincipal() {
@@ -981,7 +975,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void reiniciar (){
         timer.stop();
-        timer.setDelay(1000);
         tiempo.stop();
         tempo.setText("0");
         puntos.setText("0");
@@ -1194,6 +1187,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         String numerolinas=numlinas.getText();
         int numeroLinas=(int) Double.parseDouble(numerolinas);
         numeroLinas++;
+        xogo1.setNumeroLinas(numeroLinas);
         mostrarNumeroLinas(numeroLinas);
     }
     
@@ -1201,11 +1195,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Aumenta a velocidade cada vez que o chaman dende xogo.borrarLinasCompletas()
     public void subirDificultade(){
         int velocidade=100;
-        delay=timer.getDelay()- velocidade;
-        if(delay<delayMax){
-            delay=delayMax;
+        int delayActual=timer.getDelay()- velocidade;
+        if(delayActual<delayMax){
+            delayActual=delayMax;
         }
-        timer.setDelay(delay);
+        timer.setDelay(delayActual);
     }
     
     //Comproba cantas liñas se completaron para saber se hai que aumentar a dificultade ou non
