@@ -29,6 +29,7 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
+    dfgsstr
     public Timer timer;
     public Timer tiempo;
     public int delay=1000;
@@ -881,17 +882,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     
-     public void reproducirSonido(String sonidoTetris){
-       try {
-        
-        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetris));
-        sonido = AudioSystem.getClip();
-        sonido.open(audioInputStream);
-        sonido.loop(ABORT);
-       } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
-         System.out.println("Error al reproducir el sonido.");
-       }
-     }
+    public void reproducirSonido(String sonidoTetris){
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetris));
+            sonido = AudioSystem.getClip();
+            sonido.open(audioInputStream);
+            sonido.loop(ABORT);
+        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+            System.out.println("Error al reproducir el sonido.");
+        }
+    }
      
     private void opcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionesActionPerformed
         // TODO add your handling code here:
@@ -953,6 +953,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         irMenuPrincipal();
         reiniciar();
         panelGameOver.setVisible(false);
+        sonido.stop();
     }//GEN-LAST:event_botonSalirActionPerformed
 
     
@@ -981,13 +982,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
     private void reiniciar (){
         timer.stop();
-        timer.setDelay(1000);
         tiempo.stop();
         tempo.setText("0");
         puntos.setText("0");
         numlinas.setText("0");
-        gameOver.setVisible(false);
-        looser.setVisible(false);
+        panelGameOver.setVisible(false);
         xogo1.eliminarTodo();
     }
     
@@ -1005,6 +1004,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 tiempo.restart();
                 xogo1.setPausa(false);
                 tqlbtnPausa.setSelected(false);
+                sonido.stop();
             }
         }
         else {
@@ -1099,6 +1099,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         crearTimerTempo();
         timer.start();
         tiempo.start();
+        
         String sonidoTetris="C:\\Users\\a22braisdr\\Documents\\NetBeansProjects\\Tetris\\src\\sound\\sonidoTetris.wav";
         reproducirSonido(sonidoTetris);
     }
@@ -1201,11 +1202,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Aumenta a velocidade cada vez que o chaman dende xogo.borrarLinasCompletas()
     public void subirDificultade(){
         int velocidade=100;
-        delay=timer.getDelay()- velocidade;
-        if(delay<delayMax){
-            delay=delayMax;
+        int delayActual=timer.getDelay()- velocidade;
+        if(delayActual<delayMax){
+            delayActual=delayMax;
         }
-        timer.setDelay(delay);
+        timer.setDelay(delayActual);
     }
     
     //Comproba cantas liñas se completaron para saber se hai que aumentar a dificultade ou non
