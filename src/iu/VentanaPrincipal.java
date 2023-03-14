@@ -35,6 +35,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public int delayMax=300;
     public Clip sonido;
 
+    /**
      * Creates new form Tetris
      */
     public VentanaPrincipal() {
@@ -1098,7 +1099,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         timer.start();
         tiempo.start();
         
-        String sonidoTetris="C:\\Users\\a22braisdr\\Documents\\NetBeansProjects\\Tetris\\src\\sound\\sonidoTetris.wav";
+        String sonidoTetris="src\\sound\\sonidoTetris.wav";
         reproducirSonido(sonidoTetris);
     }
     
