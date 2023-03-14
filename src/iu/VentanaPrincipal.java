@@ -29,12 +29,14 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
-    public Timer timer;
-    public Timer tiempo;
-    public int delay=1000;
-    public int delayMax=300;
-    public Clip sonido;
+    private Timer timer;
+    private Timer tiempo;
+    private int delay=1000;
+    private int delayMax=300;
+    private Clip sonido;
+    private Clip sonidoLina;
 
+    /**
      * Creates new form Tetris
      */
     public VentanaPrincipal() {
@@ -879,8 +881,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    public void reproducirSonido(String sonidoTetris){
+    //Reproduce a música do tetris
+    public void reproducirSonido(){
+        String sonidoTetris="src\\sound\\sonidoTetris.wav";
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetris));
             sonido = AudioSystem.getClip();
@@ -891,24 +894,43 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }
      
+    //Reproduce o son de cando facemos unha liña
+    public void reproducirSonidoLina(){
+        String sonidoTetrisLina="src\\sound\\sonidoTetrisLina.wav";
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetrisLina));
+            sonidoLina = AudioSystem.getClip();
+            sonidoLina.open(audioInputStream);
+        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+            System.out.println("Error al reproducir el sonido.");
+        }
+    }
+    
+    //Fai visible o dialog das opcións
     private void opcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionesActionPerformed
         // TODO add your handling code here:
         dialogOpciones.setVisible(true);
         dialogOpciones.setSize(800, 623);
     }//GEN-LAST:event_opcionesActionPerformed
 
+    
+    //Fai visible o dialog que nos da a escoller as opcións
     private void dificultadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dificultadActionPerformed
         // TODO add your handling code here:
         dialogDificultad.setVisible(true);
         dialogDificultad.setSize(500, 500);
     }//GEN-LAST:event_dificultadActionPerformed
 
+    
+    //Fai visible o dialog que mostra os controis
     private void controlesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_controlesActionPerformed
         // TODO add your handling code here:
         dialogControles.setVisible(true);
         dialogControles.setSize(755, 675);
     }//GEN-LAST:event_controlesActionPerformed
 
+    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         dialogControles.setVisible(false);
@@ -919,18 +941,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         dialogOpciones.setVisible(false);
     }//GEN-LAST:event_botonVolverAtrasActionPerformed
 
+    
+    //Pon a dificultade en Fácil
     private void botonFacilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacilActionPerformed
         delay=1200;
         delayMax=500;
         dialogDificultad.setVisible(false);
     }//GEN-LAST:event_botonFacilActionPerformed
 
+    
+    //Pon a dificultade en media
     private void botonMediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMediaActionPerformed
         delay=1000;
         delayMax=400;
         dialogDificultad.setVisible(false);
     }//GEN-LAST:event_botonMediaActionPerformed
 
+    
+    //Pon a dificultade en difícil
     private void botonDificilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDificilActionPerformed
         delay=400;
         delayMax=200;
@@ -1097,9 +1125,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         crearTimerTempo();
         timer.start();
         tiempo.start();
-        
-        String sonidoTetris="C:\\Users\\a22braisdr\\Documents\\NetBeansProjects\\Tetris\\src\\sound\\sonidoTetris.wav";
-        reproducirSonido(sonidoTetris);
+        reproducirSonido();
     }
     
     
@@ -1182,6 +1208,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         puntosLina+=12;
         puntos.setText(""+puntosLina);
     }
+    
+    
     
     //Escribe o número de liñas no contador
     public void mostrarNumeroLinas (int numeroLinas){
