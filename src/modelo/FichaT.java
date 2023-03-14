@@ -4,7 +4,7 @@
  */
 package modelo;
 
-import java.awt.Color;
+import static java.awt.Color.RED;
 
 /**
  *
@@ -19,32 +19,32 @@ public class FichaT extends Ficha{
     }
     
     //métodos
-    public void cor() {
-        c0.setCorRecheo(Color.RED);
-        c1.setCorRecheo(Color.RED);
-        c2.setCorRecheo(Color.RED);
-        c3.setCorRecheo(Color.RED);
+    protected void cor() {
+        c0.setCorRecheo(RED);
+        c1.setCorRecheo(RED);
+        c2.setCorRecheo(RED);
+        c3.setCorRecheo(RED);
     }
     
     public void posicionInicial() {
-        c1.setX(4*xogo1.getLADOCADRADO());
-        c1.setY(-xogo1.getLADOCADRADO());
+        c1.setX(4*this.getXogo1().getLADOCADRADO());
+        c1.setY(-this.getXogo1().getLADOCADRADO());
         c0.setX(c1.getX());
-        c0.setY(c1.getY()-xogo1.getLADOCADRADO());
+        c0.setY(c1.getY()-this.getXogo1().getLADOCADRADO());
         c2.setX(c1.getX());
-        c2.setY(c1.getY()+xogo1.getLADOCADRADO());
-        c3.setX(c1.getX()+xogo1.getLADOCADRADO());
+        c2.setY(c1.getY()+this.getXogo1().getLADOCADRADO());
+        c3.setX(c1.getX()+this.getXogo1().getLADOCADRADO());
         c3.setY(c1.getY());
     }
     
     public void posicionFichaSeguinte() {
-        c1.setX(2*xogo1.getLADOCADRADO());
-        c1.setY(xogo1.getLADOCADRADO()*2);
+        c1.setX(2*this.getXogo1().getLADOCADRADO());
+        c1.setY(this.getXogo1().getLADOCADRADO()*2);
         c0.setX(c1.getX());
-        c0.setY(c1.getY()-xogo1.getLADOCADRADO());
+        c0.setY(c1.getY()-this.getXogo1().getLADOCADRADO());
         c2.setX(c1.getX());
-        c2.setY(c1.getY()+xogo1.getLADOCADRADO());
-        c3.setX(c1.getX()+xogo1.getLADOCADRADO());
+        c2.setY(c1.getY()+this.getXogo1().getLADOCADRADO());
+        c3.setX(c1.getX()+this.getXogo1().getLADOCADRADO());
         c3.setY(c1.getY());
     }
     
@@ -54,62 +54,62 @@ public class FichaT extends Ficha{
         int c1X = c1.getX();
         int c1Y = c1.getY();
         //comprobar cambiar a posición 1
-        if (c3.getX()==c1X+xogo1.getLADOCADRADO() && c3.getY()==c1Y) {
+        if (c3.getX()==c1X+this.getXogo1().getLADOCADRADO() && c3.getY()==c1Y) {
             //comprobar futura posición de c0
-            if(!xogo1.ePosicionValida(c1X-xogo1.getLADOCADRADO(), c1Y)){
+            if(!this.getXogo1().ePosicionValida(c1X-this.getXogo1().getLADOCADRADO(), c1Y)){
                 rotar=false;
             }
             //comprobar futura posición de c2
-            else if(!xogo1.ePosicionValida(c1X+xogo1.getLADOCADRADO(), c1Y)){
+            else if(!this.getXogo1().ePosicionValida(c1X+this.getXogo1().getLADOCADRADO(), c1Y)){
                 rotar=false;
             }
             //comprobar futura posición de c3
-            else if(!xogo1.ePosicionValida(c1X, c1Y+xogo1.getLADOCADRADO())){
+            else if(!this.getXogo1().ePosicionValida(c1X, c1Y+this.getXogo1().getLADOCADRADO())){
                 rotar=false;
             }
         }
         //comprobar cambiar a posición 2
-        else if (c3.getX()==c1X && c3.getY()==c1Y+xogo1.getLADOCADRADO()) {
+        else if (c3.getX()==c1X && c3.getY()==c1Y+this.getXogo1().getLADOCADRADO()) {
             //comprobar futura posición de c0
-            if(!xogo1.ePosicionValida(c1X, c1Y-xogo1.getLADOCADRADO())){
+            if(!this.getXogo1().ePosicionValida(c1X, c1Y-this.getXogo1().getLADOCADRADO())){
                 rotar=false;
             }
             //comprobar futura posición de c2
-            else if(!xogo1.ePosicionValida(c1X, c1Y+xogo1.getLADOCADRADO())){
+            else if(!this.getXogo1().ePosicionValida(c1X, c1Y+this.getXogo1().getLADOCADRADO())){
                 rotar=false;
             }
             //comprobar futura posición de c3
-            else if(!xogo1.ePosicionValida(c1X-xogo1.getLADOCADRADO(), c1Y)){
+            else if(!this.getXogo1().ePosicionValida(c1X-this.getXogo1().getLADOCADRADO(), c1Y)){
                 rotar=false;
             }
         }
         //comprobar cambiar a posición 3
-        else if (c3.getX()==c1X-xogo1.getLADOCADRADO() && c3.getY()==c1Y) {
+        else if (c3.getX()==c1X-this.getXogo1().getLADOCADRADO() && c3.getY()==c1Y) {
             //comprobar futura posición de c0
-            if(!xogo1.ePosicionValida(c1X-xogo1.getLADOCADRADO(), c1Y)){
+            if(!this.getXogo1().ePosicionValida(c1X-this.getXogo1().getLADOCADRADO(), c1Y)){
                 rotar=false;
             }
             //comprobar futura posición de c2
-            else if(!xogo1.ePosicionValida(c1X+xogo1.getLADOCADRADO(), c1Y)){
+            else if(!this.getXogo1().ePosicionValida(c1X+this.getXogo1().getLADOCADRADO(), c1Y)){
                 rotar=false;
             }
             //comprobar futura posición de c3
-            else if(!xogo1.ePosicionValida(c1X, c1Y-xogo1.getLADOCADRADO())){
+            else if(!this.getXogo1().ePosicionValida(c1X, c1Y-this.getXogo1().getLADOCADRADO())){
                 rotar=false;
             }
         }
         //comprobar cambiar a posición 0
-        else if (c3.getX()==c1X && c3.getY()==c1Y-xogo1.getLADOCADRADO()) {
+        else if (c3.getX()==c1X && c3.getY()==c1Y-this.getXogo1().getLADOCADRADO()) {
             //comprobar futura posición de c0
-            if(!xogo1.ePosicionValida(c1X, c1Y-xogo1.getLADOCADRADO())){
+            if(!this.getXogo1().ePosicionValida(c1X, c1Y-this.getXogo1().getLADOCADRADO())){
                 rotar=false;
             }
             //comprobar futura posición de c2
-            else if(!xogo1.ePosicionValida(c1X, c1Y+xogo1.getLADOCADRADO())){
+            else if(!this.getXogo1().ePosicionValida(c1X, c1Y+this.getXogo1().getLADOCADRADO())){
                 rotar=false;
             }
             //comprobar futura posición de c3
-            else if(!xogo1.ePosicionValida(c1X+xogo1.getLADOCADRADO(), c1Y)){
+            else if(!this.getXogo1().ePosicionValida(c1X+this.getXogo1().getLADOCADRADO(), c1Y)){
                 rotar=false;
             }
         }
@@ -120,39 +120,39 @@ public class FichaT extends Ficha{
         int c1X = c1.getX();
         int c1Y = c1.getY();
         //cambiar a posición 1
-        if (c3.getX()==c1X+xogo1.getLADOCADRADO() && c3.getY()==c1Y) {
-            c0.setX(c1X-xogo1.getLADOCADRADO());
+        if (c3.getX()==c1X+this.getXogo1().getLADOCADRADO() && c3.getY()==c1Y) {
+            c0.setX(c1X-this.getXogo1().getLADOCADRADO());
             c0.setY(c1Y);
-            c2.setX(c1X+xogo1.getLADOCADRADO());
+            c2.setX(c1X+this.getXogo1().getLADOCADRADO());
             c2.setY(c1Y);
             c3.setX(c1X);
-            c3.setY(c1Y+xogo1.getLADOCADRADO());
+            c3.setY(c1Y+this.getXogo1().getLADOCADRADO());
         }
         //cambiar a posición 2
-        else if (c3.getX()==c1X && c3.getY()==c1Y+xogo1.getLADOCADRADO()) {
+        else if (c3.getX()==c1X && c3.getY()==c1Y+this.getXogo1().getLADOCADRADO()) {
             c0.setX(c1X);
-            c0.setY(c1Y-xogo1.getLADOCADRADO());
+            c0.setY(c1Y-this.getXogo1().getLADOCADRADO());
             c2.setX(c1X);
-            c2.setY(c1Y+xogo1.getLADOCADRADO());
-            c3.setX(c1X-xogo1.getLADOCADRADO());
+            c2.setY(c1Y+this.getXogo1().getLADOCADRADO());
+            c3.setX(c1X-this.getXogo1().getLADOCADRADO());
             c3.setY(c1Y);
         }
         //cambiar a posición 3
-        else if (c3.getX()==c1X-xogo1.getLADOCADRADO() && c3.getY()==c1Y) {
-            c0.setX(c1X-xogo1.getLADOCADRADO());
+        else if (c3.getX()==c1X-this.getXogo1().getLADOCADRADO() && c3.getY()==c1Y) {
+            c0.setX(c1X-this.getXogo1().getLADOCADRADO());
             c0.setY(c1Y);
-            c2.setX(c1X+xogo1.getLADOCADRADO());
+            c2.setX(c1X+this.getXogo1().getLADOCADRADO());
             c2.setY(c1Y);
             c3.setX(c1X);
-            c3.setY(c1Y-xogo1.getLADOCADRADO());
+            c3.setY(c1Y-this.getXogo1().getLADOCADRADO());
         }
         //cambiar a posición 0
-        else if (c3.getX()==c1X && c3.getY()==c1Y-xogo1.getLADOCADRADO()) {
+        else if (c3.getX()==c1X && c3.getY()==c1Y-this.getXogo1().getLADOCADRADO()) {
             c0.setX(c1X);
-            c0.setY(c1Y-xogo1.getLADOCADRADO());
+            c0.setY(c1Y-this.getXogo1().getLADOCADRADO());
             c2.setX(c1X);
-            c2.setY(c1Y+xogo1.getLADOCADRADO());
-            c3.setX(c1X+xogo1.getLADOCADRADO());
+            c2.setY(c1Y+this.getXogo1().getLADOCADRADO());
+            c3.setX(c1X+this.getXogo1().getLADOCADRADO());
             c3.setY(c1Y);
         }
         return true;
