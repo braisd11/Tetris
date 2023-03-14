@@ -30,9 +30,7 @@ import javax.swing.Timer;
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
     private Timer timer;
-    private Timer tiempo;
-    private int delay=1000;
-    private int delayMax=300;
+    private Timer 
     private Clip sonido;
     private Clip sonidoLina;
 
