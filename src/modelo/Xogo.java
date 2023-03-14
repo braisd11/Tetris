@@ -103,7 +103,7 @@ public class Xogo {
     
     
     //Crea a visualización da ficha actual
-    public void crearVisualizacion(){
+    private void crearVisualizacion(){
         Cadrado c0 = new Cadrado(LADOCADRADO);
         c0.setCorRecheo(LIGHT_GRAY);
         c0.setX(fichaActual.c0.getX());
@@ -129,7 +129,7 @@ public class Xogo {
     
     
     //Comrpoba onde chocaría a ficha abaixo e sitúase a visualización nesa posición
-    public void visualizacionBaja() {
+    private void visualizacionBaja() {
         while (!visualizacionChocaCoChan()){
             iterVisualizacion = visualizacionChan.iterator();
             while (iterVisualizacion.hasNext()) {
@@ -141,7 +141,7 @@ public class Xogo {
     
     
     //Comproba que a visualización choca co chan
-    public boolean visualizacionChocaCoChan() {
+    private boolean visualizacionChocaCoChan() {
         boolean chocar=false;
         iterVisualizacion= visualizacionChan.iterator();
         while (iterVisualizacion.hasNext() && !chocar) {
@@ -158,7 +158,7 @@ public class Xogo {
     
     
     //Elimina a visualización
-    public void borrarVisualizacion(){
+    private void borrarVisualizacion(){
         iterVisualizacion = visualizacionChan.iterator();
         while (iterVisualizacion.hasNext()) {
             Cadrado cadradoVisualizado = iterVisualizacion.next();
@@ -218,6 +218,7 @@ public class Xogo {
         }
     }
     
+
     public void fichaDelanteVisualizacion(){
         fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
         while (fichaActual.getIterCadrados().hasNext()) {
@@ -297,7 +298,7 @@ public class Xogo {
     
     
     //Comproba se a ficha que está en movemento choca con outra ficha que xa esté no chan
-    public boolean chocaFichaConCadradosChan(Cadrado cadradoFicha) {
+    private boolean chocaFichaConCadradosChan(Cadrado cadradoFicha) {
         boolean chocar=false;
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext() && !chocar) {
@@ -339,7 +340,7 @@ public class Xogo {
     }
     
     //Chamado dende engadirFichaAoChan() e recorre con un iterator e se ao xerarse a nova ficha choca con outra inmediatamente perdese.
-    public boolean comprobarPerder(){
+    private boolean comprobarPerder(){
         boolean perder=false;
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext() && !perder){
@@ -439,7 +440,7 @@ public class Xogo {
     
     
     //Borra todos os cadrados do chan cando reiniciamos o xogo.
-    public void borrarChan(){
+    private void borrarChan(){
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext()){
             Cadrado cadradoChan = iterChan.next();
@@ -450,7 +451,8 @@ public class Xogo {
     
     
     //Elimina a fichaActual cando reiniciamos o xogo.
-    public void borrarFichaActual(){
+
+    private void borrarFichaActual(){
         fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
         while (fichaActual.getIterCadrados().hasNext()) {
             Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
