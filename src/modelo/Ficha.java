@@ -14,15 +14,13 @@ import java.util.Iterator;
  */
 public abstract class Ficha {
     //atributos
-    public Xogo xogo1;
-
-    
-    public ArrayList<Cadrado> cadrados = new ArrayList<>();
-    Iterator<Cadrado> iterCadrados;
-    public Cadrado c0;
-    public Cadrado c1;
-    public Cadrado c2;
-    public Cadrado c3;
+    protected Xogo xogo1;
+    protected ArrayList<Cadrado> cadrados = new ArrayList<>();
+    protected Iterator<Cadrado> iterCadrados;
+    protected Cadrado c0;
+    protected Cadrado c1;
+    protected Cadrado c2;
+    protected Cadrado c3;
     
     //constructor
     public Ficha(Xogo xogo1) {
