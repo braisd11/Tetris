@@ -6,7 +6,8 @@
 package modelo;
 
 import iu.VentanaPrincipal;
-import java.awt.Color;
+import static java.awt.Color.LIGHT_GRAY;
+import static java.awt.Color.PINK;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -73,7 +74,7 @@ public class Xogo {
     //MÉTODOS
     //Chama a pintarCadrado
     public void debuxarCadrados(){
-        fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
+        fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
         while (fichaActual.getIterCadrados().hasNext()) {
             Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
             ventanaPrincipal.pintarCadrado(cadradoFicha.getLblCadrado());
@@ -83,7 +84,7 @@ public class Xogo {
     //Chama a pintarCadradoSeguinte
     public void debuxarFichaSeguinte(){
         ventanaPrincipal.borrarFichaSeguinte();
-        fichaSeguinte.iterCadrados = fichaSeguinte.getCadrados().iterator();
+        fichaSeguinte.setIterCadrados(fichaSeguinte.getCadrados().iterator());
         while (fichaSeguinte.getIterCadrados().hasNext()) {
             Cadrado cadradoFichaseguinte = fichaSeguinte.getIterCadrados().next();
             ventanaPrincipal.pintarCadradoSeguinte(cadradoFichaseguinte.getLblCadrado());
@@ -104,22 +105,22 @@ public class Xogo {
     //Crea a visualización da ficha actual
     private void crearVisualizacion(){
         Cadrado c0 = new Cadrado(LADOCADRADO);
-        c0.setCorRecheo(Color.LIGHT_GRAY);
+        c0.setCorRecheo(LIGHT_GRAY);
         c0.setX(fichaActual.c0.getX());
         c0.setY(fichaActual.c0.getY());
         visualizacionChan.add(c0);
         Cadrado c1 = new Cadrado(LADOCADRADO);
-        c1.setCorRecheo(Color.LIGHT_GRAY);
+        c1.setCorRecheo(LIGHT_GRAY);
         c1.setX(fichaActual.c1.getX());
         c1.setY(fichaActual.c1.getY());
         visualizacionChan.add(c1);
         Cadrado c2 = new Cadrado(LADOCADRADO);
-        c2.setCorRecheo(Color.LIGHT_GRAY);
+        c2.setCorRecheo(LIGHT_GRAY);
         c2.setX(fichaActual.c2.getX());
         c2.setY(fichaActual.c2.getY());
         visualizacionChan.add(c2);
         Cadrado c3 = new Cadrado(LADOCADRADO);
-        c3.setCorRecheo(Color.LIGHT_GRAY);
+        c3.setCorRecheo(LIGHT_GRAY);
         c3.setX(fichaActual.c3.getX());
         c3.setY(fichaActual.c3.getY());
         visualizacionChan.add(c3);
@@ -172,7 +173,7 @@ public class Xogo {
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverDereita() na clase Ficha.
     public void moverFichaDereita(){
         boolean mover=true;
-        fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
+        fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
         while (fichaActual.getIterCadrados().hasNext() && mover) {
             Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
             mover=ePosicionValida(cadradoFicha.getX() + LADOCADRADO, cadradoFicha.getY());
@@ -190,7 +191,7 @@ public class Xogo {
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverEsquerda() na clase Ficha.
     public void moverFichaEsquerda(){
         boolean mover=true;
-        fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
+        fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
         while (fichaActual.getIterCadrados().hasNext() && mover) {
             Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
             mover=ePosicionValida(cadradoFicha.getX() - LADOCADRADO, cadradoFicha.getY());
@@ -217,8 +218,9 @@ public class Xogo {
         }
     }
     
-    private void fichaDelanteVisualizacion(){
-        fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
+
+    public void fichaDelanteVisualizacion(){
+        fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
         while (fichaActual.getIterCadrados().hasNext()) {
             Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
             iterVisualizacion = visualizacionChan.iterator();
@@ -245,7 +247,7 @@ public class Xogo {
     //Baixa a ficha de golpe ata chocar co chan
     public void soltarFicha(){
         while (!chocaFichaCoChan()){
-            fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
+            fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
             while (fichaActual.getIterCadrados().hasNext()) {
                 Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
                 cadradoFicha.setY(cadradoFicha.getY()+LADOCADRADO);
@@ -281,7 +283,7 @@ public class Xogo {
     //Comproba que a ficha choque co chan e no caso de chocar, engádea ao chan e chama a xerarNovaFicha().
     public boolean chocaFichaCoChan() {
         boolean chocar=false;
-        fichaActual.iterCadrados= fichaActual.getCadrados().iterator();
+        fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
         while (fichaActual.getIterCadrados().hasNext() && !chocar) {
             Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
             if (cadradoFicha.getY()==MAXY-LADOCADRADO) {
@@ -313,9 +315,9 @@ public class Xogo {
     //Se se perde chama a mostrarFinDoXogo().
     //Se non se perde A fichaSeguinte transformase na actual e xerase unha nova fichaSeguinte.
     public void engadirFichaAoChan(){
-        fichaActual.iterCadrados=fichaActual.getCadrados().iterator();
+        fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
         while (fichaActual.getIterCadrados().hasNext()){
-            cadradosChan.add(fichaActual.iterCadrados.next());
+            cadradosChan.add(fichaActual.getIterCadrados().next());
         }
         borrarVisualizacion();
         borrarLinasCompletas();
@@ -449,8 +451,9 @@ public class Xogo {
     
     
     //Elimina a fichaActual cando reiniciamos o xogo.
+
     private void borrarFichaActual(){
-        fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
+        fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
         while (fichaActual.getIterCadrados().hasNext()) {
             Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
             ventanaPrincipal.borrarCadrado(cadradoFicha.getLblCadrado());
@@ -473,7 +476,7 @@ public class Xogo {
         int azar= (int) Math.floor(Math.random() * ((MAXX/LADOCADRADO-1) - 0 + 1) + 0);
         cadradoDificultade.setY(MAXY-LADOCADRADO);
         cadradoDificultade.setX(azar*LADOCADRADO);
-        cadradoDificultade.setCorRecheo(Color.PINK);
+        cadradoDificultade.setCorRecheo(PINK);
         ventanaPrincipal.pintarCadrado(cadradoDificultade.getLblCadrado());
         cadradosChan.add(cadradoDificultade);
         borrarVisualizacion();
