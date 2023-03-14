@@ -1153,7 +1153,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
     //Crea o timer das fichas
-    public void crearTimerXogo (int delay){
+    private void crearTimerXogo (int delay){
         timer=new Timer(delay, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1164,7 +1164,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     //Crea o timer do contador do tempo
-    public void crearTimerTempo(){
+    private void crearTimerTempo(){
         tiempo=new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1195,18 +1195,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Suma 1 punto por cada ficha colocada
     public void sumarPuntosFicha(){
         String puntuacionFicha=puntos.getText();
-        int puntosFicha=(int) Double.parseDouble(puntuacionFicha);
-        puntosFicha+=1;
-        puntos.setText(""+puntosFicha);
+        int puntuacion=(int) Double.parseDouble(puntuacionFicha);
+        puntuacion+=1;
+        escribirPuntos(puntuacion);
     }
-    
-    
+
+
     //Suma 12 puntos adicionais cada vez que se fai unha liña
     public void sumarPuntosLina(){
         String puntuacionLina=puntos.getText();
-        int puntosLina=(int) Double.parseDouble(puntuacionLina);
-        puntosLina+=12;
-        puntos.setText(""+puntosLina);
+        int puntuacion=(int) Double.parseDouble(puntuacionLina);
+        puntuacion+=12;
+        escribirPuntos(puntuacion);
+    }
+    
+    //Escribe os puntos no Panel
+    private void escribirPuntos(int puntuacion){
+        puntos.setText(""+puntuacion);
     }
     
     
@@ -1227,7 +1232,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     //Aumenta a velocidade cada vez que o chaman dende xogo.borrarLinasCompletas()
-    public void subirDificultade(){
+    private void subirDificultade(){
         int velocidade=100;
         int delayActual=timer.getDelay()- velocidade;
         if(delayActual<delayMax){
@@ -1247,7 +1252,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
     //Sube o chan unha liña para aumentar a dificultade
-    public void aumentarLinas(){
+    private void aumentarLinas(){
         xogo1.subirChan();
         xogo1.engadirCadradoDificultade();
     }
