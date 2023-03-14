@@ -52,14 +52,10 @@ public abstract class Ficha {
     //Métodos
     //Crea os cadrados para montar as fichas
     private void crearCadrados() {
-        c0 = new Cadrado();
-        c0.getLblCadrado().setSize(xogo1.getLADOCADRADO(), xogo1.getLADOCADRADO());
-        c1 = new Cadrado();
-        c1.getLblCadrado().setSize(xogo1.getLADOCADRADO(), xogo1.getLADOCADRADO());
-        c2 = new Cadrado();
-        c2.getLblCadrado().setSize(xogo1.getLADOCADRADO(), xogo1.getLADOCADRADO());
-        c3 = new Cadrado();
-        c3.getLblCadrado().setSize(xogo1.getLADOCADRADO(), xogo1.getLADOCADRADO());
+        c0 = new Cadrado(xogo1.getLADOCADRADO());
+        c1 = new Cadrado(xogo1.getLADOCADRADO());
+        c2 = new Cadrado(xogo1.getLADOCADRADO());
+        c3 = new Cadrado(xogo1.getLADOCADRADO());
         montarFicha(c0, c1, c2, c3);
     }
     

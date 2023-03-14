@@ -17,7 +17,7 @@ import java.util.Iterator;
  */
 public class Xogo {
 
-    private int LADOCADRADO=45;
+    private final int LADOCADRADO=45;
     private final int MAXX=450;
     private final int MAXY=900;
     private boolean pausa=false;
@@ -44,10 +44,6 @@ public class Xogo {
 
     public int getLADOCADRADO() {
         return LADOCADRADO;
-    }
-
-    public void setLADOCADRADO(int LADOCADRADO) {
-        this.LADOCADRADO = LADOCADRADO;
     }
 
     public boolean isPausa() {
@@ -107,26 +103,22 @@ public class Xogo {
     
     //Crea a visualización da ficha actual
     public void crearVisualizacion(){
-        Cadrado c0 = new Cadrado();
+        Cadrado c0 = new Cadrado(LADOCADRADO);
         c0.setCorRecheo(Color.LIGHT_GRAY);
-        c0.getLblCadrado().setSize(LADOCADRADO, LADOCADRADO);
         c0.setX(fichaActual.c0.getX());
         c0.setY(fichaActual.c0.getY());
         visualizacionChan.add(c0);
-        Cadrado c1 = new Cadrado();
-        c1.getLblCadrado().setSize(LADOCADRADO, LADOCADRADO);
+        Cadrado c1 = new Cadrado(LADOCADRADO);
         c1.setCorRecheo(Color.LIGHT_GRAY);
         c1.setX(fichaActual.c1.getX());
         c1.setY(fichaActual.c1.getY());
         visualizacionChan.add(c1);
-        Cadrado c2 = new Cadrado();
-        c2.getLblCadrado().setSize(LADOCADRADO, LADOCADRADO);
+        Cadrado c2 = new Cadrado(LADOCADRADO);
         c2.setCorRecheo(Color.LIGHT_GRAY);
         c2.setX(fichaActual.c2.getX());
         c2.setY(fichaActual.c2.getY());
         visualizacionChan.add(c2);
-        Cadrado c3 = new Cadrado();
-        c3.getLblCadrado().setSize(LADOCADRADO, LADOCADRADO);
+        Cadrado c3 = new Cadrado(LADOCADRADO);
         c3.setCorRecheo(Color.LIGHT_GRAY);
         c3.setX(fichaActual.c3.getX());
         c3.setY(fichaActual.c3.getY());
@@ -190,9 +182,7 @@ public class Xogo {
             fichaActual.moverDereita();
             visualizarNoChan();
             debuxarCadrados();
-        }
-        if (chocaFichaCoChan()) {
-            engadirFichaAoChan();
+            fichaDelanteVisualizacion();
         }
     }
     
@@ -210,20 +200,24 @@ public class Xogo {
             fichaActual.moverEsquerda();
             visualizarNoChan();
             debuxarCadrados();
-        }
-        if (chocaFichaCoChan()) {
-            engadirFichaAoChan();
+            fichaDelanteVisualizacion();
         }
     }
     
     
     //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverAbaixo() na clase Ficha.
     public void moverFichaAbaixo() {
-        fichaActual.moverAbaixo();
-        debuxarCadrados();
         if (chocaFichaCoChan()) { 
             engadirFichaAoChan();
         }
+        else{
+            fichaActual.moverAbaixo();
+            debuxarCadrados();
+            fichaDelanteVisualizacion();
+        }
+    }
+    
+    public void fichaDelanteVisualizacion(){
         fichaActual.iterCadrados = fichaActual.getCadrados().iterator();
         while (fichaActual.getIterCadrados().hasNext()) {
             Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
@@ -237,7 +231,6 @@ public class Xogo {
         }
     }
     
-    
     //Chama a comprobarRotar() e comproba. Se pode rotar chama a rotar() na clase Ficha.
     public void rotarFicha(){
         if (fichaActual.comprobarRotar()) {
@@ -245,13 +238,9 @@ public class Xogo {
             fichaActual.rotar();
             visualizarNoChan();
             debuxarCadrados();
-        }
-        if (chocaFichaCoChan()) {
-            engadirFichaAoChan();
+            fichaDelanteVisualizacion();
         }
     }
-    
-    
     
     //Baixa a ficha de golpe ata chocar co chan
     public void soltarFicha(){
@@ -480,11 +469,10 @@ public class Xogo {
     
     //Método que engade un cadrado abaixo de todo para aumentar a dificultade
     public void engadirCadradoDificultade(){
-        Cadrado cadradoDificultade=new Cadrado();
+        Cadrado cadradoDificultade=new Cadrado(LADOCADRADO);
         int azar= (int) Math.floor(Math.random() * ((MAXX/LADOCADRADO-1) - 0 + 1) + 0);
         cadradoDificultade.setY(MAXY-LADOCADRADO);
         cadradoDificultade.setX(azar*LADOCADRADO);
-        cadradoDificultade.getLblCadrado().setSize(LADOCADRADO,LADOCADRADO);
         cadradoDificultade.setCorRecheo(Color.PINK);
         ventanaPrincipal.pintarCadrado(cadradoDificultade.getLblCadrado());
         cadradosChan.add(cadradoDificultade);
