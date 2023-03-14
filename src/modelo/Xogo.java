@@ -23,9 +23,9 @@ public class Xogo {
     private final int MAXY=900;
     private boolean pausa=false;
     private int numeroLinas;
-    public VentanaPrincipal ventanaPrincipal;
-    public Ficha fichaActual;
-    public Ficha fichaSeguinte;
+    private VentanaPrincipal ventanaPrincipal;
+    private Ficha fichaActual;
+    private Ficha fichaSeguinte;
     ArrayList <Cadrado> cadradosChan=new ArrayList<>();
     ArrayList <Cadrado> cadradosABorrar=new ArrayList<>();
     ArrayList <Cadrado> visualizacionChan=new ArrayList<>();

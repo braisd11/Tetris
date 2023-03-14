@@ -14,7 +14,7 @@ import java.util.Iterator;
  */
 public abstract class Ficha {
     //atributos
-    private Xogo xogo1;
+    protected Xogo xogo1;
     private ArrayList<Cadrado> cadrados = new ArrayList<>();
     private Iterator<Cadrado> iterCadrados;
     protected Cadrado c0;
