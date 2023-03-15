@@ -19,7 +19,6 @@ import javax.swing.Timer;
 
 
 
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -31,7 +30,6 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
-    sdfsg
     private Timer timer;
     private Timer tiempo;
     private int delay=1000;
