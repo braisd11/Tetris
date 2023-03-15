@@ -120,7 +120,7 @@ public class FichaBarra extends Ficha{
     }
     
     
-    public void cambiarPosicion1() {
+    private void cambiarPosicion1() {
         c0.setX(c1.getX()-this.getXogo1().getLADOCADRADO());
         c0.setY(c1.getY());
         c2.setX(c1.getX()+this.getXogo1().getLADOCADRADO());
@@ -130,7 +130,7 @@ public class FichaBarra extends Ficha{
     }
     
     
-    public void cambiarPosicion0() {
+    private void cambiarPosicion0() {
         c0.setX(c1.getX());
         c0.setY(c1.getY()-this.getXogo1().getLADOCADRADO());
         c2.setX(c1.getX());
