@@ -32,11 +32,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private Timer timer;
     private Timer tiempo;
     private int delay=1000;
-    vagedrg
     private int delayMax=300;
     private Clip sonido;
-    private Clip sonidoLina;
-
+    private Clip sonidoLina;wtadsgfdxhbvcb
     /**
      * Creates new form Tetris
      */
