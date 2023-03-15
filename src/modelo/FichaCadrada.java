@@ -4,7 +4,7 @@
  */
 package modelo;
 
-import java.awt.Color;
+import static java.awt.Color.BLUE;
 
 /**
  *
@@ -19,33 +19,33 @@ public class FichaCadrada extends Ficha{
     }
     
     //métodos
-    public void cor() {
-        c0.setCorRecheo(Color.BLUE);
-        c1.setCorRecheo(Color.BLUE);
-        c2.setCorRecheo(Color.BLUE);
-        c3.setCorRecheo(Color.BLUE);
+    protected void cor() {
+        c0.setCorRecheo(BLUE);
+        c1.setCorRecheo(BLUE);
+        c2.setCorRecheo(BLUE);
+        c3.setCorRecheo(BLUE);
     }
     
     public void posicionInicial() {
-        c1.setX(4*xogo1.getLADOCADRADO());
+        c1.setX(4*this.getXogo1().getLADOCADRADO());
         c1.setY(0);
         c0.setX(c1.getX());
-        c0.setY(c1.getY()-xogo1.getLADOCADRADO());
-        c2.setX(c1.getX()+xogo1.getLADOCADRADO());
+        c0.setY(c1.getY()-this.getXogo1().getLADOCADRADO());
+        c2.setX(c1.getX()+this.getXogo1().getLADOCADRADO());
         c2.setY(c1.getY());
-        c3.setX(c1.getX()+xogo1.getLADOCADRADO());
-        c3.setY(c1.getY()-xogo1.getLADOCADRADO());
+        c3.setX(c1.getX()+this.getXogo1().getLADOCADRADO());
+        c3.setY(c1.getY()-this.getXogo1().getLADOCADRADO());
     }
     
     public void posicionFichaSeguinte(){
-        c1.setX(2*xogo1.getLADOCADRADO());
-        c1.setY(xogo1.getLADOCADRADO()*2);
+        c1.setX(2*this.getXogo1().getLADOCADRADO());
+        c1.setY(this.getXogo1().getLADOCADRADO()*2);
         c0.setX(c1.getX());
-        c0.setY(c1.getY()-xogo1.getLADOCADRADO());
-        c2.setX(c1.getX()+xogo1.getLADOCADRADO());
+        c0.setY(c1.getY()-this.getXogo1().getLADOCADRADO());
+        c2.setX(c1.getX()+this.getXogo1().getLADOCADRADO());
         c2.setY(c1.getY());
-        c3.setX(c1.getX()+xogo1.getLADOCADRADO());
-        c3.setY(c1.getY()-xogo1.getLADOCADRADO());
+        c3.setX(c1.getX()+this.getXogo1().getLADOCADRADO());
+        c3.setY(c1.getY()-this.getXogo1().getLADOCADRADO());
     }
     
     public boolean comprobarRotar() {

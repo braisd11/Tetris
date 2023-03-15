@@ -15,8 +15,8 @@ import java.util.Iterator;
 public abstract class Ficha {
     //atributos
     protected Xogo xogo1;
-    protected ArrayList<Cadrado> cadrados = new ArrayList<>();
-    protected Iterator<Cadrado> iterCadrados;
+    private ArrayList<Cadrado> cadrados = new ArrayList<>();
+    private Iterator<Cadrado> iterCadrados;
     protected Cadrado c0;
     protected Cadrado c1;
     protected Cadrado c2;
@@ -98,5 +98,5 @@ public abstract class Ficha {
     public abstract boolean rotar();
     public abstract void posicionInicial();
     public abstract void posicionFichaSeguinte();
-    public abstract void cor();
+    protected abstract void cor();
 }
