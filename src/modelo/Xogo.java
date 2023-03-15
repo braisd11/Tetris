@@ -93,7 +93,7 @@ public class Xogo {
         }
     }
     
-    //MÉTODOS QUE DEBUXAN A FICHA ACTUAL E SEGUINTE///////////////////////////////////////////////////////////////
+    // FIN DE MÉTODOS QUE DEBUXAN A FICHA ACTUAL E SEGUINTE///////////////////////////////////////////////////////////////
     
     
     
@@ -137,7 +137,7 @@ public class Xogo {
     }
     
     
-    //Comrpoba onde chocaría a ficha abaixo e sitúase a visualización nesa posición
+    //Comproba onde chocaría a ficha abaixo e sitúase a visualización nesa posición
     private void visualizacionBaja() {
         while (!visualizacionChocaCoChan()){
             iterVisualizacion = visualizacionChan.iterator();
@@ -177,7 +177,7 @@ public class Xogo {
     }
     
     
-    //Se un cadrado da visualización superponse a propia Ficha, este cadradoVisualizado deixará de ser visible 
+    //Se un cadrado da visualización superpónse á propia Ficha, este cadradoVisualizado deixará de ser visible 
     public void fichaDelanteVisualizacion(){
         fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
         while (fichaActual.getIterCadrados().hasNext()) {
@@ -276,7 +276,7 @@ public class Xogo {
     
     
     
-    //MÉTODO DE COMPROBAR POSICIÓN VALIDA PARA A FICHA/////////////////////////////////////////////////////////
+    //MÉTODO DE COMPROBAR POSICIÓN VÁLIDA PARA A FICHA/////////////////////////////////////////////////////////
 
     //Comproba que a ficha non sobrepase os límites laterais e se chega ao chan ou choca con outra ficha.
     public boolean ePosicionValida(int x, int y){
@@ -299,7 +299,7 @@ public class Xogo {
         return posicionValida;
     }
     
-    //FIN MÉTODO DE COMPROBAR POSICIÓN VALIDA PARA A FICHA////////////////////////////////////////////////////
+    //FIN MÉTODO DE COMPROBAR POSICIÓN VÁLIDA PARA A FICHA////////////////////////////////////////////////////
     
     
     
@@ -411,8 +411,8 @@ public class Xogo {
         return ficha;
     }
     
-    /*Asignaselle a fichaAcual a ficha de ficheSeguinte, xérase unha nova fichaSeguinte 
-    e debuxanse as fichas e a visualización da actual, tamén comproba se choca co chan*/
+    /*Asignaselle a fichaAcual á ficha de fichaSeguinte, xérase unha nova fichaSeguinte 
+    e debúxanse as fichas e a visualización da actual, tamén comproba se choca co chan*/
     private void establecerFichaActual(){
         fichaActual=fichaSeguinte;
         fichaActual.posicionInicial();
@@ -470,11 +470,6 @@ public class Xogo {
             else if (cadradoChan.getY()<altitud){
                 cadradoChan.setY(cadradoChan.getY()+LADOCADRADO);
             }
-        }
-        Iterator<Cadrado> iterBorrar=cadradosABorrar.iterator();
-        while (iterBorrar.hasNext()){
-            Cadrado cadradoABorrar=iterBorrar.next();
-            ventanaPrincipal.borrarCadrado(cadradoABorrar.getLblCadrado());
         }
     }
     

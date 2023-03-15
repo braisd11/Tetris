@@ -29,8 +29,7 @@ import javax.swing.Timer;
  * @author a22braisdr
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    Xogo xosdf
-            tfcvkjgm  j oygi
+    Xogo xogo1;
     private Timer timer;
     private Timer tiempo;
     private int delay=1000;
@@ -872,8 +871,65 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-  
+            /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new VentanaPrincipal().setVisible(true);
+            }
+        });
+    }
     
+    //MÉTODOS PARA INICIAR A PARTIDA OU CERRAR O PROGRAMA/////////////
+    
+    //MÉTODO QUE CREA UN OBXETO DA CLASE XOGO E DA INICIO O XOGO
+    private void iniciarPartida(){
+        xogo1=new Xogo(this);
+        juego.requestFocus();
+        crearTimerXogo(delay);
+        crearTimerTempo();
+        timer.start();
+        tiempo.start();
+        reproducirSonido();
+    }
+    
+    
+    //CERRA O XOGO
+    private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        // TODO add your handling code here:
+        System.exit(0);
+    }     
+    //FIN DE MÉTODOS PARA O INICIO OU O FINAL DO PROGRAMA//////////
+    
+    
+    //MÉTODOS PARA OS SONS/////////////////////////////////////////
     
     //Reproduce a música do tetris
     public void reproducirSonido(){
@@ -900,6 +956,27 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }
     
+    
+    //FIN DE MÉTODOS PARA OS SONS//////////////////////////////////
+    
+    
+    
+    
+    //MÉTODOS PARA OS MENÚS///////////////////////////
+    
+    
+    
+    //BOTÓN QUE DA INICIO AO XOGO CHAMANDO A INICIARPARTIDA()
+    private void botonIniciarActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        // TODO add your handling code here:
+        panelBotones.setVisible(false);
+        panelPrincipal.setVisible(false);
+        panelXogo.setVisible(true);
+        iniciarPartida();
+    }    
+    
+    
+    
     //Fai visible o dialog das opcións
     private void opcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcionesActionPerformed
         // TODO add your handling code here:
@@ -923,8 +1000,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         dialogControles.setSize(755, 675);
     }//GEN-LAST:event_controlesActionPerformed
 
-    
-    
+    //Menú para os controis
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         dialogControles.setVisible(false);
@@ -935,6 +1011,19 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         dialogOpciones.setVisible(false);
     }//GEN-LAST:event_botonVolverAtrasActionPerformed
 
+    //Sae ao menú principal
+    private void irMenuPrincipal (){
+        panelXogo.setVisible(false);
+        panelPrincipal.setVisible(true);
+    }
+    
+    //FIN DE MÉTODOS SOBRE OS MENÚS/////////////////////////////////
+    
+    
+    
+    
+    
+    //MÉTODOS PARA A DIFICULTADE////////////////////////
     
     //Pon a dificultade en Fácil
     private void botonFacilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacilActionPerformed
@@ -944,7 +1033,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonFacilActionPerformed
 
     
-    //Pon a dificultade en media
+    //Pon a dificultade en Media
     private void botonMediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMediaActionPerformed
         delay=1000;
         delayMax=400;
@@ -952,13 +1041,45 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMediaActionPerformed
 
     
-    //Pon a dificultade en difícil
+    //Pon a dificultade en Difícil
     private void botonDificilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDificilActionPerformed
         delay=400;
         delayMax=200;
         dialogDificultad.setVisible(false);
     }//GEN-LAST:event_botonDificilActionPerformed
 
+    //Aumenta a velocidade cada vez que o chaman dende xogo.borrarLinasCompletas()
+    private void subirDificultade(){
+        int velocidade=100;
+        int delayActual=timer.getDelay()- velocidade;
+        if(delayActual<delayMax){
+            delayActual=delayMax;
+        }
+        timer.setDelay(delayActual);
+    }
+    
+    //Comproba cantas liñas se completaron para saber se hai que aumentar a dificultade ou non
+    //Cada vez que completa 5 liñas, chama a VentanaPrincipal.aumentarDificultade().
+    public void comprobarLinas(){
+        String numerolinas=numlinas.getText();
+        int linas=(int) Double.parseDouble(numerolinas);
+        if(linas%5==0){
+            subirDificultade();
+        }
+    }
+    
+    //Sube o chan unha liña para aumentar a dificultade
+    private void aumentarLinas(){
+        xogo1.subirChan();
+        xogo1.engadirCadradoDificultade();
+    }
+    
+    //FIN DE MÉTODOS PARA A DIFICULTADE////////////////
+    
+    
+    
+    
+    //MÉTODOS PARA REINICIAR O XOGO/////////////////
     
     //Reinicia o Xogo dende o menu de GameOver sen volver ao menú principal
     private void botonReiniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReiniciarActionPerformed
@@ -976,30 +1097,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         sonido.stop();
     }//GEN-LAST:event_botonSalirActionPerformed
 
-    
-    //Sae ao menú principal
-    private void irMenuPrincipal (){
-        panelXogo.setVisible(false);
-        panelPrincipal.setVisible(true);
-    }
-    
-    
-    //BOTÓN QUE DA INICIO AO XOGO CHAMANDO A INICIARPARTIDA()
-    private void botonIniciarActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code here:
-        panelBotones.setVisible(false);
-        panelPrincipal.setVisible(false);
-        panelXogo.setVisible(true);
-        iniciarPartida();
-    }                                            
-
-    
-    //CERRA O XOGO
-    private void botonCerrarActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
-        System.exit(0);
-    }                                           
-
+    //Reinicia as estatísticas
     private void reiniciar (){
         timer.stop();
         tiempo.stop();
@@ -1009,6 +1107,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelGameOver.setVisible(false);
         xogo1.eliminarTodo();
     }
+    
+    
+    //FIN DE MÉTODOS PARA REINCIAR
+    
+    
+    //MÉTODOS PARA O MOVEMENTO DA FICHA///////////////
     
     //Listener do teclado para os movementos
     private void juegoKeyPressed(java.awt.event.KeyEvent evt) {                                 
@@ -1054,7 +1158,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }                                
 
+    
+    //FIN DE MÉTODOS PARA O MOVEMENTO DA FICHA///////////////
+    
+    
 
+    //MÉTODOS PARA PAUSAR O XOGO//////////////////////
     
     //Pausa e reanuda o xogo
     private void tqlbtnPausaActionPerformed(java.awt.event.ActionEvent evt) {                                            
@@ -1075,53 +1184,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }                                           
 
     
-        /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaPrincipal().setVisible(true);
-            }
-        });
-    }
-
-    //MÉTODO QUE CREA UN OBXETO DA CLASE XOGO E DA INICIO O XOGO
-    private void iniciarPartida(){
-        xogo1=new Xogo(this);
-        juego.requestFocus();
-        crearTimerXogo(delay);
-        crearTimerTempo();
-        timer.start();
-        tiempo.start();
-        reproducirSonido();
-    }
+    //FIN DE MÉTODOS PARA PAUSAR O XOGO//////////////
     
+
+
+
+    //MÉTODOS PARA PINTAR OU BORRAR FICHAS OU CADRADOS///////////
     
     //Pinta o cadrado no UI
     public void pintarCadrado(JLabel lblCadrado){
@@ -1145,6 +1213,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public void borrarFichaSeguinte (){
         panelFichaSeguinte.removeAll();
     }
+
+    //FIN DE MÉTODOS PARA PINTAR OU BORRAR CADRADOS////////
+    
+    
+    
+    
+    //MÉTODOS PARA OS TIMERS///////////////
     
     //Crea o timer das fichas
     private void crearTimerXogo (int delay){
@@ -1174,17 +1249,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
     
-    //No caso de perder mostra a mensaxe de que se perdeu.
-    public void mostrarFinDoXogo(){
-        timer.stop();
-        tiempo.stop();
-        xogo1.setPausa(true);
-        panelGameOver.setVisible(true);
-        gameOver.setVisible(true);
-        sonido.stop();
-    }
+    //FIN DE MÉTODOS PARA OS TIMERS///////////////
     
     
+    
+    
+
+    
+    //MÉTODOS PARA AS ESTATÍSTICAS//////////////
     
     //Suma 1 punto por cada ficha colocada
     public void sumarPuntosFicha(){
@@ -1224,32 +1296,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         mostrarNumeroLinas(numeroLinas);
     }
     
+    //FIN DE MÉTODOS PARA AS ESTATÍSTICAS////////////
+
     
-    //Aumenta a velocidade cada vez que o chaman dende xogo.borrarLinasCompletas()
-    private void subirDificultade(){
-        int velocidade=100;
-        int delayActual=timer.getDelay()- velocidade;
-        if(delayActual<delayMax){
-            delayActual=delayMax;
-        }
-        timer.setDelay(delayActual);
-    }
     
-    //Comproba cantas liñas se completaron para saber se hai que aumentar a dificultade ou non
-    //Cada vez que completa 5 liñas, chama a VentanaPrincipal.aumentarDificultade().
-    public void comprobarLinas(){
-        String numerolinas=numlinas.getText();
-        int linas=(int) Double.parseDouble(numerolinas);
-        if(linas%5==0){
-            subirDificultade();
-        }
-    }
     
-    //Sube o chan unha liña para aumentar a dificultade
-    private void aumentarLinas(){
-        xogo1.subirChan();
-        xogo1.engadirCadradoDificultade();
+    //MÉTODOS PARA O FINAL DO XOGO/////////////
+    
+    //No caso de perder mostra a mensaxe de que se perdeu.
+    public void mostrarFinDoXogo(){
+        timer.stop();
+        tiempo.stop();
+        xogo1.setPausa(true);
+        panelGameOver.setVisible(true);
+        gameOver.setVisible(true);
+        sonido.stop();
     }
+    //FIN DE MÉTODOS PARA O FINAL DO XOGO/////////////
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundControles;
