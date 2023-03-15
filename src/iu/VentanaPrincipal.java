@@ -30,7 +30,6 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
-    afsdgadg
     private Timer timer;
     private Timer tiempo;
     private Timer timerContaAtras;
