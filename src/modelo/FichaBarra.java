@@ -26,6 +26,7 @@ public class FichaBarra extends Ficha{
         c3.setCorRecheo(YELLOW);
     }
     
+    
     public void posicionInicial() {
         c1.setX(4*this.getXogo1().getLADOCADRADO());
         c1.setY(-this.getXogo1().getLADOCADRADO()*3);
@@ -36,6 +37,7 @@ public class FichaBarra extends Ficha{
         c3.setX(c1.getX());
         c3.setY(c1.getY()+2*this.getXogo1().getLADOCADRADO());
     }
+    
     
     public void posicionFichaSeguinte() {
         c1.setX(2*this.getXogo1().getLADOCADRADO());
@@ -48,65 +50,94 @@ public class FichaBarra extends Ficha{
         c3.setY(c1.getY()+2*this.getXogo1().getLADOCADRADO());
     }
     
+    
+    
+    //MÉTODOS QUE COMPROBAN SE PODE ROTAR////////////////////////////////////////////////////////////////////////
+    
     //comproba se pode rotar chamando a ePosicionValida
     public boolean comprobarRotar() {
         boolean rotar=true;
-        int c1X = c1.getX();
-        int c1Y = c1.getY();
-        //comprobar cambiar a posición 1
-        if (c0.getX()==c1X) {
-            //comprobar futura posición de c0
-            if(!this.getXogo1().ePosicionValida(c1X-this.getXogo1().getLADOCADRADO(), c1Y)){
-                rotar=false;
-            }
-            //comprobar futura posición de c2
-            else if(!this.getXogo1().ePosicionValida(c1X+this.getXogo1().getLADOCADRADO(), c1Y)){
-                rotar=false;
-            }
-            //comprobar futura posición de c3
-            else if(!this.getXogo1().ePosicionValida(c1X+2*this.getXogo1().getLADOCADRADO(), c1Y)){
-                rotar=false;
-            }
+        if (c0.getX()==c1.getX()) {
+            rotar=comprobarCambiarPosicion1();
         }
-        //comprobar cambiar a posición 0
-        else if (c0.getY()==c1Y) {
-            //comprobar futura posición de c0
-            if(!this.getXogo1().ePosicionValida(c1X, c1Y-this.getXogo1().getLADOCADRADO())){
-                rotar=false;
-            }
-            //comprobar futura posición de c2
-            else if(!this.getXogo1().ePosicionValida(c1X, c1Y+this.getXogo1().getLADOCADRADO())){
-                rotar=false;
-            }
-            //comprobar futura posición de c3
-            else if(!this.getXogo1().ePosicionValida(c1X, c1Y+2*this.getXogo1().getLADOCADRADO())){
-                rotar=false;
-            }
+        else if (c0.getY()==c1.getY()) {
+            rotar=comprobarCambiarPosicion0();
         }
         return rotar;
     }
     
-    public boolean rotar() {
-        int c1X = c1.getX();
-        int c1Y = c1.getY();
-        //cambiar a posición 1
-        if (c0.getX()==c1X) {
-            c0.setX(c1X-this.getXogo1().getLADOCADRADO());
-            c0.setY(c1Y);
-            c2.setX(c1X+this.getXogo1().getLADOCADRADO());
-            c2.setY(c1Y);
-            c3.setX(c1X+2*this.getXogo1().getLADOCADRADO());
-            c3.setY(c1Y);
+    
+    private boolean comprobarCambiarPosicion1(){
+        boolean rotar=true;
+        //comprobar futura posición de c0
+        if(!this.getXogo1().ePosicionValida(c1.getX()-this.getXogo1().getLADOCADRADO(), c1.getY())){
+            rotar=false;
         }
-        //cambiar a posición 0
-        else if (c0.getY()==c1Y) {
-            c0.setX(c1X);
-            c0.setY(c1Y-this.getXogo1().getLADOCADRADO());
-            c2.setX(c1X);
-            c2.setY(c1Y+this.getXogo1().getLADOCADRADO());
-            c3.setX(c1X);
-            c3.setY(c1Y+2*this.getXogo1().getLADOCADRADO());
+        //comprobar futura posición de c2
+        else if(!this.getXogo1().ePosicionValida(c1.getX()+this.getXogo1().getLADOCADRADO(), c1.getY())){
+            rotar=false;
+        }
+        //comprobar futura posición de c3
+        else if(!this.getXogo1().ePosicionValida(c1.getX()+2*this.getXogo1().getLADOCADRADO(), c1.getY())){
+            rotar=false;
+        }
+        return rotar;
+    }
+    
+    
+    private boolean comprobarCambiarPosicion0(){
+        boolean rotar=true;
+        //comprobar futura posición de c0
+        if(!this.getXogo1().ePosicionValida(c1.getX(), c1.getY()-this.getXogo1().getLADOCADRADO())){
+            rotar=false;
+        }
+        //comprobar futura posición de c2
+        else if(!this.getXogo1().ePosicionValida(c1.getX(), c1.getY()+this.getXogo1().getLADOCADRADO())){
+            rotar=false;
+        }
+        //comprobar futura posición de c3
+        else if(!this.getXogo1().ePosicionValida(c1.getX(), c1.getY()+2*this.getXogo1().getLADOCADRADO())){
+            rotar=false;
+        }
+        return rotar;
+    }
+    
+    //FIN MÉTODOS QUE COMPROBAN SE PODE ROTAR////////////////////////////////////////////////////////////////////
+    
+    
+    
+    
+    //MÉTODOS QUE ROTAN//////////////////////////////////////////////////////////////////////////////////////////////
+    
+    public boolean rotar() {
+        if (c0.getX()==c1.getX()) {
+            cambiarPosicion1();
+        }
+        else if (c0.getY()==c1.getY()) {
+            cambiarPosicion0();
         }
         return true;
     }
+    
+    
+    public void cambiarPosicion1() {
+        c0.setX(c1.getX()-this.getXogo1().getLADOCADRADO());
+        c0.setY(c1.getY());
+        c2.setX(c1.getX()+this.getXogo1().getLADOCADRADO());
+        c2.setY(c1.getY());
+        c3.setX(c1.getX()+2*this.getXogo1().getLADOCADRADO());
+        c3.setY(c1.getY());
+    }
+    
+    
+    public void cambiarPosicion0() {
+        c0.setX(c1.getX());
+        c0.setY(c1.getY()-this.getXogo1().getLADOCADRADO());
+        c2.setX(c1.getX());
+        c2.setY(c1.getY()+this.getXogo1().getLADOCADRADO());
+        c3.setX(c1.getX());
+        c3.setY(c1.getY()+2*this.getXogo1().getLADOCADRADO());
+    }
+    
+    //FIN MÉTODOS QUE ROTAN//////////////////////////////////////////////////////////////////////////////////////////////
 }
