@@ -11,7 +11,6 @@ import static java.awt.Color.GREEN;
  * @author a22noellr
  */
 public class FichaL extends Ficha {
-
     //constructor
     public FichaL(Xogo xogo1) {
         super(xogo1);

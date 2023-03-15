@@ -387,15 +387,16 @@ public class Xogo {
     public Ficha xerarNovaFicha(){
         Ficha ficha=null;
         int figura=(int) Math.floor(Math.random() * (7 - 1 + 1) + 1);
+        figura=1;
         if (figura==1){
             ficha=new FichaT(this);
         }
         if (figura==2){
             ficha=new FichaCadrada(this);
         }
-        if (figura==3){
+        /*if (figura==3){
             ficha=new FichaL(this);
-        }
+        }*/
         if (figura==4){
             ficha=new FichaBarra(this);
         }

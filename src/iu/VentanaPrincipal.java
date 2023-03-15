@@ -29,22 +29,15 @@ import javax.swing.Timer;
  * @author a22braisdr
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    Xogo xoo1;
-    tvfigkbjag
-            df
-            g
-                    sdf
-                    gf
-                            gh
-                            df
-                                    gad
-                                    
+    Xogo xogo1;
     private Timer timer;
     private Timer tiempo;
+    private Timer timerContaAtras;
     private int delay=1000;
     private int delayMax=300;
     private Clip sonido;
     private Clip sonidoLina;
+    int numContaAtras=3;
     /**
      * Creates new form Tetris
      */
@@ -112,6 +105,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         numlinas = new javax.swing.JLabel();
         tqlbtnPausa = new javax.swing.JToggleButton();
         panelFichaSeguinte = new javax.swing.JPanel();
+        jLabelContaAtras = new javax.swing.JLabel();
 
         dialogOpciones.setVisible(false);
         dialogOpciones.setResizable(false);
@@ -808,13 +802,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGap(0, 264, Short.MAX_VALUE)
         );
 
+        jLabelContaAtras.setVisible(false);
+        jLabelContaAtras.setFont(new java.awt.Font("Sitka Heading", 0, 200)); // NOI18N
+        jLabelContaAtras.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelContaAtras.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelContaAtras.setText("3");
+
         javax.swing.GroupLayout panelXogoLayout = new javax.swing.GroupLayout(panelXogo);
         panelXogo.setLayout(panelXogoLayout);
         panelXogoLayout.setHorizontalGroup(
             panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelXogoLayout.createSequentialGroup()
                 .addGap(46, 46, 46)
-                .addComponent(panelFichaSeguinte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(panelFichaSeguinte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabelContaAtras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(75, 75, 75)
                 .addComponent(juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -850,7 +852,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                         .addComponent(juego, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(panelXogoLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addComponent(panelFichaSeguinte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(panelFichaSeguinte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(119, 119, 119)
+                        .addComponent(jLabelContaAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(10, 10, 10))
         );
 
@@ -1132,12 +1136,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         if (xogo1.isPausa()){
             if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-                tqlbtnPausa.setText("PAUSE");
-                timer.restart();
-                tiempo.restart();
-                xogo1.setPausa(false);
-                tqlbtnPausa.setSelected(false);
-                sonido.stop();
+                crearTimerContaAtras();
+                timerContaAtras.start();
             }
         }
         else {
@@ -1160,6 +1160,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 tiempo.stop();
                 xogo1.setPausa(true);
                 tqlbtnPausa.setSelected(true);
+                jLabelContaAtras.setVisible(true);
+                jLabelContaAtras.setText(numContaAtras+"");
             }
             if (evt.getKeyChar()==' '){
                 xogo1.soltarFicha();
@@ -1182,13 +1184,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             timer.stop();
             tiempo.stop();
             xogo1.setPausa(true);
-            
+            sonido.stop();
         }
         else{
-            tqlbtnPausa.setText("PAUSE");
-            timer.restart();
-            tiempo.restart();
-            xogo1.setPausa(false);
+            crearTimerContaAtras();
+            timerContaAtras.start();
         }
     }                                           
 
@@ -1257,6 +1257,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
     }
     
+    //Timer para a conta atrás
+    private void crearTimerContaAtras (){
+        timerContaAtras=new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                contaAtras();
+            }
+        });
+    }
     
     //FIN DE MÉTODOS PARA OS TIMERS///////////////
     
@@ -1323,6 +1332,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     //FIN DE MÉTODOS PARA O FINAL DO XOGO/////////////
     
+    private void contaAtras (){
+        numContaAtras--;
+        jLabelContaAtras.setText(numContaAtras+"");
+        if (numContaAtras==0){
+            tqlbtnPausa.setText("PAUSE");
+            timer.restart();
+            tiempo.restart();
+            xogo1.setPausa(false);
+            jLabelContaAtras.setVisible(false);
+            sonido.start();
+            timerContaAtras.stop();
+            tqlbtnPausa.setSelected(false);
+            numContaAtras=3;
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundControles;
     private javax.swing.JPanel backgroundDificultad;
@@ -1348,6 +1373,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabelContaAtras;
     private javax.swing.JPanel juego;
     private javax.swing.JLabel labelTecla1;
     private javax.swing.JLabel labelTecla2;
