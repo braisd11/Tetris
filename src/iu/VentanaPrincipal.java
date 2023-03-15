@@ -30,6 +30,7 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
+    afsdgadg
     private Timer timer;
     private Timer tiempo;
     private Timer timerContaAtras;
@@ -928,9 +929,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         juego.requestFocus();
         crearTimerXogo(delay);
         crearTimerTempo();
-        timer.start();
-        tiempo.start();
         reproducirSonido();
+        pausar();
+        jLabelContaAtras.setVisible(true);
+        crearTimerContaAtras(true);
+        timerContaAtras.start();
     }
     
     
@@ -1119,6 +1122,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         numlinas.setText("0");
         panelGameOver.setVisible(false);
         xogo1.eliminarTodo();
+        jLabelContaAtras.setVisible(false);
+        tqlbtnPausa.setSelected(false);
+        jLabelContaAtras.setText(numContaAtras+"");
     }
     
     
@@ -1155,13 +1161,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
             
             if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-                tqlbtnPausa.setText("START");
-                timer.stop();
-                tiempo.stop();
-                xogo1.setPausa(true);
-                tqlbtnPausa.setSelected(true);
-                jLabelContaAtras.setVisible(true);
-                jLabelContaAtras.setText(numContaAtras+"");
+                pausar();
             }
             if (evt.getKeyChar()==' '){
                 xogo1.soltarFicha();
@@ -1180,11 +1180,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void tqlbtnPausaActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         if (tqlbtnPausa.isSelected()){
-            tqlbtnPausa.setText("START");
-            timer.stop();
-            tiempo.stop();
-            xogo1.setPausa(true);
-            sonido.stop();
+            pausar();
         }
         else{
             crearTimerContaAtras();
@@ -1262,7 +1258,16 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         timerContaAtras=new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                contaAtras();
+                contaAtrasPausa();
+            }
+        });
+    }
+    
+    private void crearTimerContaAtras (boolean inicio){
+        timerContaAtras=new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                contaAtrasInicio();
             }
         });
     }
@@ -1332,20 +1337,52 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     //FIN DE MÉTODOS PARA O FINAL DO XOGO/////////////
     
-    private void contaAtras (){
+    private void contaAtrasPausa (){
+        numContaAtras--;
+        jLabelContaAtras.setText(numContaAtras+"");
+        if (numContaAtras==0){
+            quitarPausa();
+        }
+    }
+    
+    private void contaAtrasInicio (){
         numContaAtras--;
         jLabelContaAtras.setText(numContaAtras+"");
         if (numContaAtras==0){
             tqlbtnPausa.setText("PAUSE");
+            timer.start();
+            tiempo.start();
+            xogo1.setPausa(false);
+            jLabelContaAtras.setVisible(false);
+            sonido.start();
+            timerContaAtras.stop();
+            numContaAtras=3;
+            tqlbtnPausa.setSelected(false);
+        }
+    }
+    
+    
+    private void pausar(){
+        tqlbtnPausa.setText("START");
+        tqlbtnPausa.setSelected(true);
+        timer.stop();
+        tiempo.stop();
+        xogo1.setPausa(true);
+        sonido.stop();
+        jLabelContaAtras.setVisible(true);
+        jLabelContaAtras.setText(numContaAtras+"");
+    }
+    
+    private void quitarPausa(){
+        tqlbtnPausa.setText("PAUSE");
             timer.restart();
             tiempo.restart();
             xogo1.setPausa(false);
             jLabelContaAtras.setVisible(false);
             sonido.start();
             timerContaAtras.stop();
-            tqlbtnPausa.setSelected(false);
             numContaAtras=3;
-        }
+            tqlbtnPausa.setSelected(false);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
