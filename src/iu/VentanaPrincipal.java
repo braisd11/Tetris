@@ -31,8 +31,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
     publi Timer t
     private Clip sonido;
-    private Clip sonidoLina;
-
+    private Clip sonidoLina;wtadsgfdxhbvcb
     /**
      * Creates new form Tetris
      */
