@@ -1,6 +1,8 @@
 package iu;
 
 
+
+
 import javax.swing.JLabel;
 import modelo.Xogo;
 import java.awt.event.ActionEvent;
@@ -27,19 +29,10 @@ import javax.swing.Timer;
  * @author a22braisdr
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    Xogo xogo1FDF;
-    WAGFHBGXBVCBDHHVCXB
-    private Timer timCBVCBer;
-    priv Timer to;NXIJDCDKJGB LKFGXNBVCMN
-            FHD
-                    JMN
-                    BV
-                            NM
-                            D
-                                    
-                                    GFN
-                                    
-                                    BVN
+    Xogo xogo1;
+    private Timer timer;
+    private Timer tiempo;
+    private int delay=1000;
     private int delayMax=300;
     private Clip sonido;
     private Clip sonidoLina;
@@ -96,7 +89,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelXogo = new javax.swing.JPanel();
         juego = new javax.swing.JPanel();
         panelGameOver = new javax.swing.JPanel();
-        looser = new javax.swing.JLabel();
         gameOver = new javax.swing.JLabel();
         botonReiniciar = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
@@ -583,15 +575,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         panelGameOver.setVisible(false);
-        panelGameOver.setBackground(new java.awt.Color(255, 255, 255));
-        panelGameOver.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-
-        looser.setVisible(false);
-        looser.setFont(new java.awt.Font("MS UI Gothic", 1, 60)); // NOI18N
-        looser.setForeground(new java.awt.Color(0, 0, 0));
-        looser.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        looser.setText("LOOSER!");
-        looser.setBorder(new javax.swing.border.MatteBorder(null));
+        panelGameOver.setBackground(new java.awt.Color(255, 102, 102));
+        panelGameOver.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.darkGray, java.awt.Color.white, java.awt.Color.white));
 
         gameOver.setVisible(false);
         gameOver.setFont(new java.awt.Font("MS UI Gothic", 1, 60)); // NOI18N
@@ -602,6 +587,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         botonReiniciar.setFont(new java.awt.Font("Sitka Heading", 0, 24)); // NOI18N
         botonReiniciar.setText("REINICIAR");
+        botonReiniciar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonReiniciar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonReiniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -611,6 +597,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         botonSalir.setFont(new java.awt.Font("Sitka Heading", 0, 24)); // NOI18N
         botonSalir.setText("SALIR");
+        botonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         botonSalir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -622,19 +609,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelGameOver.setLayout(panelGameOverLayout);
         panelGameOverLayout.setHorizontalGroup(
             panelGameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGameOverLayout.createSequentialGroup()
-                .addContainerGap(40, Short.MAX_VALUE)
+            .addGroup(panelGameOverLayout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
                 .addGroup(panelGameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gameOver)
-                    .addGroup(panelGameOverLayout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(looser))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGameOverLayout.createSequentialGroup()
+                        .addComponent(gameOver)
+                        .addGap(26, 26, 26))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGameOverLayout.createSequentialGroup()
                         .addComponent(botonReiniciar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(botonSalir)
-                        .addGap(34, 34, 34)))
-                .addGap(32, 32, 32))
+                        .addGap(64, 64, 64))))
         );
 
         panelGameOverLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {botonReiniciar, botonSalir});
@@ -642,15 +627,13 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelGameOverLayout.setVerticalGroup(
             panelGameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelGameOverLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(78, 78, 78)
                 .addComponent(gameOver)
-                .addGap(18, 18, 18)
-                .addComponent(looser)
-                .addGap(36, 36, 36)
+                .addGap(39, 39, 39)
                 .addGroup(panelGameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(botonReiniciar)
                     .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(57, Short.MAX_VALUE))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
 
         panelGameOverLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {botonReiniciar, botonSalir});
@@ -888,6 +871,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+  
+    
+    
     //Reproduce a música do tetris
     public void reproducirSonido(){
         String sonidoTetris="src\\sound\\sonidoTetris.wav";
@@ -1194,9 +1180,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         xogo1.setPausa(true);
         panelGameOver.setVisible(true);
         gameOver.setVisible(true);
-        looser.setVisible(true);
         sonido.stop();
     }
+    
     
     
     //Suma 1 punto por cada ficha colocada
@@ -1299,7 +1285,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel labelTecla7;
     private javax.swing.JLabel lblLblnumlinas;
     private javax.swing.JLabel lblTempo;
-    private javax.swing.JLabel looser;
     private javax.swing.JLabel numlinas;
     private javax.swing.JButton opciones;
     private javax.swing.JPanel panelBotones;
