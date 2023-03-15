@@ -17,7 +17,6 @@ import javax.swing.Timer;
 
 
 
-
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -30,11 +29,19 @@ import javax.swing.Timer;
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
     private Timer timer;
-    private Timer tiempo;
-    private int delay=1000;
+    private Timer tiempo;NXIJDCDKJGB LKFGXNBVCMN
+            FHD
+                    JMN
+                    BV
+                            NM
+                            D
+                                    
+                                    GFN
+                                    
+                                    BVN
     private int delayMax=300;
     private Clip sonido;
-    private Clip sonidoLina;wtadsgfdxhbvcb
+    private Clip sonidoLina;
     /**
      * Creates new form Tetris
      */
