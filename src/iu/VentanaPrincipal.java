@@ -29,7 +29,14 @@ import javax.swing.Timer;
  * @author a22braisdr
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    Xogo xogo1;
+    Xogo xog1;
+    ssssssssssssssssss
+            ssssssssssssss
+            d
+                    s
+                    sd
+                            s
+                            
     private Timer timer;
     private Timer tiempo;
     private Timer timerContaAtras;
