@@ -5,16 +5,14 @@ package iu;
 
 import javax.swing.JLabel;
 import modelo.Xogo;
+import sound.Sonido;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.LineUnavailableException;
-import javax.sound.sampled.UnsupportedAudioFileException;
+import java.io.PrintWriter;
 import javax.swing.Timer;
 
 
@@ -30,20 +28,26 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     Xogo xogo1;
+    Sonido sound;
     private Timer timer;
     private Timer tiempo;
     private Timer timerContaAtras;
     private int delay=1000;
-    private int delayMax=300;
-    private Clip sonido;
-    private Clip sonidoLina;
+    private int delayMax=400;
     int numContaAtras=3;
+    File ficheiro=new File("puntuacion.txt");
+    
     /**
      * Creates new form Tetris
      */
+    
     public VentanaPrincipal() {
         initComponents();
         juego.setFocusable(true);
+        crearTimerXogo(delay);
+        crearTimerTempo();
+        crearTimerContaAtras();
+        sound=new Sonido();
     }
 
     /**
@@ -59,6 +63,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelOpciones = new javax.swing.JPanel();
         dificultad = new javax.swing.JButton();
         controles = new javax.swing.JButton();
+        botonReiniciarEstatisticas = new javax.swing.JButton();
         botonVolverAtras = new javax.swing.JButton();
         dialogControles = new javax.swing.JDialog();
         backgroundControles = new javax.swing.JPanel();
@@ -82,6 +87,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         botonFacil = new javax.swing.JButton();
         botonMedia = new javax.swing.JButton();
         botonDificil = new javax.swing.JButton();
+        dialogReiniciarEstatisticas = new javax.swing.JDialog();
+        panelReiniciarEstatisticas = new javax.swing.JPanel();
+        jLabelReiniciar = new javax.swing.JLabel();
+        botonAceptarReiniciarEstatisticas = new javax.swing.JButton();
+        botonDenegarReiniciarEstatisticas = new javax.swing.JButton();
         panelPrincipal = new javax.swing.JPanel();
         panelBotones = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
@@ -94,6 +104,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         gameOver = new javax.swing.JLabel();
         botonReiniciar = new javax.swing.JButton();
         botonSalir = new javax.swing.JButton();
+        botonGardarPuntuacion = new javax.swing.JButton();
+        panelGardarPuntuacion = new javax.swing.JPanel();
+        jLabelNome = new javax.swing.JLabel();
+        jTextFieldNome = new javax.swing.JTextField();
+        botonGardar = new javax.swing.JButton();
         panelTempo = new javax.swing.JPanel();
         tempo = new javax.swing.JLabel();
         lblTempo = new javax.swing.JLabel();
@@ -108,6 +123,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabelContaAtras = new javax.swing.JLabel();
 
         dialogOpciones.setVisible(false);
+        dialogOpciones.setSize(600, 1000);
+        dialogOpciones.setLocation(new java.awt.Point(200, 200));
         dialogOpciones.setResizable(false);
 
         panelOpciones.setBackground(new java.awt.Color(100, 200, 100));
@@ -132,6 +149,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botonReiniciarEstatisticas.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
+        botonReiniciarEstatisticas.setForeground(new java.awt.Color(0, 0, 0));
+        botonReiniciarEstatisticas.setText("Reiniciar Estadísticas");
+        botonReiniciarEstatisticas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonReiniciarEstatisticasActionPerformed(evt);
+            }
+        });
+
         botonVolverAtras.setFont(new java.awt.Font("Sitka Heading", 0, 36)); // NOI18N
         botonVolverAtras.setForeground(new java.awt.Color(0, 0, 0));
         botonVolverAtras.setText("Volver atrás");
@@ -147,29 +173,32 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelOpcionesLayout.setHorizontalGroup(
             panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelOpcionesLayout.createSequentialGroup()
-                .addGap(279, 279, 279)
+                .addGap(245, 245, 245)
                 .addGroup(panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botonReiniciarEstatisticas)
                     .addComponent(controles)
                     .addComponent(dificultad)
-                    .addComponent(botonVolverAtras, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap(683, Short.MAX_VALUE))
+                    .addComponent(botonVolverAtras))
+                .addContainerGap(785, Short.MAX_VALUE))
         );
 
-        panelOpcionesLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {botonVolverAtras, controles, dificultad});
+        panelOpcionesLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {botonReiniciarEstatisticas, botonVolverAtras, controles, dificultad});
 
         panelOpcionesLayout.setVerticalGroup(
             panelOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelOpcionesLayout.createSequentialGroup()
-                .addGap(175, 175, 175)
+                .addGap(155, 155, 155)
                 .addComponent(dificultad)
                 .addGap(29, 29, 29)
                 .addComponent(controles)
-                .addGap(27, 27, 27)
+                .addGap(30, 30, 30)
+                .addComponent(botonReiniciarEstatisticas)
+                .addGap(26, 26, 26)
                 .addComponent(botonVolverAtras)
-                .addContainerGap(233, Short.MAX_VALUE))
+                .addContainerGap(201, Short.MAX_VALUE))
         );
 
-        panelOpcionesLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {botonVolverAtras, controles, dificultad});
+        panelOpcionesLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {botonReiniciarEstatisticas, botonVolverAtras, controles, dificultad});
 
         javax.swing.GroupLayout dialogOpcionesLayout = new javax.swing.GroupLayout(dialogOpciones.getContentPane());
         dialogOpciones.getContentPane().setLayout(dialogOpcionesLayout);
@@ -187,6 +216,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         );
 
         dialogControles.setVisible(false);
+        dialogControles.setLocation(new java.awt.Point(200, 200));
         dialogControles.setResizable(false);
 
         backgroundControles.setBackground(new java.awt.Color(100, 200, 100));
@@ -399,6 +429,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        dialogDificultad.setLocation(new java.awt.Point(300, 200));
         dialogDificultad.setResizable(false);
 
         backgroundDificultad.setBackground(new java.awt.Color(100, 200, 100));
@@ -476,8 +507,81 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        dialogReiniciarEstatisticas.setVisible(false);
+        dialogReiniciarEstatisticas.setSize(480, 300);
+        dialogReiniciarEstatisticas.setLocation(new java.awt.Point(400, 400));
+
+        panelReiniciarEstatisticas.setSize(450, 300);
+        panelReiniciarEstatisticas.setBackground(new java.awt.Color(100, 200, 100));
+        panelReiniciarEstatisticas.setPreferredSize(new java.awt.Dimension(450, 300));
+
+        jLabelReiniciar.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
+        jLabelReiniciar.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelReiniciar.setText("¿Estás segur@ de que quieres reiniciar las estadísticas?");
+
+        botonAceptarReiniciarEstatisticas.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
+        botonAceptarReiniciarEstatisticas.setForeground(new java.awt.Color(0, 0, 0));
+        botonAceptarReiniciarEstatisticas.setText("Sí");
+        botonAceptarReiniciarEstatisticas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonAceptarReiniciarEstatisticas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonAceptarReiniciarEstatisticasActionPerformed(evt);
+            }
+        });
+
+        botonDenegarReiniciarEstatisticas.setFont(new java.awt.Font("Sitka Heading", 0, 18)); // NOI18N
+        botonDenegarReiniciarEstatisticas.setForeground(new java.awt.Color(0, 0, 0));
+        botonDenegarReiniciarEstatisticas.setText("No");
+        botonDenegarReiniciarEstatisticas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        botonDenegarReiniciarEstatisticas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonDenegarReiniciarEstatisticasActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelReiniciarEstatisticasLayout = new javax.swing.GroupLayout(panelReiniciarEstatisticas);
+        panelReiniciarEstatisticas.setLayout(panelReiniciarEstatisticasLayout);
+        panelReiniciarEstatisticasLayout.setHorizontalGroup(
+            panelReiniciarEstatisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelReiniciarEstatisticasLayout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jLabelReiniciar)
+                .addContainerGap(21, Short.MAX_VALUE))
+            .addGroup(panelReiniciarEstatisticasLayout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(botonAceptarReiniciarEstatisticas)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(botonDenegarReiniciarEstatisticas)
+                .addGap(102, 102, 102))
+        );
+        panelReiniciarEstatisticasLayout.setVerticalGroup(
+            panelReiniciarEstatisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelReiniciarEstatisticasLayout.createSequentialGroup()
+                .addGap(86, 86, 86)
+                .addComponent(jLabelReiniciar)
+                .addGap(56, 56, 56)
+                .addGroup(panelReiniciarEstatisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(botonAceptarReiniciarEstatisticas)
+                    .addComponent(botonDenegarReiniciarEstatisticas))
+                .addContainerGap(105, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout dialogReiniciarEstatisticasLayout = new javax.swing.GroupLayout(dialogReiniciarEstatisticas.getContentPane());
+        dialogReiniciarEstatisticas.getContentPane().setLayout(dialogReiniciarEstatisticasLayout);
+        dialogReiniciarEstatisticasLayout.setHorizontalGroup(
+            dialogReiniciarEstatisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(dialogReiniciarEstatisticasLayout.createSequentialGroup()
+                .addComponent(panelReiniciarEstatisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        dialogReiniciarEstatisticasLayout.setVerticalGroup(
+            dialogReiniciarEstatisticasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelReiniciarEstatisticas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TETRIS 2.0");
+        setLocation(new java.awt.Point(0, 0));
         setResizable(false);
 
         panelPrincipal.setSize(500, 500);
@@ -608,58 +712,118 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        botonGardarPuntuacion.setFont(new java.awt.Font("Sitka Heading", 0, 24)); // NOI18N
+        botonGardarPuntuacion.setText("GUARDAR PUNTUACIÓN");
+        botonGardarPuntuacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGardarPuntuacionActionPerformed(evt);
+            }
+        });
+
+        panelGardarPuntuacion.setVisible(false);
+        panelGardarPuntuacion.setBackground(new java.awt.Color(255, 102, 102));
+
+        jLabelNome.setFont(new java.awt.Font("Sitka Heading", 0, 24)); // NOI18N
+        jLabelNome.setForeground(new java.awt.Color(0, 0, 0));
+        jLabelNome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelNome.setText("NOMBRE:");
+
+        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNomeActionPerformed(evt);
+            }
+        });
+
+        botonGardar.setFont(new java.awt.Font("Sitka Heading", 0, 24)); // NOI18N
+        botonGardar.setText("GUARDAR");
+        botonGardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonGardarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelGardarPuntuacionLayout = new javax.swing.GroupLayout(panelGardarPuntuacion);
+        panelGardarPuntuacion.setLayout(panelGardarPuntuacionLayout);
+        panelGardarPuntuacionLayout.setHorizontalGroup(
+            panelGardarPuntuacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGardarPuntuacionLayout.createSequentialGroup()
+                .addGroup(panelGardarPuntuacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelGardarPuntuacionLayout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(botonGardar))
+                    .addGroup(panelGardarPuntuacionLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelNome)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        panelGardarPuntuacionLayout.setVerticalGroup(
+            panelGardarPuntuacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGardarPuntuacionLayout.createSequentialGroup()
+                .addGroup(panelGardarPuntuacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelGardarPuntuacionLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelNome))
+                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(botonGardar)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout panelGameOverLayout = new javax.swing.GroupLayout(panelGameOver);
         panelGameOver.setLayout(panelGameOverLayout);
         panelGameOverLayout.setHorizontalGroup(
             panelGameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelGameOverLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGameOverLayout.createSequentialGroup()
                 .addContainerGap(46, Short.MAX_VALUE)
                 .addGroup(panelGameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGameOverLayout.createSequentialGroup()
-                        .addComponent(gameOver)
-                        .addGap(26, 26, 26))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGameOverLayout.createSequentialGroup()
-                        .addComponent(botonReiniciar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonSalir)
-                        .addGap(64, 64, 64))))
+                    .addGroup(panelGameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(panelGameOverLayout.createSequentialGroup()
+                            .addComponent(botonReiniciar)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(gameOver))
+                    .addGroup(panelGameOverLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(panelGameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelGardarPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGameOverLayout.createSequentialGroup()
+                                .addComponent(botonGardarPuntuacion)
+                                .addGap(23, 23, 23)))))
+                .addGap(26, 26, 26))
         );
-
-        panelGameOverLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {botonReiniciar, botonSalir});
-
         panelGameOverLayout.setVerticalGroup(
             panelGameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelGameOverLayout.createSequentialGroup()
                 .addGap(78, 78, 78)
                 .addComponent(gameOver)
-                .addGap(39, 39, 39)
+                .addGap(28, 28, 28)
                 .addGroup(panelGameOverLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(botonReiniciar)
-                    .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(93, Short.MAX_VALUE))
+                    .addComponent(botonSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botonReiniciar))
+                .addGap(18, 18, 18)
+                .addComponent(botonGardarPuntuacion)
+                .addGap(39, 39, 39)
+                .addComponent(panelGardarPuntuacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(25, 25, 25))
         );
-
-        panelGameOverLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {botonReiniciar, botonSalir});
 
         javax.swing.GroupLayout juegoLayout = new javax.swing.GroupLayout(juego);
         juego.setLayout(juegoLayout);
         juegoLayout.setHorizontalGroup(
             juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
-            .addGroup(juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(juegoLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(panelGameOver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
+            .addGroup(juegoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelGameOver, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         juegoLayout.setVerticalGroup(
             juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 900, Short.MAX_VALUE)
-            .addGroup(juegoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(juegoLayout.createSequentialGroup()
-                    .addGap(274, 274, 274)
-                    .addComponent(panelGameOver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(304, Short.MAX_VALUE)))
+            .addGroup(juegoLayout.createSequentialGroup()
+                .addGap(274, 274, 274)
+                .addComponent(panelGameOver, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(189, Short.MAX_VALUE))
         );
 
         panelTempo.setBackground(new java.awt.Color(0, 0, 0));
@@ -802,7 +966,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGap(0, 264, Short.MAX_VALUE)
         );
 
-        jLabelContaAtras.setVisible(false);
         jLabelContaAtras.setFont(new java.awt.Font("Sitka Heading", 0, 200)); // NOI18N
         jLabelContaAtras.setForeground(new java.awt.Color(255, 255, 255));
         jLabelContaAtras.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -926,12 +1089,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void iniciarPartida(){
         xogo1=new Xogo(this);
         juego.requestFocus();
-        crearTimerXogo(delay);
-        crearTimerTempo();
-        reproducirSonido();
         pausar();
-        jLabelContaAtras.setVisible(true);
-        crearTimerContaAtras(true);
         timerContaAtras.start();
     }
     
@@ -942,37 +1100,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         System.exit(0);
     }     
     //FIN DE MÉTODOS PARA O INICIO OU O FINAL DO PROGRAMA//////////
-    
-    
-    //MÉTODOS PARA OS SONS/////////////////////////////////////////
-    
-    //Reproduce a música do tetris
-    public void reproducirSonido(){
-        String sonidoTetris="src\\sound\\sonidoTetris.wav";
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetris));
-            sonido = AudioSystem.getClip();
-            sonido.open(audioInputStream);
-            sonido.loop(ABORT);
-        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
-            System.out.println("Error al reproducir el sonido.");
-        }
-    }
-     
-    //Reproduce o son de cando facemos unha liña
-    public void reproducirSonidoLina(){
-        String sonidoTetrisLina="src\\sound\\sonidoTetrisLina.wav";
-        try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetrisLina));
-            sonidoLina = AudioSystem.getClip();
-            sonidoLina.open(audioInputStream);
-        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
-            System.out.println("Error al reproducir el sonido.");
-        }
-    }
-    
-    
-    //FIN DE MÉTODOS PARA OS SONS//////////////////////////////////
+
     
     
     
@@ -1043,7 +1171,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Pon a dificultade en Fácil
     private void botonFacilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacilActionPerformed
         delay=1200;
-        delayMax=500;
+        delayMax += 100;
         dialogDificultad.setVisible(false);
     }//GEN-LAST:event_botonFacilActionPerformed
 
@@ -1051,7 +1179,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Pon a dificultade en Media
     private void botonMediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMediaActionPerformed
         delay=1000;
-        delayMax=400;
         dialogDificultad.setVisible(false);
     }//GEN-LAST:event_botonMediaActionPerformed
 
@@ -1059,7 +1186,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Pon a dificultade en Difícil
     private void botonDificilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDificilActionPerformed
         delay=400;
-        delayMax=200;
+        delayMax -= 200;
         dialogDificultad.setVisible(false);
     }//GEN-LAST:event_botonDificilActionPerformed
 
@@ -1109,8 +1236,63 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         irMenuPrincipal();
         reiniciar();
         panelGameOver.setVisible(false);
-        sonido.stop();
+        sound.getSonido().stop();
     }//GEN-LAST:event_botonSalirActionPerformed
+
+    //
+    private void botonGardarPuntuacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGardarPuntuacionActionPerformed
+        // TODO add your handling code here:
+        panelGardarPuntuacion.setVisible(true);
+    }//GEN-LAST:event_botonGardarPuntuacionActionPerformed
+
+    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNomeActionPerformed
+
+    private void botonGardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGardarActionPerformed
+        // TODO add your handling code here:
+        try{
+            PrintWriter fluxoSaida=new PrintWriter(new FileWriter(ficheiro,true));
+            fluxoSaida.print(jTextFieldNome.getText()+"\t");
+            fluxoSaida.print(puntos.getText()+"\t");
+            if (delayMax==500){
+                fluxoSaida.println("Fácil");
+            }
+            else if (delayMax==400){
+                fluxoSaida.println("Media");
+            }
+            else {
+                fluxoSaida.println("Difícil");
+            }
+            fluxoSaida.flush();
+            fluxoSaida.close();
+        }
+        catch (IOException e){
+            panelGardarPuntuacion.setVisible(false);
+            botonGardarPuntuacion.setVisible(false);
+        }
+        panelGardarPuntuacion.setVisible(false);
+        botonGardarPuntuacion.setVisible(false);
+        jTextFieldNome.setText("");
+    }//GEN-LAST:event_botonGardarActionPerformed
+
+    private void botonAceptarReiniciarEstatisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarReiniciarEstatisticasActionPerformed
+        // TODO add your handling code here:
+        
+        boolean pecha=ficheiro.delete();
+        System.out.println(pecha);
+        dialogReiniciarEstatisticas.setVisible(false);
+    }//GEN-LAST:event_botonAceptarReiniciarEstatisticasActionPerformed
+
+    private void botonReiniciarEstatisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonReiniciarEstatisticasActionPerformed
+        // TODO add your handling code here:
+        dialogReiniciarEstatisticas.setVisible(true);
+    }//GEN-LAST:event_botonReiniciarEstatisticasActionPerformed
+
+    private void botonDenegarReiniciarEstatisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDenegarReiniciarEstatisticasActionPerformed
+        // TODO add your handling code here:
+        dialogReiniciarEstatisticas.setVisible(false);
+    }//GEN-LAST:event_botonDenegarReiniciarEstatisticasActionPerformed
 
     //Reinicia as estatísticas
     private void reiniciar (){
@@ -1141,7 +1323,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
         if (xogo1.isPausa()){
             if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
-                crearTimerContaAtras();
                 timerContaAtras.start();
             }
         }
@@ -1182,7 +1363,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             pausar();
         }
         else{
-            crearTimerContaAtras();
             timerContaAtras.start();
         }
     }                                           
@@ -1261,15 +1441,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             }
         });
     }
-    
-    private void crearTimerContaAtras (boolean inicio){
-        timerContaAtras=new Timer(1000, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                contaAtrasInicio();
-            }
-        });
-    }
+
     
     //FIN DE MÉTODOS PARA OS TIMERS///////////////
     
@@ -1286,6 +1458,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         int puntuacion=(int) Double.parseDouble(puntuacionFicha);
         puntuacion+=1;
         escribirPuntos(puntuacion);
+        sound.getSonidoFichaChan().start();
     }
 
 
@@ -1332,7 +1505,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         xogo1.setPausa(true);
         panelGameOver.setVisible(true);
         gameOver.setVisible(true);
-        sonido.stop();
+        botonGardarPuntuacion.setVisible(true);
+        sound.getSonido().stop();
+        sound.getSonidoGameOver().start();
     }
     //FIN DE MÉTODOS PARA O FINAL DO XOGO/////////////
     
@@ -1344,22 +1519,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         }
     }
     
-    private void contaAtrasInicio (){
-        numContaAtras--;
-        jLabelContaAtras.setText(numContaAtras+"");
-        if (numContaAtras==0){
-            tqlbtnPausa.setText("PAUSE");
-            timer.start();
-            tiempo.start();
-            xogo1.setPausa(false);
-            jLabelContaAtras.setVisible(false);
-            sonido.start();
-            timerContaAtras.stop();
-            numContaAtras=3;
-            tqlbtnPausa.setSelected(false);
-        }
-    }
-    
     
     private void pausar(){
         tqlbtnPausa.setText("START");
@@ -1367,7 +1526,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         timer.stop();
         tiempo.stop();
         xogo1.setPausa(true);
-        sonido.stop();
+        sound.getSonido().stop();
         jLabelContaAtras.setVisible(true);
         jLabelContaAtras.setText(numContaAtras+"");
     }
@@ -1378,7 +1537,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             tiempo.restart();
             xogo1.setPausa(false);
             jLabelContaAtras.setVisible(false);
-            sonido.start();
+            sound.getSonido().start();
             timerContaAtras.stop();
             numContaAtras=3;
             tqlbtnPausa.setSelected(false);
@@ -1387,18 +1546,24 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundControles;
     private javax.swing.JPanel backgroundDificultad;
+    private javax.swing.JButton botonAceptarReiniciarEstatisticas;
     private javax.swing.JButton botonCerrar;
+    private javax.swing.JButton botonDenegarReiniciarEstatisticas;
     private javax.swing.JButton botonDificil;
     private javax.swing.JButton botonFacil;
+    private javax.swing.JButton botonGardar;
+    private javax.swing.JButton botonGardarPuntuacion;
     private javax.swing.JButton botonIniciar;
     private javax.swing.JButton botonMedia;
     private javax.swing.JButton botonReiniciar;
+    private javax.swing.JButton botonReiniciarEstatisticas;
     private javax.swing.JButton botonSalir;
     private javax.swing.JButton botonVolverAtras;
     private javax.swing.JButton controles;
     private javax.swing.JDialog dialogControles;
     private javax.swing.JDialog dialogDificultad;
     private javax.swing.JDialog dialogOpciones;
+    private javax.swing.JDialog dialogReiniciarEstatisticas;
     private javax.swing.JButton dificultad;
     private javax.swing.JLabel gameOver;
     private javax.swing.JButton jButton1;
@@ -1410,6 +1575,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelContaAtras;
+    private javax.swing.JLabel jLabelNome;
+    private javax.swing.JLabel jLabelReiniciar;
+    private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JPanel juego;
     private javax.swing.JLabel labelTecla1;
     private javax.swing.JLabel labelTecla2;
@@ -1425,10 +1593,12 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel panelBotones;
     private javax.swing.JPanel panelFichaSeguinte;
     private javax.swing.JPanel panelGameOver;
+    private javax.swing.JPanel panelGardarPuntuacion;
     private javax.swing.JPanel panelLinas;
     private javax.swing.JPanel panelOpciones;
     private javax.swing.JPanel panelPrincipal;
     private javax.swing.JPanel panelPuntuacion;
+    private javax.swing.JPanel panelReiniciarEstatisticas;
     private javax.swing.JPanel panelTempo;
     private javax.swing.JPanel panelXogo;
     private javax.swing.JLabel puntos;
