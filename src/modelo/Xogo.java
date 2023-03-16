@@ -6,7 +6,7 @@
 package modelo;
 
 import iu.VentanaPrincipal;
-import static java.awt.Color.LIGHT_GRAY;
+import static java.awt.Color.BLACK;
 import static java.awt.Color.PINK;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -60,17 +60,10 @@ public class Xogo {
     public void setNumeroLinas(int numeroLinas) {
         this.numeroLinas = numeroLinas;
     }
-
-    public ArrayList<Cadrado> getCadradosChan() {
-        return cadradosChan;
-    }
-
-    public void setCadradosChan(ArrayList<Cadrado> cadradosChan) {
-        this.cadradosChan = cadradosChan;
-    }
+    
+    
     
     //MÉTODOS///////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
     
     //MÉTODOS QUE DEBUXAN A FICHA ACTUAL E SEGUINTE///////////////////////////////////////////////////////////////
     
@@ -114,22 +107,22 @@ public class Xogo {
     //Crea a visualización da ficha actual
     private void crearVisualizacion(){
         Cadrado c0 = new Cadrado(LADOCADRADO);
-        c0.setCorRecheo(LIGHT_GRAY);
+        c0.setCorRecheo(BLACK);
         c0.setX(fichaActual.c0.getX());
         c0.setY(fichaActual.c0.getY());
         visualizacionChan.add(c0);
         Cadrado c1 = new Cadrado(LADOCADRADO);
-        c1.setCorRecheo(LIGHT_GRAY);
+        c1.setCorRecheo(BLACK);
         c1.setX(fichaActual.c1.getX());
         c1.setY(fichaActual.c1.getY());
         visualizacionChan.add(c1);
         Cadrado c2 = new Cadrado(LADOCADRADO);
-        c2.setCorRecheo(LIGHT_GRAY);
+        c2.setCorRecheo(BLACK);
         c2.setX(fichaActual.c2.getX());
         c2.setY(fichaActual.c2.getY());
         visualizacionChan.add(c2);
         Cadrado c3 = new Cadrado(LADOCADRADO);
-        c3.setCorRecheo(LIGHT_GRAY);
+        c3.setCorRecheo(BLACK);
         c3.setX(fichaActual.c3.getX());
         c3.setY(fichaActual.c3.getY());
         visualizacionChan.add(c3);
@@ -390,22 +383,22 @@ public class Xogo {
         if (figura==1){
             ficha=new FichaT(this);
         }
-        if (figura==2){
+        else if (figura==2){
             ficha=new FichaCadrada(this);
         }
-        if (figura==3){
+        else if (figura==3){
             ficha=new FichaL(this);
         }
-        if (figura==4){
+        else if (figura==4){
             ficha=new FichaBarra(this);
         }
-        if (figura==5){
+        else if (figura==5){
             ficha=new FichaLEspejo(this);
         }
-        if (figura==6){
+        else if (figura==6){
             ficha=new FichaZ(this);
         }
-        if (figura==7){
+        else {
             ficha=new FichaZEspejo(this);
         }
         return ficha;

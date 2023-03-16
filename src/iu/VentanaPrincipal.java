@@ -36,7 +36,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private int delayMax=400;
     int numContaAtras=3;
     File ficheiro=new File("puntuacion.txt");
-    
+
     /**
      * Creates new form Tetris
      */
@@ -1484,8 +1484,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     //Suma unha liña
     public void sumarLina(){
-        String numerolinas=numlinas.getText();
-        int numeroLinas=(int) Double.parseDouble(numerolinas);
+        int numeroLinas=xogo1.getNumeroLinas();
         numeroLinas++;
         xogo1.setNumeroLinas(numeroLinas);
         mostrarNumeroLinas(numeroLinas);
@@ -1533,14 +1532,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     private void quitarPausa(){
         tqlbtnPausa.setText("PAUSE");
-            timer.restart();
-            tiempo.restart();
-            xogo1.setPausa(false);
-            jLabelContaAtras.setVisible(false);
-            sound.getSonido().start();
-            timerContaAtras.stop();
-            numContaAtras=3;
-            tqlbtnPausa.setSelected(false);
+        timer.restart();
+        tiempo.restart();
+        xogo1.setPausa(false);
+        jLabelContaAtras.setVisible(false);
+        sound.getSonido().start();
+        timerContaAtras.stop();
+        numContaAtras=3;
+        tqlbtnPausa.setSelected(false);
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
