@@ -1534,8 +1534,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tqlbtnPausa.setSelected(false);
     }
     //FIN MÉTODOS PARA PAUSAR E QUITAR PAUSA//////////
-    
-    
+
     
     private void reiniciarContaAtras(){
         numContaAtras=3;

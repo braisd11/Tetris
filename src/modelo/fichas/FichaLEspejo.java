@@ -2,27 +2,29 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package modelo;
+package modelo.fichas;
 
-import static java.awt.Color.GREEN;
+import modelo.Xogo;
+import static java.awt.Color.MAGENTA;
 
 /**
  *
  * @author a22noellr
  */
-public class FichaL extends Ficha {
+public class FichaLEspejo extends Ficha {
+
     //constructor
-    public FichaL(Xogo xogo1) {
+    public FichaLEspejo(Xogo xogo1) {
         super(xogo1);
         cor();
     }
 
     //métodos
     protected void cor() {
-        c0.setCorRecheo(GREEN);
-        c1.setCorRecheo(GREEN);
-        c2.setCorRecheo(GREEN);
-        c3.setCorRecheo(GREEN);
+        c0.setCorRecheo(MAGENTA);
+        c1.setCorRecheo(MAGENTA);
+        c2.setCorRecheo(MAGENTA);
+        c3.setCorRecheo(MAGENTA);
     }
 
     public void posicionInicial() {
@@ -32,7 +34,7 @@ public class FichaL extends Ficha {
         c0.setY(c1.getY() - this.getXogo1().getLADOCADRADO());
         c2.setX(c1.getX());
         c2.setY(c1.getY() + this.getXogo1().getLADOCADRADO());
-        c3.setX(c1.getX() + this.getXogo1().getLADOCADRADO());
+        c3.setX(c1.getX() - this.getXogo1().getLADOCADRADO());
         c3.setY(c1.getY() + this.getXogo1().getLADOCADRADO());
     }
 
@@ -43,7 +45,7 @@ public class FichaL extends Ficha {
         c0.setY(c1.getY() - this.getXogo1().getLADOCADRADO());
         c2.setX(c1.getX());
         c2.setY(c1.getY() + this.getXogo1().getLADOCADRADO());
-        c3.setX(c1.getX() + this.getXogo1().getLADOCADRADO());
+        c3.setX(c1.getX() - this.getXogo1().getLADOCADRADO());
         c3.setY(c1.getY() + this.getXogo1().getLADOCADRADO());
     }
 
@@ -78,7 +80,7 @@ public class FichaL extends Ficha {
             rotar = false;
         }
         //comprobar futura posición de c3
-        else if (!this.getXogo1().ePosicionValida(c1.getX() + this.getXogo1().getLADOCADRADO(), c1.getY() - this.getXogo1().getLADOCADRADO())) {
+        else if (!this.getXogo1().ePosicionValida(c1.getX() + this.getXogo1().getLADOCADRADO(), c1.getY() + this.getXogo1().getLADOCADRADO())) {
             rotar = false;
         }
         return rotar;
@@ -93,9 +95,9 @@ public class FichaL extends Ficha {
         //comprobar futura posición de c2
         else if (!this.getXogo1().ePosicionValida(c1.getX(), c1.getY() - this.getXogo1().getLADOCADRADO())) {
             rotar = false;
-        }
+        } 
         //comprobar futura posición de c3
-        else if (!this.getXogo1().ePosicionValida(c1.getX() - this.getXogo1().getLADOCADRADO(), c1.getY() - this.getXogo1().getLADOCADRADO())) {
+        else if (!this.getXogo1().ePosicionValida(c1.getX() + this.getXogo1().getLADOCADRADO(), c1.getY() - this.getXogo1().getLADOCADRADO())) {
             rotar = false;
         }
         return rotar;
@@ -112,7 +114,7 @@ public class FichaL extends Ficha {
             rotar = false;
         }
         //comprobar futura posición de c3
-        else if (!this.getXogo1().ePosicionValida(c1.getX() - this.getXogo1().getLADOCADRADO(), c1.getY() + this.getXogo1().getLADOCADRADO())) {
+        else if (!this.getXogo1().ePosicionValida(c1.getX() - this.getXogo1().getLADOCADRADO(), c1.getY() - this.getXogo1().getLADOCADRADO())) {
             rotar = false;
         }
         return rotar;
@@ -123,13 +125,13 @@ public class FichaL extends Ficha {
         //comprobar futura posición de c0
         if (!this.getXogo1().ePosicionValida(c1.getX(), c1.getY() - this.getXogo1().getLADOCADRADO())) {
             rotar = false;
-        }
+        } 
         //comprobar futura posición de c2
         else if (!this.getXogo1().ePosicionValida(c1.getX(), c1.getY() + this.getXogo1().getLADOCADRADO())) {
             rotar = false;
-        }
+        } 
         //comprobar futura posición de c3
-        else if (!this.getXogo1().ePosicionValida(c1.getX() + this.getXogo1().getLADOCADRADO(), c1.getY() + this.getXogo1().getLADOCADRADO())) {
+        else if (!this.getXogo1().ePosicionValida(c1.getX() - this.getXogo1().getLADOCADRADO(), c1.getY() + this.getXogo1().getLADOCADRADO())) {
             rotar = false;
         }
         return rotar;
@@ -145,11 +147,9 @@ public class FichaL extends Ficha {
     public boolean rotar() {
         if (c0.getX() == c1.getX() && c0.getY() == c1.getY() - this.getXogo1().getLADOCADRADO()) {
             cambiarPosicion1();
-        }
-        else if (c0.getX() == c1.getX() - this.getXogo1().getLADOCADRADO() && c0.getY() == c1.getY()) {
+        } else if (c0.getX() == c1.getX() - this.getXogo1().getLADOCADRADO() && c0.getY() == c1.getY()) {
             cambiarPosicion2();
-        }
-        else if (c0.getX() == c1.getX() && c0.getY() == c1.getY() + this.getXogo1().getLADOCADRADO()) {
+        } else if (c0.getX() == c1.getX() && c0.getY() == c1.getY() + this.getXogo1().getLADOCADRADO()) {
             cambiarPosicion3();
         }
         else if (c0.getX() == c1.getX() + this.getXogo1().getLADOCADRADO() && c0.getY() == c1.getY()) {
@@ -164,7 +164,7 @@ public class FichaL extends Ficha {
         c2.setX(c1.getX() + this.getXogo1().getLADOCADRADO());
         c2.setY(c1.getY());
         c3.setX(c1.getX() + this.getXogo1().getLADOCADRADO());
-        c3.setY(c1.getY() - this.getXogo1().getLADOCADRADO());
+        c3.setY(c1.getY() + this.getXogo1().getLADOCADRADO());
     }
 
     private void cambiarPosicion2() {
@@ -172,7 +172,7 @@ public class FichaL extends Ficha {
         c0.setY(c1.getY() + this.getXogo1().getLADOCADRADO());
         c2.setX(c1.getX());
         c2.setY(c1.getY() - this.getXogo1().getLADOCADRADO());
-        c3.setX(c1.getX() - this.getXogo1().getLADOCADRADO());
+        c3.setX(c1.getX() + this.getXogo1().getLADOCADRADO());
         c3.setY(c1.getY() - this.getXogo1().getLADOCADRADO());
     }
 
@@ -182,7 +182,7 @@ public class FichaL extends Ficha {
         c2.setX(c1.getX() - this.getXogo1().getLADOCADRADO());
         c2.setY(c1.getY());
         c3.setX(c1.getX() - this.getXogo1().getLADOCADRADO());
-        c3.setY(c1.getY() + this.getXogo1().getLADOCADRADO());
+        c3.setY(c1.getY() - this.getXogo1().getLADOCADRADO());
     }
 
     private void cambiarPosicion0() {
@@ -190,7 +190,7 @@ public class FichaL extends Ficha {
         c0.setY(c1.getY() - this.getXogo1().getLADOCADRADO());
         c2.setX(c1.getX());
         c2.setY(c1.getY() + this.getXogo1().getLADOCADRADO());
-        c3.setX(c1.getX() + this.getXogo1().getLADOCADRADO());
+        c3.setX(c1.getX() - this.getXogo1().getLADOCADRADO());
         c3.setY(c1.getY() + this.getXogo1().getLADOCADRADO());
     }
 

@@ -5,6 +5,15 @@
  */
 package modelo;
 
+import modelo.fichas.FichaLEspejo;
+import modelo.fichas.Cadrado;
+import modelo.fichas.FichaZEspejo;
+import modelo.fichas.FichaBarra;
+import modelo.fichas.FichaT;
+import modelo.fichas.Ficha;
+import modelo.fichas.FichaZ;
+import modelo.fichas.FichaCadrada;
+import modelo.fichas.FichaL;
 import iu.VentanaPrincipal;
 import static java.awt.Color.BLACK;
 import static java.awt.Color.PINK;
