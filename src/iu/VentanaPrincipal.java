@@ -27,16 +27,7 @@ import javax.swing.Timer;
  * @author a22braisdr
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    private Xogo xoo1;
-    sd
-            f
-            sd
-                    
-                    f
-                    ds
-                            
-                            f
-                            
+    private Xogo xogo1;
     private Sonido sound;
     private Timer timer;
     private Timer tiempo;
@@ -691,7 +682,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         panelGameOver.setVisible(false);
-        panelGameOver.setBackground(new java.awt.Color(255, 102, 102));
+        panelGameOver.setBackground(new java.awt.Color(100, 200, 100));
         panelGameOver.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.darkGray, java.awt.Color.white, java.awt.Color.white));
 
         gameOver.setVisible(false);
@@ -730,7 +721,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         });
 
         panelGardarPuntuacion.setVisible(false);
-        panelGardarPuntuacion.setBackground(new java.awt.Color(255, 102, 102));
+        panelGardarPuntuacion.setBackground(new java.awt.Color(100, 200, 100));
 
         jLabelNome.setFont(new java.awt.Font("Sitka Heading", 0, 24)); // NOI18N
         jLabelNome.setForeground(new java.awt.Color(0, 0, 0));
@@ -1275,11 +1266,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jTextFieldNome.setText("");
     }//GEN-LAST:event_botonGardarActionPerformed
 
+    
     private void botonAceptarReiniciarEstatisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarReiniciarEstatisticasActionPerformed
         // TODO add your handling code here:
-        
-        boolean pecha=ficheiro.delete();
-        System.out.println(pecha);
+        ficheiro.delete();
         dialogReiniciarEstatisticas.setVisible(false);
     }//GEN-LAST:event_botonAceptarReiniciarEstatisticasActionPerformed
 
@@ -1458,6 +1448,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         puntuacion+=1;
         escribirPuntos(puntuacion);
         sound.getSonidoFichaChan().start();
+        sound.getSonidoFichaChan().flush();
     }
 
 
@@ -1493,6 +1484,23 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     
+
+    //MÉTODOS PARA O FINAL DO XOGO/////////////
+    
+    //No caso de perder mostra a mensaxe de que se perdeu.
+    public void mostrarFinDoXogo(){
+        timer.stop();
+        tiempo.stop();
+        xogo1.setPausa(true);
+        panelGameOver.setVisible(true);
+        gameOver.setVisible(true);
+        botonGardarPuntuacion.setVisible(true);
+        sound.getSonido().stop();
+        sound.getSonidoGameOver().start();
+        sound.getSonidoGameOver().flush();
+    }
+    //FIN DE MÉTODOS PARA O FINAL DO XOGO/////////////
+
     
     //MÉTODOS PARA PAUSAR E QUITAR PAUSA/////////////
     private void contaAtrasPausa (){
@@ -1520,9 +1528,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tiempo.restart();
         xogo1.setPausa(false);
         jLabelContaAtras.setVisible(false);
-        sound.getSonido().start();
+        sound.getSonido().loop(ABORT);
         timerContaAtras.stop();
-        numContaAtras=3;
+        reiniciarContaAtras();
         tqlbtnPausa.setSelected(false);
     }
     //FIN MÉTODOS PARA PAUSAR E QUITAR PAUSA//////////
@@ -1545,6 +1553,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     //FIN DE MÉTODOS PARA O FINAL DO XOGO/////////////
     
+    private void reiniciarContaAtras(){
+        numContaAtras=3;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundControles;
     private javax.swing.JPanel backgroundDificultad;
