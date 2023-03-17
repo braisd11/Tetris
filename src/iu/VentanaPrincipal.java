@@ -1230,7 +1230,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         irMenuPrincipal();
         reiniciar();
         panelGameOver.setVisible(false);
-        sound.getSonido().stop();
+        sound.getCancion().stop();
     }//GEN-LAST:event_botonSalirActionPerformed
 
     //
@@ -1447,8 +1447,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         int puntuacion=(int) Double.parseDouble(puntuacionFicha);
         puntuacion+=1;
         escribirPuntos(puntuacion);
-        sound.getSonidoFichaChan().start();
-        sound.getSonidoFichaChan().flush();
+        sound.getSonidoFicha().loop(1);
+        sound.getSonidoFicha().flush();
     }
 
 
@@ -1470,6 +1470,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Escribe o número de liñas no contador
     public void mostrarNumeroLinas (int numeroLinas){
         numlinas.setText(""+numeroLinas);
+        sound.getSonidoLina().loop(1);
+        sound.getSonidoLina().flush();
     }
     
     //Suma unha liña
@@ -1495,8 +1497,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelGameOver.setVisible(true);
         gameOver.setVisible(true);
         botonGardarPuntuacion.setVisible(true);
-        sound.getSonido().stop();
-        sound.getSonidoGameOver().start();
+        sound.getCancion().stop();
+        sound.getSonidoGameOver().loop(1);
         sound.getSonidoGameOver().flush();
     }
     //FIN DE MÉTODOS PARA O FINAL DO XOGO/////////////
@@ -1517,7 +1519,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         timer.stop();
         tiempo.stop();
         xogo1.setPausa(true);
-        sound.getSonido().stop();
+        sound.getCancion().stop();
         jLabelContaAtras.setVisible(true);
         jLabelContaAtras.setText(numContaAtras+"");
     }
@@ -1528,7 +1530,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         tiempo.restart();
         xogo1.setPausa(false);
         jLabelContaAtras.setVisible(false);
-        sound.getSonido().loop(ABORT);
+        sound.getCancion().loop(ABORT);
         timerContaAtras.stop();
         reiniciarContaAtras();
         tqlbtnPausa.setSelected(false);

@@ -18,30 +18,32 @@ import javax.sound.sampled.UnsupportedAudioFileException;
  * @author a22braisdr
  */
 public class Sonido {
-    private Clip sonido;
-    private Clip sonidoFichaChan;
+    private Clip cancion;
+    private Clip sonidoLina;
     private Clip sonidoGameOver;
+    private Clip sonidoFicha;
     
     public Sonido(){
         musicaTetris();
-        sonidoChocarFicha();
+        sonidoFacerLina();
         sonidoGameOver();
+        sonidoChocarFicha();
     }
 
-    public Clip getSonido() {
-        return sonido;
+    public Clip getCancion() {
+        return cancion;
     }
 
-    public void setSonido(Clip sonido) {
-        this.sonido = sonido;
+    public void setCancion(Clip cancion) {
+        this.cancion = cancion;
     }
 
-    public Clip getSonidoFichaChan() {
-        return sonidoFichaChan;
+    public Clip getSonidoLina() {
+        return sonidoLina;
     }
 
-    public void setSonidoFichaChan(Clip sonidoFichaChan) {
-        this.sonidoFichaChan = sonidoFichaChan;
+    public void setSonidoLina(Clip sonidoLina) {
+        this.sonidoLina = sonidoLina;
     }
 
     public Clip getSonidoGameOver() {
@@ -50,6 +52,14 @@ public class Sonido {
 
     public void setSonidoGameOver(Clip sonidoGameOver) {
         this.sonidoGameOver = sonidoGameOver;
+    }
+
+    public Clip getSonidoFicha() {
+        return sonidoFicha;
+    }
+
+    public void setSonidoFicha(Clip sonidoFicha) {
+        this.sonidoFicha = sonidoFicha;
     }
     
     
@@ -60,23 +70,23 @@ public class Sonido {
     
     //Reproduce a música do tetris
     public void musicaTetris(){
-        String sonidoTetris="src\\sound\\sonidoTetris.wav";
+        String sonidoTetris="src\\sound\\cancionTetris.wav";
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetris));
-            sonido = AudioSystem.getClip();
-            sonido.open(audioInputStream);
+            cancion = AudioSystem.getClip();
+            cancion.open(audioInputStream);
         } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
             System.out.println("Error al reproducir el sonido.");
         }
     }
      
     //Reproduce o son de cando facemos unha liña
-    public void sonidoChocarFicha(){
-        String sonidoTetrisLina="src\\sound\\chocarFicha.wav";
+    public void sonidoFacerLina(){
+        String sonidoTetrisLina="src\\sound\\lineaTetris.wav";
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetrisLina));
-            sonidoFichaChan = AudioSystem.getClip();
-            sonidoFichaChan.open(audioInputStream);
+            sonidoLina = AudioSystem.getClip();
+            sonidoLina.open(audioInputStream);
         } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
             System.out.println("Error al reproducir el sonido.");
         }
@@ -89,6 +99,19 @@ public class Sonido {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetrisLina));
             sonidoGameOver = AudioSystem.getClip();
             sonidoGameOver.open(audioInputStream);
+        } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
+            System.out.println("Error al reproducir el sonido.");
+        }
+    }
+    
+    
+        //Reproduce o son de cando choca unha ficha
+    public void sonidoChocarFicha(){
+        String sonidoTetrisLina="src\\sound\\sonidoFicha.wav";
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetrisLina));
+            sonidoFicha = AudioSystem.getClip();
+            sonidoFicha.open(audioInputStream);
         } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
             System.out.println("Error al reproducir el sonido.");
         }
