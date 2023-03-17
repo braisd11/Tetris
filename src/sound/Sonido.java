@@ -65,7 +65,6 @@ public class Sonido {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetris));
             sonido = AudioSystem.getClip();
             sonido.open(audioInputStream);
-            sonido.loop(ABORT);
         } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
             System.out.println("Error al reproducir el sonido.");
         }
@@ -83,7 +82,7 @@ public class Sonido {
         }
     }
     
-    //Reproduce o son de cando facemos unha liña
+    //Reproduce o son de cando perdemos
     public void sonidoGameOver(){
         String sonidoTetrisLina="src\\sound\\gameOver.wav";
         try {
