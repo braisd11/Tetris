@@ -1537,25 +1537,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     
-    
-    //MÉTODOS PARA O FINAL DO XOGO/////////////
-    
-    //No caso de perder mostra a mensaxe de que se perdeu.
-    public void mostrarFinDoXogo(){
-        timer.stop();
-        tiempo.stop();
-        xogo1.setPausa(true);
-        panelGameOver.setVisible(true);
-        gameOver.setVisible(true);
-        botonGardarPuntuacion.setVisible(true);
-        sound.getSonido().stop();
-        sound.getSonidoGameOver().start();
-    }
-    //FIN DE MÉTODOS PARA O FINAL DO XOGO/////////////
-    
     private void reiniciarContaAtras(){
         numContaAtras=3;
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundControles;
     private javax.swing.JPanel backgroundDificultad;
