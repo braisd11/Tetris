@@ -1539,6 +1539,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private void reiniciarContaAtras(){
         numContaAtras=3;
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundControles;
     private javax.swing.JPanel backgroundDificultad;
