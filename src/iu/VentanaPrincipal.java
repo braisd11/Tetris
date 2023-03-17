@@ -27,15 +27,24 @@ import javax.swing.Timer;
  * @author a22braisdr
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
-    Xogo xogo1;
-    Sonido sound;
+    private Xogo xoo1;
+    sd
+            f
+            sd
+                    
+                    f
+                    ds
+                            
+                            f
+                            
+    private Sonido sound;
     private Timer timer;
     private Timer tiempo;
     private Timer timerContaAtras;
     private int delay=1000;
     private int delayMax=400;
     int numContaAtras=3;
-    File ficheiro=new File("puntuacion.txt");
+    private File ficheiro=new File("puntuacion.txt");
 
     /**
      * Creates new form Tetris
@@ -728,12 +737,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabelNome.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabelNome.setText("NOMBRE:");
 
-        jTextFieldNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNomeActionPerformed(evt);
-            }
-        });
-
         botonGardar.setFont(new java.awt.Font("Sitka Heading", 0, 24)); // NOI18N
         botonGardar.setText("GUARDAR");
         botonGardar.addActionListener(new java.awt.event.ActionListener() {
@@ -1245,10 +1248,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelGardarPuntuacion.setVisible(true);
     }//GEN-LAST:event_botonGardarPuntuacionActionPerformed
 
-    private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNomeActionPerformed
-
     private void botonGardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGardarActionPerformed
         // TODO add your handling code here:
         try{
@@ -1491,25 +1490,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     }
     
     //FIN DE MÉTODOS PARA AS ESTATÍSTICAS////////////
-
     
     
     
-    //MÉTODOS PARA O FINAL DO XOGO/////////////
     
-    //No caso de perder mostra a mensaxe de que se perdeu.
-    public void mostrarFinDoXogo(){
-        timer.stop();
-        tiempo.stop();
-        xogo1.setPausa(true);
-        panelGameOver.setVisible(true);
-        gameOver.setVisible(true);
-        botonGardarPuntuacion.setVisible(true);
-        sound.getSonido().stop();
-        sound.getSonidoGameOver().start();
-    }
-    //FIN DE MÉTODOS PARA O FINAL DO XOGO/////////////
-    
+    //MÉTODOS PARA PAUSAR E QUITAR PAUSA/////////////
     private void contaAtrasPausa (){
         numContaAtras--;
         jLabelContaAtras.setText(numContaAtras+"");
@@ -1517,7 +1502,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             quitarPausa();
         }
     }
-    
     
     private void pausar(){
         tqlbtnPausa.setText("START");
@@ -1541,6 +1525,25 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         numContaAtras=3;
         tqlbtnPausa.setSelected(false);
     }
+    //FIN MÉTODOS PARA PAUSAR E QUITAR PAUSA//////////
+    
+    
+    
+    
+    //MÉTODOS PARA O FINAL DO XOGO/////////////
+    
+    //No caso de perder mostra a mensaxe de que se perdeu.
+    public void mostrarFinDoXogo(){
+        timer.stop();
+        tiempo.stop();
+        xogo1.setPausa(true);
+        panelGameOver.setVisible(true);
+        gameOver.setVisible(true);
+        botonGardarPuntuacion.setVisible(true);
+        sound.getSonido().stop();
+        sound.getSonidoGameOver().start();
+    }
+    //FIN DE MÉTODOS PARA O FINAL DO XOGO/////////////
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel backgroundControles;
