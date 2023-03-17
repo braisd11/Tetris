@@ -106,26 +106,15 @@ public class Xogo {
     
     //Crea a visualización da ficha actual
     private void crearVisualizacion(){
-        Cadrado c0 = new Cadrado(LADOCADRADO);
-        c0.setCorRecheo(BLACK);
-        c0.setX(fichaActual.c0.getX());
-        c0.setY(fichaActual.c0.getY());
-        visualizacionChan.add(c0);
-        Cadrado c1 = new Cadrado(LADOCADRADO);
-        c1.setCorRecheo(BLACK);
-        c1.setX(fichaActual.c1.getX());
-        c1.setY(fichaActual.c1.getY());
-        visualizacionChan.add(c1);
-        Cadrado c2 = new Cadrado(LADOCADRADO);
-        c2.setCorRecheo(BLACK);
-        c2.setX(fichaActual.c2.getX());
-        c2.setY(fichaActual.c2.getY());
-        visualizacionChan.add(c2);
-        Cadrado c3 = new Cadrado(LADOCADRADO);
-        c3.setCorRecheo(BLACK);
-        c3.setX(fichaActual.c3.getX());
-        c3.setY(fichaActual.c3.getY());
-        visualizacionChan.add(c3);
+        fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
+        while (fichaActual.getIterCadrados().hasNext()) {
+            Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
+            Cadrado cadradoVisualizado = new Cadrado(LADOCADRADO);
+            cadradoVisualizado.setCorRecheo(BLACK);
+            cadradoVisualizado.setX(cadradoFicha.getX());
+            cadradoVisualizado.setY(cadradoFicha.getY());
+            visualizacionChan.add(cadradoVisualizado);
+        }
         visualizacionBaja();
     }
     
