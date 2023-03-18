@@ -18,6 +18,7 @@ import iu.VentanaPrincipal;
 import static java.awt.Color.BLACK;
 import static java.awt.Color.PINK;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 
@@ -377,8 +378,16 @@ public class Xogo {
     //Xera unha nova ficha aleatoria.
     public Ficha xerarNovaFicha(){
         Ficha ficha=null;
+        HashMap<Integer,Ficha> map=new HashMap<>();
+        map.put(1, ficha=new FichaT(this));
+        map.put(2, ficha=new FichaCadrada(this));
+        map.put(3, ficha=new FichaL(this));
+        map.put(4, ficha=new FichaBarra(this));
+        map.put(5, ficha=new FichaLEspejo(this));
+        map.put(6, ficha=new FichaZ(this));
+        map.put(7, ficha=new FichaZEspejo(this));
         int figura=(int) Math.floor(Math.random() * (7 - 1 + 1) + 1);
-        if (figura==1){
+        /*if (figura==1){
             ficha=new FichaT(this);
         }
         else if (figura==2){
@@ -398,8 +407,8 @@ public class Xogo {
         }
         else {
             ficha=new FichaZEspejo(this);
-        }
-        return ficha;
+        }*/
+        return map.get(figura);
     }
     
     /*Asignaselle a fichaAcual á ficha de fichaSeguinte, xérase unha nova fichaSeguinte 
