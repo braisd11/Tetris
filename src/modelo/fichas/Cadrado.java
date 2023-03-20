@@ -14,10 +14,10 @@ import javax.swing.JLabel;
  */
 public class Cadrado {
     //atributos
-    public int x;
-    public int y;
-    public Color corRecheo;
-    public JLabel lblCadrado;
+    private int x;
+    private int y;
+    private Color corRecheo;
+    private JLabel lblCadrado;
     
     //constructor
 

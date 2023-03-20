@@ -5,6 +5,7 @@
 package modelo.fichas;
 
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Iterator;
 import modelo.Xogo;
@@ -94,10 +95,16 @@ public abstract class Ficha {
         }
         return true;
     }
-    
+    /*
+    private void cor(Color cor){
+        c0.setCorRecheo(cor);
+        c1.setCorRecheo(cor);
+        c2.setCorRecheo(cor);
+        c3.setCorRecheo(cor);
+    }
+    */
     public abstract boolean comprobarRotar();
     public abstract boolean rotar();
     public abstract void posicionInicial();
     public abstract void posicionFichaSeguinte();
-    protected abstract void cor();
 }

@@ -5,7 +5,6 @@
 package modelo.fichas;
 
 import modelo.Xogo;
-import static java.awt.Color.CYAN;
 
 /**
  *
@@ -16,17 +15,9 @@ public class FichaZ extends Ficha{
     //constructor
     public FichaZ(Xogo xogo1) {
         super(xogo1);
-        cor();
     }
     
     //métodos
-    protected void cor() {
-        c0.setCorRecheo(CYAN);
-        c1.setCorRecheo(CYAN);
-        c2.setCorRecheo(CYAN);
-        c3.setCorRecheo(CYAN);
-    }
-    
     public void posicionInicial() {
         c1.setX(4*this.getXogo1().getLADOCADRADO());
         c1.setY(-this.getXogo1().getLADOCADRADO());

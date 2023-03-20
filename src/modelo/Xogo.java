@@ -5,16 +5,9 @@
  */
 package modelo;
 
-import modelo.fichas.FichaLEspejo;
-import modelo.fichas.Cadrado;
-import modelo.fichas.FichaZEspejo;
-import modelo.fichas.FichaBarra;
-import modelo.fichas.FichaT;
-import modelo.fichas.Ficha;
-import modelo.fichas.FichaZ;
-import modelo.fichas.FichaCadrada;
-import modelo.fichas.FichaL;
+import modelo.fichas.*;
 import iu.VentanaPrincipal;
+import java.awt.Color;
 import static java.awt.Color.BLACK;
 import static java.awt.Color.PINK;
 import java.util.ArrayList;
@@ -53,19 +46,27 @@ public class Xogo {
     public int getLADOCADRADO() {
         return LADOCADRADO;
     }
-
+    
+    public int getMAXX() {
+        return MAXX;
+    }
+    
+    public int getMAXY() {
+        return MAXY;
+    }
+    
     public boolean isPausa() {
         return pausa;
     }
-
+    
     public void setPausa(boolean pausa) {
         this.pausa = pausa;
     }
-
+    
     public int getNumeroLinas() {
         return numeroLinas;
     }
-
+    
     public void setNumeroLinas(int numeroLinas) {
         this.numeroLinas = numeroLinas;
     }
