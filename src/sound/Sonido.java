@@ -24,10 +24,7 @@ public class Sonido {
     private Clip sonidoFicha;
     
     public Sonido(){
-        musicaTetris();
-        sonidoFacerLina();
-        sonidoGameOver();
-        sonidoChocarFicha();
+        
     }
 
     public Clip getCancion() {
@@ -75,6 +72,7 @@ public class Sonido {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetris));
             cancion = AudioSystem.getClip();
             cancion.open(audioInputStream);
+            cancion.start();
         } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
             System.out.println("Error al reproducir el sonido.");
         }
@@ -87,6 +85,7 @@ public class Sonido {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetrisLina));
             sonidoLina = AudioSystem.getClip();
             sonidoLina.open(audioInputStream);
+            sonidoLina.start();
         } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
             System.out.println("Error al reproducir el sonido.");
         }
@@ -99,6 +98,7 @@ public class Sonido {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetrisLina));
             sonidoGameOver = AudioSystem.getClip();
             sonidoGameOver.open(audioInputStream);
+            sonidoGameOver.start();
         } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
             System.out.println("Error al reproducir el sonido.");
         }
@@ -112,6 +112,7 @@ public class Sonido {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File(sonidoTetrisLina));
             sonidoFicha = AudioSystem.getClip();
             sonidoFicha.open(audioInputStream);
+            sonidoFicha.start();
         } catch(UnsupportedAudioFileException | IOException | LineUnavailableException ex) {
             System.out.println("Error al reproducir el sonido.");
         }

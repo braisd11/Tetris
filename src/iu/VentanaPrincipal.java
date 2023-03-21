@@ -28,13 +28,14 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     private Xogo xogo1;
+    sfrfg
     private Sonido sound;
     private Timer timer;
     private Timer tiempo;
     private Timer timerContaAtras;
     private int delay=1000;
     private int delayMax=400;
-    int numContaAtras=3;
+    private int numContaAtras=3;
     private File ficheiro=new File("puntuacion.txt");
 
     /**
@@ -669,17 +670,17 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelXogo.setBackground(new java.awt.Color(100, 200, 100));
         panelXogo.setMaximumSize(new java.awt.Dimension(1200, 900));
         panelXogo.setPreferredSize(new java.awt.Dimension(1200, 950));
+        panelXogo.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                panelXogoKeyPressed(evt);
+            }
+        });
 
         juego.setSize(450, 800);
         juego.setBackground(new java.awt.Color(0, 0, 0));
         juego.setMaximumSize(new java.awt.Dimension(450, 900));
         juego.setMinimumSize(new java.awt.Dimension(450, 900));
         juego.setPreferredSize(new java.awt.Dimension(450, 900));
-        juego.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                juegoKeyPressed(evt);
-            }
-        });
 
         panelGameOver.setVisible(false);
         panelGameOver.setBackground(new java.awt.Color(100, 200, 100));
@@ -969,24 +970,22 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         panelXogo.setLayout(panelXogoLayout);
         panelXogoLayout.setHorizontalGroup(
             panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelXogoLayout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(panelFichaSeguinte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabelContaAtras, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(75, 75, 75)
-                .addComponent(juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelXogoLayout.createSequentialGroup()
+                .addGap(58, 58, 58)
                 .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panelXogoLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(panelXogoLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelTempo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(panelLinas, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(69, Short.MAX_VALUE))
+                    .addComponent(panelFichaSeguinte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelContaAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 63, Short.MAX_VALUE)
+                .addComponent(juego, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelLinas, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelPuntuacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelTempo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelXogoLayout.createSequentialGroup()
+                        .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(64, 64, 64)))
+                .addGap(69, 69, 69))
         );
 
         panelXogoLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {panelLinas, panelPuntuacion, panelTempo});
@@ -996,9 +995,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
             .addGroup(panelXogoLayout.createSequentialGroup()
                 .addGroup(panelXogoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelXogoLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addGap(63, 63, 63)
                         .addComponent(tqlbtnPausa, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(61, 61, 61)
+                        .addGap(63, 63, 63)
                         .addComponent(panelLinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(35, 35, 35)
                         .addComponent(panelPuntuacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1010,9 +1009,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
                     .addGroup(panelXogoLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addComponent(panelFichaSeguinte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(119, 119, 119)
+                        .addGap(86, 86, 86)
                         .addComponent(jLabelContaAtras, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(10, 10, 10))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         panelXogoLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {panelLinas, panelPuntuacion, panelTempo});
@@ -1082,7 +1081,8 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //MÉTODO QUE CREA UN OBXETO DA CLASE XOGO E DA INICIO O XOGO
     private void iniciarPartida(){
         xogo1=new Xogo(this);
-        juego.requestFocus();
+        panelXogo.requestFocus();
+        sound.musicaTetris();
         pausar();
         timerContaAtras.start();
     }
@@ -1304,7 +1304,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //MÉTODOS PARA O MOVEMENTO DA FICHA///////////////
     
     //Listener do teclado para os movementos
-    private void juegoKeyPressed(java.awt.event.KeyEvent evt) {                                 
+    private void panelXogoKeyPressed(java.awt.event.KeyEvent evt) {                                 
         // TODO add your handling code here:
         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
             irMenuPrincipal();
@@ -1447,8 +1447,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         int puntuacion=(int) Double.parseDouble(puntuacionFicha);
         puntuacion+=1;
         escribirPuntos(puntuacion);
-        sound.getSonidoFicha().loop(1);
-        sound.getSonidoFicha().flush();
+        sound.sonidoChocarFicha();
     }
 
 
@@ -1470,8 +1469,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Escribe o número de liñas no contador
     public void mostrarNumeroLinas (int numeroLinas){
         numlinas.setText(""+numeroLinas);
-        sound.getSonidoLina().loop(1);
-        sound.getSonidoLina().flush();
+        sound.sonidoFacerLina();
     }
     
     //Suma unha liña
@@ -1498,8 +1496,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         gameOver.setVisible(true);
         botonGardarPuntuacion.setVisible(true);
         sound.getCancion().stop();
-        sound.getSonidoGameOver().loop(1);
-        sound.getSonidoGameOver().flush();
+        sound.sonidoGameOver();
     }
     //FIN DE MÉTODOS PARA O FINAL DO XOGO/////////////
 
@@ -1522,6 +1519,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         sound.getCancion().stop();
         jLabelContaAtras.setVisible(true);
         jLabelContaAtras.setText(numContaAtras+"");
+        juego.setVisible(false);
     }
     
     private void quitarPausa(){
@@ -1534,6 +1532,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         timerContaAtras.stop();
         reiniciarContaAtras();
         tqlbtnPausa.setSelected(false);
+        juego.setVisible(true);
     }
     //FIN MÉTODOS PARA PAUSAR E QUITAR PAUSA//////////
 
