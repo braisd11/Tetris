@@ -1173,7 +1173,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Pon a dificultade en Fácil
     private void botonFacilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacilActionPerformed
         delay=1200;
-        delayMax += 100;
+        delayMax = 500;
         dialogDificultad.setVisible(false);
     }//GEN-LAST:event_botonFacilActionPerformed
 
@@ -1181,6 +1181,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Pon a dificultade en Media
     private void botonMediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMediaActionPerformed
         delay=1000;
+        delayMax = 400;
         dialogDificultad.setVisible(false);
     }//GEN-LAST:event_botonMediaActionPerformed
 
@@ -1188,7 +1189,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Pon a dificultade en Difícil
     private void botonDificilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDificilActionPerformed
         delay=400;
-        delayMax -= 200;
+        delayMax = 200;
         dialogDificultad.setVisible(false);
     }//GEN-LAST:event_botonDificilActionPerformed
 
