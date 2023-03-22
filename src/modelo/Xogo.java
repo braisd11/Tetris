@@ -387,27 +387,6 @@ public class Xogo {
         map.put(6, ficha=new FichaZ(this));
         map.put(7, ficha=new FichaZEspejo(this));
         int figura=(int) Math.floor(Math.random() * (7 - 1 + 1) + 1);
-        /*if (figura==1){
-            ficha=new FichaT(this);
-        }
-        else if (figura==2){
-            ficha=new FichaCadrada(this);
-        }
-        else if (figura==3){
-            ficha=new FichaL(this);
-        }
-        else if (figura==4){
-            ficha=new FichaBarra(this);
-        }
-        else if (figura==5){
-            ficha=new FichaLEspejo(this);
-        }
-        else if (figura==6){
-            ficha=new FichaZ(this);
-        }
-        else {
-            ficha=new FichaZEspejo(this);
-        }*/
         return map.get(figura);
     }
     
