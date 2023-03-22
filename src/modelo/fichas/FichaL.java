@@ -20,10 +20,11 @@ public class FichaL extends Ficha {
 
     //métodos
     protected void cor() {
-        c0.setCorRecheo(GREEN);
-        c1.setCorRecheo(GREEN);
-        c2.setCorRecheo(GREEN);
-        c3.setCorRecheo(GREEN);
+        iterCadrados = cadrados.iterator();
+        while (iterCadrados.hasNext()) {
+            Cadrado cadrado = iterCadrados.next();
+            cadrado.setCorRecheo(GREEN);
+        }
     }
 
     public void posicionInicial() {

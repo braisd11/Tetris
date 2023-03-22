@@ -21,10 +21,11 @@ public class FichaBarra extends Ficha{
     
     //métodos
     protected void cor() {
-        c0.setCorRecheo(YELLOW);
-        c1.setCorRecheo(YELLOW);
-        c2.setCorRecheo(YELLOW);
-        c3.setCorRecheo(YELLOW);
+        iterCadrados = cadrados.iterator();
+        while (iterCadrados.hasNext()) {
+            Cadrado cadrado = iterCadrados.next();
+            cadrado.setCorRecheo(YELLOW);
+        }
     }
     
     

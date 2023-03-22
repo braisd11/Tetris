@@ -21,10 +21,11 @@ public class FichaLEspejo extends Ficha {
 
     //métodos
     protected void cor() {
-        c0.setCorRecheo(MAGENTA);
-        c1.setCorRecheo(MAGENTA);
-        c2.setCorRecheo(MAGENTA);
-        c3.setCorRecheo(MAGENTA);
+        iterCadrados = cadrados.iterator();
+        while (iterCadrados.hasNext()) {
+            Cadrado cadrado = iterCadrados.next();
+            cadrado.setCorRecheo(MAGENTA);
+        }
     }
 
     public void posicionInicial() {
