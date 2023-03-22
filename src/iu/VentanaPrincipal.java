@@ -28,7 +28,13 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     private Xogo xogo1;
-    sfrfg
+    as
+            fds
+            f
+                    ds
+                    f
+                            s
+                            
     private Sonido sound;
     private Timer timer;
     private Timer tiempo;
@@ -1520,6 +1526,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabelContaAtras.setVisible(true);
         jLabelContaAtras.setText(numContaAtras+"");
         juego.setVisible(false);
+        panelFichaSeguinte.setVisible(false);
     }
     
     private void quitarPausa(){
@@ -1533,6 +1540,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         reiniciarContaAtras();
         tqlbtnPausa.setSelected(false);
         juego.setVisible(true);
+        panelFichaSeguinte.setVisible(true);
     }
     //FIN MÉTODOS PARA PAUSAR E QUITAR PAUSA//////////
 
