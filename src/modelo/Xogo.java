@@ -298,7 +298,7 @@ public class Xogo {
     
     //MÉTODOS DE COMPROBAR CHOCAR CO CHAN/////////////////////////////////////////////////////////////////////
     
-    //Comproba que a ficha choque co chan e no caso de chocar, engádea ao chan e chama a xerarNovaFicha().
+    //Comproba que a ficha choque co chan.
     public boolean chocaFichaCoChan() {
         boolean chocar=false;
         fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
@@ -315,7 +315,7 @@ public class Xogo {
     }
     
     
-    //Comproba se a ficha que está en movemento choca con outra ficha que xa esté no chan
+    //Comproba se a ficha que está en movemento choca con outra ficha que xa esté no chan.
     private boolean chocaFichaConCadradosChan(Cadrado cadradoFicha) {
         boolean chocar=false;
         iterChan=cadradosChan.iterator();
@@ -335,7 +335,8 @@ public class Xogo {
     
     //MÉTODOS ENGADIR FICHA AO CHAN E COMPROBAR PERDER////////////////////////////////////////////////////////
     
-    //Engade a ficha ao array de cadradosChan e chama a comprobar perder.
+    /*Engade a ficha ao array de cadradosChan, e chama a borrarVisualizacion(), borrarLinasCompletas(),
+    sumarPuntosFicha() e chama a comprobarPerder().*/
     //Se se perde chama a mostrarFinDoXogo().
     //Se non se perde chama a establecerFichaActual().
     public void engadirFichaAoChan(){
@@ -355,7 +356,7 @@ public class Xogo {
     }
     
     /*Chamado dende engadirFichaAoChan() e recorre con un iterator e 
-    se ao xerarse a nova ficha choca con outra inmediatamente perdese.*/
+    se ao xerarse a nova ficha, esta choca con outra inmediatamente, perdese.*/
     private boolean comprobarPerder(){
         boolean perder=false;
         iterChan=cadradosChan.iterator();
@@ -387,27 +388,6 @@ public class Xogo {
         map.put(6, ficha=new FichaZ(this));
         map.put(7, ficha=new FichaZEspejo(this));
         int figura=(int) Math.floor(Math.random() * (7 - 1 + 1) + 1);
-        /*if (figura==1){
-            ficha=new FichaT(this);
-        }
-        else if (figura==2){
-            ficha=new FichaCadrada(this);
-        }
-        else if (figura==3){
-            ficha=new FichaL(this);
-        }
-        else if (figura==4){
-            ficha=new FichaBarra(this);
-        }
-        else if (figura==5){
-            ficha=new FichaLEspejo(this);
-        }
-        else if (figura==6){
-            ficha=new FichaZ(this);
-        }
-        else {
-            ficha=new FichaZEspejo(this);
-        }*/
         return map.get(figura);
     }
     
@@ -434,7 +414,8 @@ public class Xogo {
     //MÉTODOS BORRAR LIÑAS COMPLETAS///////////////////////////////////////////////////////////////////////////
     
     //Comproba cada vez que se engade unha ficha ao chan se hai algunha liña completa.
-    //No caso de ter algunha liña completa, chama a borrarLinas().
+    /*No caso de ter algunha liña completa, chama a borrarLinas(). 
+    Tamén chama a sumarPuntosLina(), a sumarLina() e comprobarLinas().*/
     public void borrarLinasCompletas(){
         int altitud=0;
         while (altitud<MAXY) {

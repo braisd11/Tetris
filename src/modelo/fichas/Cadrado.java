@@ -45,6 +45,8 @@ public class Cadrado {
         return corRecheo;
     }
     
+    /*Establece a cor de recheo que lle pasan, asignalla a label,
+    ponlle un cor de borde e establece a label como opaca*/
     public void setCorRecheo(Color corRecheo) {
         this.corRecheo = corRecheo;
         lblCadrado.setBackground(corRecheo);
