@@ -28,13 +28,6 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     private Xogo xogo1;
-    /*as
-            fds
-            f
-                    ds
-                    f
-                            s
-                            */
     private Sonido sound;
     private Timer timer;
     private Timer tiempo;
@@ -1315,6 +1308,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
             irMenuPrincipal();
             reiniciar();
+            sound.getCancion().stop();
         }
         if (xogo1.isPausa()){
             if (evt.getKeyCode()==KeyEvent.VK_ESCAPE){
