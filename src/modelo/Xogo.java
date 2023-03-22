@@ -500,6 +500,9 @@ public class Xogo {
     
     //Este método chámase dende VentanaPirncipal e sube todo o chan para aumentar a dificultade
     public void subirChan(){
+        if (chocaFichaCoChan()) { 
+            engadirFichaAoChan();
+        }
         iterChan=cadradosChan.iterator();
         while(iterChan.hasNext()){
             Cadrado cadradoChan=iterChan.next();
