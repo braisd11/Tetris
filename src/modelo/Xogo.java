@@ -46,8 +46,6 @@ public class Xogo {
     //CONSTRUCTOR
     public Xogo(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal=ventanaPrincipal;
-        fichaSeguinte=xerarNovaFicha();
-        establecerFichaActual();
     }
     
     //GETTER E SETTER
@@ -74,6 +72,12 @@ public class Xogo {
     
     
     //MÉTODOS///////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    //Empeza o xogo
+    public void empezarXogo(){
+        fichaSeguinte=xerarNovaFicha();
+        establecerFichaActual();
+    }
     
     //MÉTODOS QUE DEBUXAN A FICHA ACTUAL E SEGUINTE///////////////////////////////////////////////////////////////
     

@@ -42,6 +42,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     
     public VentanaPrincipal() {
+        xogo1=new Xogo(this);
         initComponents();
         juego.setFocusable(true);
         crearTimerXogo(delay);
@@ -1079,11 +1080,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     //MÉTODO QUE CREA UN OBXETO DA CLASE XOGO E DA INICIO O XOGO
     private void iniciarPartida(){
-        xogo1=new Xogo(this);
         panelXogo.requestFocus();
         sound.musicaTetris();
         pausar();
         timerContaAtras.start();
+        xogo1.empezarXogo();
     }
     
     
