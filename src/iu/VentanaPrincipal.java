@@ -51,6 +51,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         sound=new Sonido();
     }
 
+    public Timer getTimer() {
+        return timer;
+    }
+    public void setTimer(Timer timer) {
+        this.timer = timer;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

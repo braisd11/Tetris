@@ -240,6 +240,7 @@ public class Xogo {
             fichaActual.moverAbaixo();
             debuxarFichaActual();
             fichaDelanteVisualizacion();
+            ventanaPrincipal.getTimer().restart();
         }
     }
     
@@ -264,7 +265,7 @@ public class Xogo {
             }
         }
         borrarVisualizacion();
-        engadirFichaAoChan();
+        ventanaPrincipal.getTimer().restart();
     }
     
     //FIN MÉTODOS DE MOVER A FICHA/////////////////////////////////////////////////////////////////////////////
@@ -405,9 +406,6 @@ public class Xogo {
         debuxarFichaSeguinte();
         visualizarNoChan();
         debuxarFichaActual();
-        if (chocaFichaCoChan()) {
-            engadirFichaAoChan();
-        }
     }
     
     //FIN MÉTODOS XERAR NOVA FICHA E ESTABLECER FICHA ACTUAL///////////////////////////////////////////////////
