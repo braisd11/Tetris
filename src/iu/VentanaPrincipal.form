@@ -1093,11 +1093,11 @@
                       <Component id="panelFichaSeguinte" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelContaAtras" min="-2" pref="271" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" pref="63" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" pref="62" max="32767" attributes="0"/>
                   <Component id="juego" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="panelLinas" linkSize="10" alignment="1" min="-2" pref="271" max="-2" attributes="0"/>
+                      <Component id="panelLinas" linkSize="10" alignment="1" min="-2" pref="272" max="-2" attributes="0"/>
                       <Component id="panelPuntuacion" linkSize="10" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="panelTempo" linkSize="10" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
@@ -1175,7 +1175,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="274" max="-2" attributes="0"/>
                       <Component id="panelGameOver" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="189" max="32767" attributes="0"/>
+                      <EmptySpace pref="186" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1205,7 +1205,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
-                          <EmptySpace pref="46" max="32767" attributes="0"/>
+                          <EmptySpace pref="47" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Group type="102" attributes="0">
