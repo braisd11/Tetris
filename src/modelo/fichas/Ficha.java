@@ -16,8 +16,8 @@ import modelo.Xogo;
 public abstract class Ficha {
     //atributos
     protected Xogo xogo1;
-    private ArrayList<Cadrado> cadrados = new ArrayList<>();
-    private Iterator<Cadrado> iterCadrados;
+    protected ArrayList<Cadrado> cadrados = new ArrayList<>();
+    protected Iterator<Cadrado> iterCadrados;
     protected Cadrado c0;
     protected Cadrado c1;
     protected Cadrado c2;
