@@ -21,10 +21,11 @@ public class FichaZEspejo extends Ficha{
     
     //métodos
     protected void cor() {
-        c0.setCorRecheo(ORANGE);
-        c1.setCorRecheo(ORANGE);
-        c2.setCorRecheo(ORANGE);
-        c3.setCorRecheo(ORANGE);
+        iterCadrados = cadrados.iterator();
+        while (iterCadrados.hasNext()) {
+            Cadrado cadrado = iterCadrados.next();
+            cadrado.setCorRecheo(ORANGE);
+        }
     }
     
     public void posicionInicial() {

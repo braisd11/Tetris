@@ -1520,6 +1520,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jLabelContaAtras.setVisible(true);
         jLabelContaAtras.setText(numContaAtras+"");
         juego.setVisible(false);
+        panelFichaSeguinte.setVisible(false);
     }
     
     private void quitarPausa(){
@@ -1533,6 +1534,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         reiniciarContaAtras();
         tqlbtnPausa.setSelected(false);
         juego.setVisible(true);
+        panelFichaSeguinte.setVisible(true);
     }
     //FIN MÉTODOS PARA PAUSAR E QUITAR PAUSA//////////
 
