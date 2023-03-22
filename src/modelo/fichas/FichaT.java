@@ -20,34 +20,27 @@ public class FichaT extends Ficha {
     }
 
     //métodos
+    //Establece a cor dos cadrados da ficha
     protected void cor() {
-        iterCadrados = cadrados.iterator();
-        while (iterCadrados.hasNext()) {
-            Cadrado cadrado = iterCadrados.next();
+        setIterCadrados(getCadrados().iterator());
+        while (getIterCadrados().hasNext()) {
+            Cadrado cadrado = getIterCadrados().next();
             cadrado.setCorRecheo(RED);
         }
     }
-
+    
+    //Establece a posición inicial da ficha
     public void posicionInicial() {
         c1.setX(4 * this.getXogo1().getLADOCADRADO());
         c1.setY(-this.getXogo1().getLADOCADRADO());
-        c0.setX(c1.getX());
-        c0.setY(c1.getY() - this.getXogo1().getLADOCADRADO());
-        c2.setX(c1.getX());
-        c2.setY(c1.getY() + this.getXogo1().getLADOCADRADO());
-        c3.setX(c1.getX() + this.getXogo1().getLADOCADRADO());
-        c3.setY(c1.getY());
+        cambiarPosicion0();
     }
-
+    
+    //Establece a posición da ficha no panel da ficha seguinte
     public void posicionFichaSeguinte() {
         c1.setX(2 * this.getXogo1().getLADOCADRADO());
         c1.setY(this.getXogo1().getLADOCADRADO() * 2);
-        c0.setX(c1.getX());
-        c0.setY(c1.getY() - this.getXogo1().getLADOCADRADO());
-        c2.setX(c1.getX());
-        c2.setY(c1.getY() + this.getXogo1().getLADOCADRADO());
-        c3.setX(c1.getX() + this.getXogo1().getLADOCADRADO());
-        c3.setY(c1.getY());
+        cambiarPosicion0();
     }
 
     //MÉTODOS QUE COMPROBAN SE PODE ROTAR////////////////////////////////////////////////////////////////////////
@@ -145,6 +138,7 @@ public class FichaT extends Ficha {
     
     //MÉTODOS QUE ROTAN//////////////////////////////////////////////////////////////////////////////////////////
     
+    //rota cambiando segundo a posición na que está a posición seguinte
     public boolean rotar() {
         if (c3.getX() == c1.getX() + this.getXogo1().getLADOCADRADO() && c3.getY() == c1.getY()) {
             cambiarPosicion1();

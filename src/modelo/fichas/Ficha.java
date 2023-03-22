@@ -15,9 +15,9 @@ import modelo.Xogo;
  */
 public abstract class Ficha {
     //atributos
-    protected Xogo xogo1;
-    protected ArrayList<Cadrado> cadrados = new ArrayList<>();
-    protected Iterator<Cadrado> iterCadrados;
+    private Xogo xogo1;
+    private ArrayList<Cadrado> cadrados = new ArrayList<>();
+    private Iterator<Cadrado> iterCadrados;
     protected Cadrado c0;
     protected Cadrado c1;
     protected Cadrado c2;
@@ -62,34 +62,37 @@ public abstract class Ficha {
     
     //Monta a ficha cos cadrados creados
     private void montarFicha(Cadrado c0, Cadrado c1, Cadrado c2, Cadrado c3) {
-        cadrados.add(c0);
-        cadrados.add(c1);
-        cadrados.add(c2);
-        cadrados.add(c3);
+        getCadrados().add(c0);
+        getCadrados().add(c1);
+        getCadrados().add(c2);
+        getCadrados().add(c3);
     }
     
+    //Move os cadrados da ficha cara a dereita
     public boolean moverDereita() {
-        iterCadrados = cadrados.iterator();
-        while (iterCadrados.hasNext()) {
-            Cadrado cadrado = iterCadrados.next();
+        setIterCadrados(getCadrados().iterator());
+        while (getIterCadrados().hasNext()) {
+            Cadrado cadrado = getIterCadrados().next();
             cadrado.setX(cadrado.getX() + xogo1.getLADOCADRADO());
         }
         return true;
     }
     
+    //Move os cadrados da ficha cara a esquerda
     public boolean moverEsquerda() {
-        iterCadrados = cadrados.iterator();
-        while (iterCadrados.hasNext()) {
-            Cadrado cadrado = iterCadrados.next();
+        setIterCadrados(getCadrados().iterator());
+        while (getIterCadrados().hasNext()) {
+            Cadrado cadrado = getIterCadrados().next();
             cadrado.setX(cadrado.getX() - xogo1.getLADOCADRADO());
         }
         return true;
     }
     
+    //move os cadrados da ficha cara abaixo
     public boolean moverAbaixo() {
-        iterCadrados = cadrados.iterator();
-        while (iterCadrados.hasNext()) {
-            Cadrado cadrado = iterCadrados.next();
+        setIterCadrados(getCadrados().iterator());
+        while (getIterCadrados().hasNext()) {
+            Cadrado cadrado = getIterCadrados().next();
             cadrado.setY(cadrado.getY() + xogo1.getLADOCADRADO());
         }
         return true;

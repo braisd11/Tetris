@@ -28,7 +28,6 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     private Xogo xogo1;
-    dgtbhrth
     private Sonido sound;
     private Timer timer;
     private Timer tiempo;
@@ -43,6 +42,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
      */
     
     public VentanaPrincipal() {
+        xogo1=new Xogo(this);
         initComponents();
         juego.setFocusable(true);
         crearTimerXogo(delay);
@@ -51,6 +51,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         sound=new Sonido();
     }
 
+    public Timer getTimer() {
+        return timer;
+    }
+    public void setTimer(Timer timer) {
+        this.timer = timer;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1080,11 +1088,11 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     //MÉTODO QUE CREA UN OBXETO DA CLASE XOGO E DA INICIO O XOGO
     private void iniciarPartida(){
-        xogo1=new Xogo(this);
         panelXogo.requestFocus();
         sound.musicaTetris();
         pausar();
         timerContaAtras.start();
+        xogo1.empezarXogo();
     }
     
     
@@ -1165,7 +1173,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Pon a dificultade en Fácil
     private void botonFacilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonFacilActionPerformed
         delay=1200;
-        delayMax += 100;
+        delayMax = 500;
         dialogDificultad.setVisible(false);
     }//GEN-LAST:event_botonFacilActionPerformed
 
@@ -1173,6 +1181,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Pon a dificultade en Media
     private void botonMediaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonMediaActionPerformed
         delay=1000;
+        delayMax = 400;
         dialogDificultad.setVisible(false);
     }//GEN-LAST:event_botonMediaActionPerformed
 
@@ -1180,7 +1189,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Pon a dificultade en Difícil
     private void botonDificilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonDificilActionPerformed
         delay=400;
-        delayMax -= 200;
+        delayMax = 200;
         dialogDificultad.setVisible(false);
     }//GEN-LAST:event_botonDificilActionPerformed
 
