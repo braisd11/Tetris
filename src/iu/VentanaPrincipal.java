@@ -28,28 +28,6 @@ import javax.swing.Timer;
  */
 public class VentanaPrincipal extends javax.swing.JFrame {
     private Xogo xogo1;
-    s
-            f
-            sd
-                    f
-                    d
-                            sf
-                            
-                            ds
-                                    fg
-                                    ds
-                                            f
-                                            d
-                                                    
-                                                    f
-                                                    ds
-                                                            f
-                                                            d
-                                                                    f
-                                                                    d
-                                                                            f
-                                                                            d
-                                                                                    f
     private Sonido sound;
     private Timer timer;
     private Timer tiempo;

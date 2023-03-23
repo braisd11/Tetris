@@ -30,20 +30,6 @@ public class Xogo {
     
     //ATRIBUTOS
     private final int LADOCADRADO=45;
-    sa
-            s
-            d
-                    s
-                    d
-                            s
-                            d
-                                    sd
-                                    s
-                                            
-                                            d
-                                            s
-                                                    d
-                                                    s
     private final int MAXX=450;
     private final int MAXY=900;
     private boolean pausa=false;
