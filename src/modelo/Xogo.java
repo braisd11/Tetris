@@ -265,7 +265,7 @@ public class Xogo {
             }
         }
         borrarVisualizacion();
-        ventanaPrincipal.getTimer().restart();
+        engadirFichaAoChan();
     }
     
     //FIN MÉTODOS DE MOVER A FICHA/////////////////////////////////////////////////////////////////////////////
