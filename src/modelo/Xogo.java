@@ -30,6 +30,7 @@ public class Xogo {
     
     //ATRIBUTOS
     private final int LADOCADRADO=45;
+    erfovoguneth
     private final int MAXX=450;
     private final int MAXY=900;
     private boolean pausa=false;
