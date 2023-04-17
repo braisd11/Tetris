@@ -24,6 +24,10 @@ public abstract class Ficha {
     protected Cadrado c3;
     
     //constructor
+    /**
+     * Crea un obxeto da clase Ficha
+     * @param xogo1 - Obxeto Xogo ao que pertence
+     */
     public Ficha(Xogo xogo1) {
         this.xogo1 = xogo1;
         crearCadrados();
@@ -69,6 +73,10 @@ public abstract class Ficha {
     }
     
     //Move os cadrados da ficha cara a dereita
+    /**
+     * Move a ficha cara a dereita
+     * @return true
+     */
     public boolean moverDereita() {
         setIterCadrados(getCadrados().iterator());
         while (getIterCadrados().hasNext()) {
@@ -79,6 +87,10 @@ public abstract class Ficha {
     }
     
     //Move os cadrados da ficha cara a esquerda
+    /**
+     * Move a ficha cara a esquerda
+     * @return true
+     */
     public boolean moverEsquerda() {
         setIterCadrados(getCadrados().iterator());
         while (getIterCadrados().hasNext()) {
@@ -89,6 +101,10 @@ public abstract class Ficha {
     }
     
     //move os cadrados da ficha cara abaixo
+    /**
+     * Move a ficha cara abaixo
+     * @return true
+     */
     public boolean moverAbaixo() {
         setIterCadrados(getCadrados().iterator());
         while (getIterCadrados().hasNext()) {
@@ -97,10 +113,26 @@ public abstract class Ficha {
         }
         return true;
     }
-    
+    /**
+     * comproba se a ficha pode rotar segundo a posicion na que esté
+     * @return true se pode rotar, false se non pode rotar
+     */
     public abstract boolean comprobarRotar();
+    /**
+     * Rota a ficha segundo a posicion na que esté
+     * @return true
+     */
     public abstract boolean rotar();
+    /**
+     * Establece a posición inicial da ficha
+     */
     public abstract void posicionInicial();
+    /**
+     * Establece a posicion da ficha que vai a aparecer a continuación
+     */
     public abstract void posicionFichaSeguinte();
+    /**
+     * Establece a cor da ficha
+     */
     protected abstract void cor();
 }

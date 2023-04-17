@@ -383,15 +383,14 @@ public class Xogo {
     
     //Xera unha nova ficha aleatoria.
     public Ficha xerarNovaFicha(){
-        Ficha ficha=null;
         HashMap<Integer,Ficha> map=new HashMap<>();
-        map.put(1, ficha=new FichaT(this));
-        map.put(2, ficha=new FichaCadrada(this));
-        map.put(3, ficha=new FichaL(this));
-        map.put(4, ficha=new FichaBarra(this));
-        map.put(5, ficha=new FichaLEspejo(this));
-        map.put(6, ficha=new FichaZ(this));
-        map.put(7, ficha=new FichaZEspejo(this));
+        map.put(1, new FichaT(this));
+        map.put(2, new FichaCadrada(this));
+        map.put(3, new FichaL(this));
+        map.put(4, new FichaBarra(this));
+        map.put(5, new FichaLEspejo(this));
+        map.put(6, new FichaZ(this));
+        map.put(7, new FichaZEspejo(this));
         int figura=(int) Math.floor(Math.random() * (7 - 1 + 1) + 1);
         return map.get(figura);
     }
