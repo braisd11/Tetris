@@ -1381,7 +1381,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Pinta o cadrado no UI
     /**
      * Pinta no panel juego a jLabel recibida
-     * @param lblCadrado 
+     * @param lblCadrado label dos cadrados que apareceran no panel
      */
     public void pintarCadrado(JLabel lblCadrado){
         juego.add(lblCadrado);
@@ -1391,7 +1391,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Borra os cadrados se se completa a liña no UI
     /**
      * Borra do panel juego a jLabel recibida
-     * @param lblCadrado 
+     * @param lblCadrado label dos cadrados que estan no panel
      */
     public void borrarCadrado(JLabel lblCadrado){
         juego.remove(lblCadrado);
@@ -1401,7 +1401,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Pinta o cadrado da Ficha Seguinte
     /**
      * Pinta no panelFichaSeguinte a jLabel recibida
-     * @param lblCadrado 
+     * @param lblCadrado label do cadrado da ficha seguinte
      */
     public void pintarCadradoSeguinte (JLabel lblCadrado){
         panelFichaSeguinte.add(lblCadrado);
