@@ -1207,7 +1207,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //Cada vez que completa 5 liñas, chama a VentanaPrincipal.aumentarDificultade().
     /**
      * Comproba se o número de liñas feitas e múltiplo de 5,
-     * se o é chama a aumentar dificultade
+     * se o é chama a aumentar dificultade.
      */
     public void comprobarLinas(){
         String numerolinas=numlinas.getText();
