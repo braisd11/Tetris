@@ -1048,7 +1048,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-            /**
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -1205,6 +1205,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     //Comproba cantas liñas se completaron para saber se hai que aumentar a dificultade ou non
     //Cada vez que completa 5 liñas, chama a VentanaPrincipal.aumentarDificultade().
+    /**
+     * Comproba se o número de liñas feitas e múltiplo de 5,
+     * se o é chama a aumentar dificultade.
+     */
     public void comprobarLinas(){
         String numerolinas=numlinas.getText();
         int linas=(int) Double.parseDouble(numerolinas);
@@ -1375,24 +1379,39 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //MÉTODOS PARA PINTAR OU BORRAR FICHAS OU CADRADOS///////////
     
     //Pinta o cadrado no UI
+    /**
+     * Pinta no panel juego a jLabel recibida
+     * @param lblCadrado 
+     */
     public void pintarCadrado(JLabel lblCadrado){
         juego.add(lblCadrado);
         juego.updateUI();
     }
     
     //Borra os cadrados se se completa a liña no UI
+    /**
+     * Borra do panel juego a jLabel recibida
+     * @param lblCadrado 
+     */
     public void borrarCadrado(JLabel lblCadrado){
         juego.remove(lblCadrado);
         juego.updateUI();
     }
     
     //Pinta o cadrado da Ficha Seguinte
+    /**
+     * Pinta no panelFichaSeguinte a jLabel recibida
+     * @param lblCadrado 
+     */
     public void pintarCadradoSeguinte (JLabel lblCadrado){
         panelFichaSeguinte.add(lblCadrado);
         panelFichaSeguinte.updateUI();
     }
     
     //Borra os cadrados da Ficha Seguinte
+    /**
+     * Borra todo o contido do panelFichaSeguinte
+     */
     public void borrarFichaSeguinte (){
         panelFichaSeguinte.removeAll();
     }
@@ -1452,6 +1471,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //MÉTODOS PARA AS ESTATÍSTICAS//////////////
     
     //Suma 1 punto por cada ficha colocada
+    /**
+     * Suma 1 punto a puntuación
+     */
     public void sumarPuntosFicha(){
         String puntuacionFicha=puntos.getText();
         int puntuacion=(int) Double.parseDouble(puntuacionFicha);
@@ -1462,6 +1484,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
 
     //Suma 12 puntos adicionais cada vez que se fai unha liña
+    /**
+     * Suma 12 puntos a puntuación
+     */
     public void sumarPuntosLina(){
         String puntuacionLina=puntos.getText();
         int puntuacion=(int) Double.parseDouble(puntuacionLina);
@@ -1477,12 +1502,15 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     
     
     //Escribe o número de liñas no contador
-    public void mostrarNumeroLinas (int numeroLinas){
+    private void mostrarNumeroLinas (int numeroLinas){
         numlinas.setText(""+numeroLinas);
         sound.sonidoFacerLina();
     }
     
     //Suma unha liña
+    /**
+     * Suma 1 liña ao numero de liñas feitas
+     */
     public void sumarLina(){
         int numeroLinas=xogo1.getNumeroLinas();
         numeroLinas++;
@@ -1498,6 +1526,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     //MÉTODOS PARA O FINAL DO XOGO/////////////
     
     //No caso de perder mostra a mensaxe de que se perdeu.
+    /**
+     * Mostra o fin do Xogo
+     */
     public void mostrarFinDoXogo(){
         timer.stop();
         tiempo.stop();
