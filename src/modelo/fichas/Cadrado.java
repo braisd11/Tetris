@@ -33,6 +33,7 @@ public class Cadrado {
     public Cadrado(int LADOCADRADO) {
         lblCadrado = new javax.swing.JLabel();
         lblCadrado.setSize(LADOCADRADO, LADOCADRADO);
+        
     }
     
     //getter y setter
