@@ -43,7 +43,10 @@ public class Xogo {
     private Iterator<Cadrado> iterChan;
     private Iterator<Cadrado> iterVisualizacion;
     
-    //CONSTRUCTOR
+    /**
+     * 
+     * @param ventanaPrincipal Ventana de IU
+     */
     public Xogo(VentanaPrincipal ventanaPrincipal) {
         this.ventanaPrincipal=ventanaPrincipal;
     }
@@ -73,7 +76,9 @@ public class Xogo {
     
     //MÉTODOS///////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    //Empeza o xogo
+    /**
+     * Llama a xerarNovaFicha() y establecerFichaActual()
+     */
     public void empezarXogo(){
         fichaSeguinte=xerarNovaFicha();
         establecerFichaActual();
@@ -81,7 +86,9 @@ public class Xogo {
     
     //MÉTODOS QUE DEBUXAN A FICHA ACTUAL E SEGUINTE///////////////////////////////////////////////////////////////
     
-    //Chama a pintarCadrado
+    /**
+     * Dibuja la fichaActual en el JPanel
+     */
     public void debuxarFichaActual(){
         fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
         while (fichaActual.getIterCadrados().hasNext()) {
@@ -90,7 +97,9 @@ public class Xogo {
         }
     }
     
-    //Chama a pintarCadradoSeguinte
+    /**
+     * Dibuja la Ficha siguiente en la IU
+     */
     public void debuxarFichaSeguinte(){
         ventanaPrincipal.borrarFichaSeguinte();
         fichaSeguinte.setIterCadrados(fichaSeguinte.getCadrados().iterator());
@@ -107,7 +116,9 @@ public class Xogo {
     
     //MÉTODOS DA VISUALIZACIÓN NO CHAN///////////////////////////////////////////////////////////////////////
     
-    //Chama a crearVisualizacion() e mostra a visualización de onde vai a caer a ficha
+    /**
+     * Visualiza la Ficha en el sitio donde caería
+     */
     public void visualizarNoChan(){
         crearVisualizacion();
         iterVisualizacion = visualizacionChan.iterator();
@@ -118,7 +129,7 @@ public class Xogo {
     }
     
     
-    //Crea a visualización da ficha actual
+    
     private void crearVisualizacion(){
         fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
         while (fichaActual.getIterCadrados().hasNext()) {
@@ -133,7 +144,7 @@ public class Xogo {
     }
     
     
-    //Comproba onde chocaría a ficha abaixo e sitúase a visualización nesa posición
+    
     private void visualizacionBaja() {
         while (!visualizacionChocaCoChan()){
             iterVisualizacion = visualizacionChan.iterator();
@@ -173,8 +184,8 @@ public class Xogo {
     }
     
     
-    //Se un cadrado da visualización superpónse á propia Ficha, este cadradoVisualizado deixará de ser visible 
-    public void fichaDelanteVisualizacion(){
+    
+    private void fichaDelanteVisualizacion(){
         fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
         while (fichaActual.getIterCadrados().hasNext()) {
             Cadrado cadradoFicha = fichaActual.getIterCadrados().next();
@@ -195,7 +206,9 @@ public class Xogo {
     
     //MÉTODOS DE MOVER A FICHA//////////////////////////////////////////////////////////////////////////////
     
-    //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverDereita() na clase Ficha.
+    /**
+     * Compueba si se puede mover a la derecha
+     */
     public void moverFichaDereita(){
         boolean mover=true;
         fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
@@ -212,8 +225,9 @@ public class Xogo {
         }
     }
     
-    
-    //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverEsquerda() na clase Ficha.
+    /**
+     * Compueba si se puede mover a la izquierda
+     */
     public void moverFichaEsquerda(){
         boolean mover=true;
         fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
@@ -231,7 +245,9 @@ public class Xogo {
     }
     
     
-    //Chama a ePosicionValida() e comproba. Se pode moverse chama a moverAbaixo() na clase Ficha.
+    /**
+     * Compueba si se puede mover a abajo
+     */
     public void moverFichaAbaixo() {
         if (chocaFichaCoChan()) { 
             engadirFichaAoChan();
@@ -244,7 +260,9 @@ public class Xogo {
         }
     }
     
-    //Chama a comprobarRotar() e comproba. Se pode rotar chama a rotar() na clase Ficha.
+    /**
+     * Compueba si puede rotar la ficha
+     */
     public void rotarFicha(){
         if (fichaActual.comprobarRotar()) {
             borrarVisualizacion();
@@ -255,7 +273,9 @@ public class Xogo {
         }
     }
     
-    //Baixa a ficha de golpe ata chocar co chan
+    /**
+     * Baja la ficha hasta chocar con otra ficha o con el suelo
+     */
     public void soltarFicha(){
         while (!chocaFichaCoChan()){
             fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
@@ -275,7 +295,12 @@ public class Xogo {
     
     //MÉTODO DE COMPROBAR POSICIÓN VÁLIDA PARA A FICHA/////////////////////////////////////////////////////////
 
-    //Comproba que a ficha non sobrepase os límites laterais e se chega ao chan ou choca con outra ficha.
+    /**
+     * Comprueba si la posición teórica siguiente es válida
+     * @param x coordenada x que tendría en la siguiente posición
+     * @param y coordenada y que tendría en la siguiente posición
+     * @return si la posición es válida o no
+     */
     public boolean ePosicionValida(int x, int y){
         boolean posicionValida=true;
         if (x>=MAXX || x<0){
@@ -303,7 +328,10 @@ public class Xogo {
     
     //MÉTODOS DE COMPROBAR CHOCAR CO CHAN/////////////////////////////////////////////////////////////////////
     
-    //Comproba que a ficha choque co chan.
+    /**
+     * Comprueba si la ficha choca con el suelo o con otra ficha
+     * @return si choca o no
+     */
     public boolean chocaFichaCoChan() {
         boolean chocar=false;
         fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
@@ -340,10 +368,9 @@ public class Xogo {
     
     //MÉTODOS ENGADIR FICHA AO CHAN E COMPROBAR PERDER////////////////////////////////////////////////////////
     
-    /*Engade a ficha ao array de cadradosChan, e chama a borrarVisualizacion(), borrarLinasCompletas(),
-    sumarPuntosFicha() e chama a comprobarPerder().*/
-    //Se se perde chama a mostrarFinDoXogo().
-    //Se non se perde chama a establecerFichaActual().
+    /**
+     * Añade la ficha al array de fichas en el suelo
+     */
     public void engadirFichaAoChan(){
         fichaActual.setIterCadrados(fichaActual.getCadrados().iterator());
         while (fichaActual.getIterCadrados().hasNext()){
@@ -381,7 +408,10 @@ public class Xogo {
     
     //MÉTODOS XERAR NOVA FICHA E ESTABLECER FICHA ACTUAL//////////////////////////////////////////////////////
     
-    //Xera unha nova ficha aleatoria.
+    /**
+     * Genera un número aleatorio y busca en el Hashmap la ficha asociada a ese número para generarla
+     * @return Retorna la Ficha asociada al número del Hashmap 
+     */
     public Ficha xerarNovaFicha(){
         HashMap<Integer,Ficha> map=new HashMap<>();
         map.put(1, new FichaT(this));
@@ -395,8 +425,9 @@ public class Xogo {
         return map.get(figura);
     }
     
-    /*Asignaselle a fichaAcual á ficha de fichaSeguinte, xérase unha nova fichaSeguinte 
-    e debúxanse as fichas e a visualización da actual, tamén comproba se choca co chan*/
+    /**
+     * Coge la fichaSeguinte y la establece como la fichaActual.
+     */
     private void establecerFichaActual(){
         fichaActual=fichaSeguinte;
         fichaActual.posicionInicial();
@@ -414,9 +445,9 @@ public class Xogo {
     
     //MÉTODOS BORRAR LIÑAS COMPLETAS///////////////////////////////////////////////////////////////////////////
     
-    //Comproba cada vez que se engade unha ficha ao chan se hai algunha liña completa.
-    /*No caso de ter algunha liña completa, chama a borrarLinas(). 
-    Tamén chama a sumarPuntosLina(), a sumarLina() e comprobarLinas().*/
+    /**
+     * Comprueba si hay que borrar alguna línea
+     */
     public void borrarLinasCompletas(){
         int altitud=0;
         while (altitud<MAXY) {
@@ -440,7 +471,10 @@ public class Xogo {
     }
     
     
-    //Borra as liñas que están completas.
+    /**
+     * Borra las lineas que estén completas
+     * @param altitud altura a la que está la línea a borrar
+     */
     public void borrarLina(int altitud){
         iterChan=cadradosChan.iterator();
         while (iterChan.hasNext()){
@@ -462,7 +496,9 @@ public class Xogo {
     
     //MÉTODOS QUE ELIMINAN OS ELEMENTOS DO PANEL DE XOGO AO REINICIAR O XOGO///////////////////////////////////
     
-    //Borra todas as fichas ao reiniciar a partida.
+    /**
+     * Reinicia el juego
+     */
     public void eliminarTodo(){
         borrarChan();
         borrarFichaActual();
@@ -497,7 +533,9 @@ public class Xogo {
     
     //MÉTODOS QUE ENGADEN UN CADRADO E SUBEN O CHAN PARA AUMENTAR A DIFICULTADE//////////////////////////////////
     
-    //Este método chámase dende VentanaPirncipal e sube todo o chan para aumentar a dificultade
+    /**
+     * Sube una línea para aumentar la dificultad
+     */
     public void subirChan(){
         if (chocaFichaCoChan()) { 
             engadirFichaAoChan();
@@ -510,7 +548,9 @@ public class Xogo {
     }
     
     
-    //Método que engade un cadrado abaixo de todo para aumentar a dificultade
+    /**
+     * Añade un cuadrado a la última línea
+     */
     public void engadirCadradoDificultade(){
         Cadrado cadradoDificultade=new Cadrado(LADOCADRADO);
         int azar= (int) Math.floor(Math.random() * ((MAXX/LADOCADRADO-1) - 0 + 1) + 0);
